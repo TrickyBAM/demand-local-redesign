@@ -51,9 +51,10 @@ const dashboardData = {
 
 // Stat Counter Component
 function StatCounter({ target, label, suffix = '' }) {
-  const count = useCountUp(target);
+  const [count, ref] = useCountUp(target);
   return (
     <motion.div
+      ref={ref}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
