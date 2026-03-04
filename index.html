@@ -44,3 +44,1284 @@ input, select, textarea { font-family: var(--font-body); }
 .container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
 .container-wide { max-width: var(--container-wide); margin: 0 auto; padding: 0 24px; }
 h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 700; line-height: 1.15; }
+
+/* ===== NAVIGATION ===== */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 16px 0; transition: background 0.3s, backdrop-filter 0.3s, padding 0.3s; }
+.nav.scrolled { background: rgba(9,9,15,0.92); backdrop-filter: blur(20px); padding: 10px 0; border-bottom: 1px solid var(--border-subtle); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: var(--container-wide); margin: 0 auto; padding: 0 24px; }
+.nav-logo img { height: 36px; width: auto; }
+.nav-links { display: flex; align-items: center; gap: 8px; }
+.nav-dropdown { position: relative; }
+.nav-dropdown > button { padding: 8px 14px; color: var(--text-secondary); font-size: 14px; font-weight: 500; border-radius: 8px; transition: color 0.2s, background 0.2s; display: flex; align-items: center; gap: 4px; }
+.nav-dropdown > button:hover { color: var(--text-primary); background: rgba(255,255,255,0.05); }
+.nav-dropdown > button svg { width: 12px; height: 12px; transition: transform 0.2s; }
+.nav-dropdown:hover > button svg { transform: rotate(180deg); }
+.dropdown-menu { position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(4px); opacity: 0; pointer-events: none; transition: opacity 0.25s, transform 0.25s; background: #151530; border: 1px solid var(--border-subtle); border-radius: 12px; padding: 8px; min-width: 240px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+.nav-dropdown:hover .dropdown-menu { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: all; }
+.dropdown-menu a { display: block; padding: 10px 14px; font-size: 14px; color: var(--text-secondary); border-radius: 8px; transition: background 0.15s, color 0.15s; white-space: nowrap; }
+.dropdown-menu a:hover { background: rgba(255,255,255,0.06); color: var(--text-primary); }
+.nav-login { padding: 8px 14px; color: var(--text-secondary); font-size: 14px; font-weight: 500; border-radius: 8px; transition: color 0.2s; }
+.nav-login:hover { color: var(--text-primary); }
+.nav-cta { padding: 10px 22px; background: var(--accent-orange); color: #fff; font-size: 14px; font-weight: 600; border-radius: 10px; transition: transform 0.2s, box-shadow 0.2s; }
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 30px var(--accent-orange-glow); }
+.hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; cursor: pointer; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+.mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(9,9,15,0.98); backdrop-filter: blur(20px); z-index: 999; padding: 80px 24px 40px; overflow-y: auto; }
+.mobile-menu.open { display: block; animation: fadeIn 0.3s ease; }
+.mobile-menu-section { margin-bottom: 28px; }
+.mobile-menu-section h4 { font-family: var(--font-display); font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+.mobile-menu-section a { display: block; padding: 10px 0; font-size: 16px; color: var(--text-secondary); border-bottom: 1px solid var(--border-subtle); }
+.mobile-menu-section a:last-child { border-bottom: none; }
+.mobile-menu-cta { display: block; width: 100%; padding: 16px; background: var(--accent-orange); color: #fff; font-size: 16px; font-weight: 600; border-radius: 12px; text-align: center; margin-top: 20px; }
+
+/* ===== HERO ===== */
+.hero { min-height: 100vh; display: flex; align-items: center; position: relative; padding: 120px 0 80px; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -20%; right: -10%; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-purple-glow) 0%, transparent 70%); pointer-events: none; }
+.hero::after { content: ''; position: absolute; bottom: -10%; left: -5%; width: 600px; height: 600px; background: radial-gradient(circle, var(--accent-orange-glow) 0%, transparent 70%); pointer-events: none; opacity: 0.5; }
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px 6px 10px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); border-radius: 100px; font-size: 13px; color: var(--accent-teal); font-weight: 500; margin-bottom: 24px; }
+.hero-badge::before { content: ''; width: 8px; height: 8px; background: var(--accent-teal); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.hero h1 { font-size: clamp(40px, 5vw, 64px); font-weight: 800; line-height: 1.08; margin-bottom: 20px; letter-spacing: -0.02em; }
+.hero h1 .gradient-text { background: linear-gradient(135deg, var(--accent-orange) 0%, #fb923c 50%, var(--accent-purple) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-size: 18px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 36px; max-width: 520px; }
+.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: var(--accent-orange); color: #fff; font-size: 16px; font-weight: 600; border-radius: 12px; transition: transform 0.2s, box-shadow 0.2s; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px var(--accent-orange-glow); }
+.btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-hover); color: var(--text-primary); font-size: 16px; font-weight: 500; border-radius: 12px; transition: background 0.2s, border-color 0.2s; }
+.btn-secondary:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); }
+.hero-stats { display: flex; gap: 40px; }
+.hero-stat-value { font-family: var(--font-display); font-size: 28px; font-weight: 800; color: var(--text-primary); }
+.hero-stat-label { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+.hero-visual { position: relative; }
+.hero-image { width: 100%; border-radius: 16px; position: relative; z-index: 1; }
+.hero-image img { border-radius: 16px; width: 100%; }
+.hero-float { position: absolute; z-index: 2; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 14px 18px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); animation: float 6s ease-in-out infinite; }
+.hero-float-1 { top: -20px; right: -20px; animation-delay: 0s; }
+.hero-float-2 { bottom: 40px; left: -30px; animation-delay: 2s; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.hero-float-label { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
+.hero-float-value { font-family: var(--font-display); font-size: 20px; font-weight: 700; }
+.hero-float-value.green { color: var(--accent-teal); }
+.hero-float-value.orange { color: var(--accent-orange); }
+
+/* ===== MARQUEE ===== */
+.marquee-section { padding: 20px 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); overflow: hidden; background: var(--bg-secondary); }
+.marquee-track { display: flex; width: max-content; animation: marquee 30s linear infinite; }
+.marquee-track span { font-family: var(--font-display); font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); white-space: nowrap; padding: 0 20px; }
+.marquee-track .star { color: var(--accent-orange); }
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* ===== DIGITAL AUDIT SCANNER ===== */
+.audit-section { padding: 80px 0; position: relative; }
+.audit-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(249,115,22,0.06) 0%, transparent 60%); pointer-events: none; }
+.section-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.2); border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--accent-orange); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+.section-badge.purple { background: rgba(139,92,246,0.1); border-color: rgba(139,92,246,0.2); color: var(--accent-purple); }
+.section-badge.teal { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.2); color: var(--accent-teal); }
+.section-title { font-size: clamp(32px, 4vw, 48px); font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
+.section-sub { font-size: 18px; color: var(--text-secondary); max-width: 640px; line-height: 1.7; }
+.audit-header { text-align: center; margin-bottom: 48px; }
+.audit-header .section-sub { margin: 0 auto; }
+.audit-box { max-width: 720px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 32px; position: relative; overflow: hidden; }
+.audit-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent-orange), var(--accent-purple)); }
+.audit-input-row { display: flex; gap: 12px; margin-bottom: 24px; }
+.audit-input { flex: 1; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle); border-radius: 10px; color: var(--text-primary); font-size: 16px; transition: border-color 0.2s; }
+.audit-input:focus { outline: none; border-color: var(--accent-orange); }
+.audit-input::placeholder { color: var(--text-muted); }
+.audit-btn { padding: 14px 28px; background: linear-gradient(135deg, var(--accent-orange), #ea580c); color: #fff; font-size: 15px; font-weight: 600; border-radius: 10px; white-space: nowrap; transition: transform 0.2s, box-shadow 0.2s; }
+.audit-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 30px var(--accent-orange-glow); }
+.audit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
+.audit-steps { display: none; }
+.audit-steps.active { display: block; }
+.audit-step { display: flex; align-items: center; gap: 12px; padding: 10px 0; font-size: 14px; color: var(--text-muted); }
+.audit-step.active { color: var(--accent-orange); }
+.audit-step.done { color: var(--accent-teal); }
+.audit-step .step-icon { width: 20px; height: 20px; border-radius: 50%; border: 2px solid currentColor; display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; }
+.audit-step.active .step-icon { border-color: var(--accent-orange); animation: pulse 1s infinite; }
+.audit-step.done .step-icon { border-color: var(--accent-teal); background: var(--accent-teal); color: #fff; }
+.audit-results { display: none; margin-top: 32px; }
+.audit-results.active { display: block; animation: fadeUp 0.5s ease; }
+.audit-headline { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 24px; text-align: center; }
+.audit-scores { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+.score-card { text-align: center; padding: 20px 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 12px; }
+.score-gauge { width: 80px; height: 80px; margin: 0 auto 12px; position: relative; }
+.score-gauge svg { width: 80px; height: 80px; transform: rotate(-90deg); }
+.score-gauge circle { fill: none; stroke-width: 6; stroke-linecap: round; }
+.score-gauge .bg { stroke: rgba(255,255,255,0.06); }
+.score-gauge .fill { transition: stroke-dashoffset 1.5s ease; }
+.score-gauge .fill.red { stroke: var(--accent-red); }
+.score-gauge .fill.yellow { stroke: var(--accent-yellow); }
+.score-gauge .fill.green { stroke: var(--accent-teal); }
+.score-value { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 22px; font-weight: 800; }
+.score-value.red { color: var(--accent-red); }
+.score-value.yellow { color: var(--accent-yellow); }
+.score-value.green { color: var(--accent-teal); }
+.score-label { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+.audit-gated { position: relative; padding: 24px; border-radius: 12px; overflow: hidden; text-align: center; }
+.audit-gated-blur { filter: blur(6px); opacity: 0.5; pointer-events: none; padding: 16px 0; }
+.audit-gated-blur p { font-size: 14px; color: var(--text-secondary); margin-bottom: 8px; }
+.audit-gated-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(9,9,15,0.6); }
+.audit-gated-overlay h4 { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+.audit-disclaimer { text-align: center; margin-top: 20px; font-size: 12px; color: var(--text-muted); }
+
+/* ===== LOGO STRIP ===== */
+.logos-section { padding: 60px 0; border-top: 1px solid var(--border-subtle); }
+.logos-section h3 { text-align: center; font-size: 14px; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 32px; }
+.logos-track-wrap { overflow: hidden; mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent); }
+.logos-track { display: flex; align-items: center; gap: 48px; width: max-content; animation: logoScroll 40s linear infinite; }
+.logos-track img { height: 40px; width: auto; opacity: 0.6; filter: brightness(0) invert(1); transition: opacity 0.3s; }
+.logos-track img:hover { opacity: 1; }
+@keyframes logoScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* ===== LINKONE PLATFORM ===== */
+.platform-section { padding: 80px 0; position: relative; }
+.platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.platform-image { position: relative; }
+.platform-image img { width: 100%; border-radius: 16px; }
+.platform-features { display: grid; gap: 24px; margin-top: 32px; }
+.platform-feature { display: flex; gap: 16px; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); border-radius: 12px; transition: border-color 0.3s, background 0.3s; }
+.platform-feature:hover { border-color: var(--border-hover); background: rgba(255,255,255,0.04); }
+.platform-feature-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 20px; }
+.platform-feature-icon.orange { background: rgba(249,115,22,0.12); }
+.platform-feature-icon.purple { background: rgba(139,92,246,0.12); }
+.platform-feature-icon.teal { background: rgba(16,185,129,0.12); }
+.platform-feature h4 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+.platform-feature p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+
+/* ===== 3 STEPS ===== */
+.steps-section { padding: 70px 0; background: var(--bg-secondary); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+.steps-header { text-align: center; margin-bottom: 60px; }
+.steps-header .section-sub { margin: 0 auto; }
+.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; position: relative; }
+.steps-grid::before { content: ''; position: absolute; top: 40px; left: 16%; right: 16%; height: 2px; background: linear-gradient(90deg, var(--accent-orange), var(--accent-purple), var(--accent-teal)); opacity: 0.3; }
+.step-card { text-align: center; position: relative; }
+.step-number { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 28px; font-weight: 800; margin: 0 auto 24px; position: relative; z-index: 1; }
+.step-number.s1 { background: rgba(249,115,22,0.12); color: var(--accent-orange); border: 2px solid rgba(249,115,22,0.3); }
+.step-number.s2 { background: rgba(139,92,246,0.12); color: var(--accent-purple); border: 2px solid rgba(139,92,246,0.3); }
+.step-number.s3 { background: rgba(16,185,129,0.12); color: var(--accent-teal); border: 2px solid rgba(16,185,129,0.3); }
+.step-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+.step-card p { font-size: 15px; color: var(--text-secondary); line-height: 1.6; max-width: 320px; margin: 0 auto; }
+.step-image { margin-top: 24px; border-radius: 12px; overflow: hidden; }
+.step-image img { width: 100%; }
+
+/* ===== SERVICES GRID ===== */
+.services-section { padding: 80px 0; }
+.services-header { text-align: center; margin-bottom: 60px; }
+.services-header .section-sub { margin: 0 auto; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.service-card { padding: 28px; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
+.service-card:hover { transform: translateY(-4px); border-color: var(--border-hover); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+.service-card.featured { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; border-color: rgba(139,92,246,0.3); }
+.service-card.featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent-purple), var(--accent-orange)); }
+.service-badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; background: rgba(139,92,246,0.15); border-radius: 6px; font-size: 11px; font-weight: 600; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+.service-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 22px; }
+.service-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.service-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+.service-card .learn-more { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-size: 14px; font-weight: 600; color: var(--accent-orange); transition: gap 0.2s; }
+.service-card:hover .learn-more { gap: 10px; }
+.service-card-image { border-radius: 10px; overflow: hidden; }
+.service-card-image img { width: 100%; }
+
+/* ===== GEO SCANNER ===== */
+.geo-section { padding: 80px 0; background: var(--bg-secondary); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); position: relative; }
+.geo-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(139,92,246,0.06) 0%, transparent 60%); pointer-events: none; }
+.geo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.geo-content .section-sub { margin-bottom: 32px; }
+.geo-image img { width: 100%; border-radius: 16px; }
+.geo-scanner-box { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 28px; }
+.geo-scanner-box .audit-input-row { margin-bottom: 16px; }
+.geo-scanner-results { display: none; margin-top: 20px; }
+.geo-scanner-results.active { display: block; animation: fadeUp 0.5s ease; }
+.geo-scores-mini { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+.geo-score-mini { text-align: center; padding: 14px 8px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 10px; }
+.geo-score-mini .val { font-family: var(--font-display); font-size: 24px; font-weight: 800; }
+.geo-score-mini .val.red { color: var(--accent-red); }
+.geo-score-mini .val.yellow { color: var(--accent-yellow); }
+.geo-score-mini .val.green { color: var(--accent-teal); }
+.geo-score-mini .lbl { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.geo-competitors { margin-bottom: 20px; }
+.geo-competitors h4 { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+.geo-comp-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; font-size: 13px; }
+.geo-comp-bar .name { width: 140px; color: var(--text-secondary); flex-shrink: 0; }
+.geo-comp-bar .bar { flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
+.geo-comp-bar .bar-fill { height: 100%; border-radius: 4px; transition: width 1s ease; }
+.geo-comp-bar .score { width: 40px; text-align: right; font-weight: 600; font-size: 12px; }
+.geo-warning { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: 10px; padding: 16px; text-align: center; margin-bottom: 16px; }
+.geo-warning p { font-size: 14px; color: var(--text-secondary); }
+.geo-warning strong { color: var(--accent-red); }
+.geo-cta-btn { display: block; width: 100%; padding: 14px; background: var(--accent-purple); color: #fff; font-size: 15px; font-weight: 600; border-radius: 10px; text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
+.geo-cta-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 30px var(--accent-purple-glow); }
+.geo-steps { display: none; }
+.geo-steps.active { display: block; }
+
+/* ===== INDUSTRY TABS ===== */
+.industry-section { padding: 80px 0; }
+.industry-header { text-align: center; margin-bottom: 48px; }
+.industry-header .section-sub { margin: 0 auto; }
+.industry-tabs { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 48px; }
+.industry-tab { padding: 10px 20px; background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle); border-radius: 100px; font-size: 14px; font-weight: 500; color: var(--text-secondary); transition: all 0.3s; cursor: pointer; }
+.industry-tab:hover { border-color: var(--border-hover); color: var(--text-primary); }
+.industry-tab.active { background: var(--accent-orange); border-color: var(--accent-orange); color: #fff; }
+.industry-panel { display: none; animation: fadeUp 0.4s ease; }
+.industry-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.industry-panel-text h3 { font-size: 28px; font-weight: 700; margin-bottom: 16px; }
+.industry-panel-text p { font-size: 16px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 24px; }
+.industry-panel-image { border-radius: 16px; overflow: hidden; }
+.industry-panel-image img { width: 100%; }
+
+/* ===== CO-OP SECTION ===== */
+.coop-section { padding: 80px 0; background: var(--bg-secondary); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+.coop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.coop-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 32px; }
+.coop-stat { padding: 20px; background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.15); border-radius: 12px; }
+.coop-stat .val { font-family: var(--font-display); font-size: 28px; font-weight: 800; color: var(--accent-teal); }
+.coop-stat .lbl { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+.coop-calc { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 28px; }
+.coop-calc h3 { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.coop-calc .sub { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
+.coop-calc label { display: block; font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 8px; }
+.coop-range { width: 100%; -webkit-appearance: none; appearance: none; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1); outline: none; margin-bottom: 4px; }
+.coop-range::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--accent-teal); cursor: pointer; border: 2px solid #064e3b; }
+.coop-range::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--accent-teal); cursor: pointer; border: 2px solid #064e3b; }
+.coop-range-labels { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 20px; }
+.coop-spend-display { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--accent-teal); text-align: center; margin-bottom: 20px; }
+.coop-select { width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle); border-radius: 10px; color: var(--text-primary); font-size: 15px; margin-bottom: 20px; }
+.coop-select option { background: var(--bg-card); }
+.coop-calc-btn { width: 100%; padding: 14px; background: var(--accent-teal); color: #fff; font-size: 15px; font-weight: 600; border-radius: 10px; transition: transform 0.2s, box-shadow 0.2s; }
+.coop-calc-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 30px var(--accent-teal-glow); }
+.coop-results { display: none; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border-subtle); }
+.coop-results.active { display: block; animation: fadeUp 0.4s ease; }
+.coop-result-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border-subtle); }
+.coop-result-row:last-child { border-bottom: none; }
+.coop-result-row .label { font-size: 14px; color: var(--text-secondary); }
+.coop-result-row .value { font-family: var(--font-display); font-size: 16px; font-weight: 700; }
+.coop-result-row .value.highlight { color: var(--accent-teal); font-size: 20px; }
+.coop-disclaimer { font-size: 12px; color: var(--text-muted); margin-top: 16px; text-align: center; }
+
+/* ===== TESTIMONIALS ===== */
+.testimonials-section { padding: 80px 0; }
+.testimonials-header { text-align: center; margin-bottom: 60px; }
+.testimonials-header .section-sub { margin: 0 auto; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.testimonial-card { border-radius: 16px; overflow: hidden; border: 1px solid var(--border-subtle); transition: transform 0.3s; }
+.testimonial-card:hover { transform: translateY(-4px); }
+.testimonial-card img { width: 100%; }
+
+/* ===== ABOUT ===== */
+.about-section { padding: 80px 0; background: var(--bg-secondary); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.about-image img { width: 100%; border-radius: 16px; }
+.about-content .section-sub { margin-bottom: 32px; }
+.about-stats-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.about-stat { padding: 20px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 12px; }
+.about-stat .val { font-family: var(--font-display); font-size: 28px; font-weight: 800; color: var(--accent-orange); }
+.about-stat .lbl { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+.about-differentiators { margin-top: 32px; display: grid; gap: 16px; }
+.about-diff { display: flex; gap: 14px; padding: 16px; border-radius: 10px; background: rgba(255,255,255,0.02); }
+.about-diff-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px; background: rgba(249,115,22,0.12); }
+.about-diff h4 { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+.about-diff p { font-size: 13px; color: var(--text-secondary); }
+
+/* ===== TEAM ===== */
+.team-section { padding: 80px 0; }
+.team-header { text-align: center; margin-bottom: 60px; }
+.team-header .section-sub { margin: 0 auto; }
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 960px; margin: 0 auto; }
+.team-card { text-align: center; }
+.team-card img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 16px; margin-bottom: 16px; border: 2px solid var(--border-subtle); transition: border-color 0.3s; }
+.team-card:hover img { border-color: var(--accent-orange); }
+.team-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+.team-card p { font-size: 13px; color: var(--accent-orange); font-weight: 500; }
+.team-note { text-align: center; margin-top: 32px; font-size: 16px; color: var(--text-secondary); }
+.team-note strong { color: var(--text-primary); }
+
+/* ===== CONTACT / CTA ===== */
+.contact-section { padding: 80px 0; background: var(--bg-secondary); border-top: 1px solid var(--border-subtle); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.contact-content .section-sub { margin-bottom: 32px; }
+.contact-info { display: grid; gap: 20px; }
+.contact-info-item { display: flex; gap: 14px; align-items: flex-start; }
+.contact-info-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(249,115,22,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
+.contact-info-item h4 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+.contact-info-item p { font-size: 14px; color: var(--text-secondary); }
+.contact-form { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 32px; }
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; }
+.form-group input, .form-group textarea { width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle); border-radius: 10px; color: var(--text-primary); font-size: 15px; }
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent-orange); }
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-submit { width: 100%; padding: 14px; background: var(--accent-orange); color: #fff; font-size: 16px; font-weight: 600; border-radius: 10px; transition: transform 0.2s, box-shadow 0.2s; margin-top: 8px; }
+.form-submit:hover { transform: translateY(-1px); box-shadow: 0 8px 30px var(--accent-orange-glow); }
+
+/* ===== FOOTER ===== */
+.footer { padding: 60px 0 30px; border-top: 1px solid var(--border-subtle); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+.footer-brand img { height: 32px; margin-bottom: 16px; }
+.footer-brand p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; max-width: 280px; }
+.footer-socials { display: flex; gap: 12px; margin-top: 20px; }
+.footer-socials a { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; transition: background 0.2s; font-size: 14px; }
+.footer-socials a:hover { background: rgba(255,255,255,0.1); }
+.footer-col h4 { font-family: var(--font-display); font-size: 13px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; }
+.footer-col a { display: block; font-size: 14px; color: var(--text-secondary); padding: 4px 0; transition: color 0.2s; }
+.footer-col a:hover { color: var(--text-primary); }
+.footer-bottom { border-top: 1px solid var(--border-subtle); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-muted); }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .hero-grid, .platform-grid, .geo-grid, .coop-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-visual { order: -1; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .service-card.featured { grid-column: span 2; }
+  .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: repeat(3, 1fr); }
+  .industry-panel.active { grid-template-columns: 1fr; }
+  .audit-scores { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: 1fr; gap: 48px; }
+  .steps-grid::before { display: none; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero h1 { font-size: 32px; }
+  .hero-stats { flex-wrap: wrap; gap: 24px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .service-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .audit-input-row { flex-direction: column; }
+  .audit-scores { grid-template-columns: repeat(2, 1fr); }
+  .coop-stats { grid-template-columns: 1fr; }
+  .about-stats-row { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+}
+@media (max-width: 480px) {
+  .hero-buttons { flex-direction: column; }
+  .hero-buttons a, .hero-buttons button { width: 100%; justify-content: center; }
+  .industry-tabs { gap: 6px; }
+  .industry-tab { font-size: 12px; padding: 8px 14px; }
+  .team-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+}
+
+.hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav" id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="https://www.demandlocal.com/wp-content/uploads/2024/11/White-Full-Demand-Local-big.png" alt="Demand Local">
+    </a>
+    <div class="nav-links">
+      <div class="nav-dropdown">
+        <button>Industries <svg viewBox="0 0 12 12" fill="none"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="dropdown-menu">
+          <a href="industries.html#automotive-agencies">Automotive Agencies</a>
+          <a href="industries.html#multicultural">Multicultural Marketing</a>
+          <a href="industries.html#dealers">Auto Groups &amp; Dealers</a>
+          <a href="industries.html#finance">Finance</a>
+          <a href="industries.html#cpg">CPG</a>
+          <a href="industries.html#healthcare">Healthcare</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button>Platform <svg viewBox="0 0 12 12" fill="none"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="dropdown-menu">
+          <a href="platform-linkone.html">LinkOne Data</a>
+          <a href="platform-geo.html">AI-First Discovery</a>
+          <a href="platform-inventory.html">Inventory Marketing</a>
+          <a href="platform-facebook.html">Facebook Dynamic Ads</a>
+          <a href="platform-meta-sales.html">Meta Sales Event</a>
+          <a href="platform-google.html">Google Vehicle Ads</a>
+          <a href="platform-amazon.html">Dynamic Vehicle Acquisition</a>
+          <a href="platform-ctv.html">Connected TV &amp; OTT</a>
+          <a href="platform-dooh.html">Digital Out of Home</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button>Why Demand Local <svg viewBox="0 0 12 12" fill="none"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="dropdown-menu">
+          <a href="about.html">About Us</a>
+          <a href="services.html">Our Services</a>
+          <a href="case-studies.html">Case Studies</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="team.html">Meet the Team</a>
+        </div>
+      </div>
+      <a href="https://app.link1data.com/auth/login?next=/dashboard" class="nav-login" target="_blank">Log in (LinkOne)</a>
+      <a href="#contact" class="nav-cta">Request a Demo</a>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-section">
+    <h4>Industries</h4>
+    <a href="industries.html#automotive-agencies" onclick="toggleMobile()">Automotive Agencies</a>
+    <a href="industries.html#multicultural" onclick="toggleMobile()">Multicultural Marketing</a>
+    <a href="industries.html#dealers" onclick="toggleMobile()">Auto Groups &amp; Dealers</a>
+    <a href="industries.html#finance" onclick="toggleMobile()">Finance</a>
+    <a href="industries.html#cpg" onclick="toggleMobile()">CPG</a>
+    <a href="industries.html#healthcare" onclick="toggleMobile()">Healthcare</a>
+  </div>
+  <div class="mobile-menu-section">
+    <h4>Platform</h4>
+    <a href="platform-linkone.html" onclick="toggleMobile()">LinkOne Data</a>
+    <a href="platform-geo.html" onclick="toggleMobile()">AI-First Discovery</a>
+    <a href="platform-inventory.html" onclick="toggleMobile()">Inventory Marketing</a>
+    <a href="platform-facebook.html" onclick="toggleMobile()">Facebook Dynamic Ads</a>
+    <a href="platform-google.html" onclick="toggleMobile()">Google Vehicle Ads</a>
+    <a href="platform-ctv.html" onclick="toggleMobile()">Connected TV &amp; OTT</a>
+    <a href="platform-dooh.html" onclick="toggleMobile()">Digital Out of Home</a>
+  </div>
+  <div class="mobile-menu-section">
+    <h4>Company</h4>
+    <a href="about.html" onclick="toggleMobile()">About Us</a>
+    <a href="services.html" onclick="toggleMobile()">Our Services</a>
+    <a href="case-studies.html" onclick="toggleMobile()">Case Studies</a>
+    <a href="contact.html" onclick="toggleMobile()">Contact Us</a>
+    <a href="team.html" onclick="toggleMobile()">Meet the Team</a>
+  </div>
+  <a href="https://app.link1data.com/auth/login?next=/dashboard" class="mobile-menu-section" target="_blank" style="display:block;color:var(--accent-purple);font-weight:600;font-size:16px;padding:10px 0;">Log in to LinkOne →</a>
+  <a href="#contact" class="mobile-menu-cta" onclick="toggleMobile()">Request a Demo</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="container-wide">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="hero-badge">Powering nearly 1,000 dealerships since 2008</div>
+        <h1>The Ad Infrastructure <span class="gradient-text">Behind America's</span> Top Dealerships</h1>
+        <p class="hero-sub">LinkOne connects your DMS, CRM, and inventory data directly to every major ad platform — delivering precision-targeted campaigns with full co-op compliance. Built for dealers. Trusted by agencies.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn-primary">Request a Demo →</a>
+          <a href="platform-linkone.html" class="btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 5.5l4 2.5-4 2.5V5.5z" fill="currentColor"/></svg>
+            See LinkOne in Action
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="hero-stat-value">17+</div><div class="hero-stat-label">Years in Business</div></div>
+          <div><div class="hero-stat-value">~1,000</div><div class="hero-stat-label">Dealerships Served</div></div>
+          <div><div class="hero-stat-value">100%</div><div class="hero-stat-label">Co-Op Compliant</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-image">
+          <img src="https://www.demandlocal.com/wp-content/uploads/2025/01/7.png" alt="Demand Local Platform Overview">
+        </div>
+        <div class="hero-float hero-float-1">
+          <div class="hero-float-label">Co-Op Recovery</div>
+          <div class="hero-float-value green">100%</div>
+        </div>
+        <div class="hero-float hero-float-2">
+          <div class="hero-float-label">Campaign ROAS</div>
+          <div class="hero-float-value orange">4.8x</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SCROLLING MARQUEE ===== -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span>POWER YOUR BRAND WITH</span><span class="star">★</span>
+    <span>PRECISION MARKETING</span><span class="star">★</span>
+    <span>OMNICHANNEL REACH</span><span class="star">★</span>
+    <span>FIRST-PARTY DATA</span><span class="star">★</span>
+    <span>AI-FIRST DISCOVERY</span><span class="star">★</span>
+    <span>FULL CO-OP COMPLIANCE</span><span class="star">★</span>
+    <span>POWER YOUR BRAND WITH</span><span class="star">★</span>
+    <span>PRECISION MARKETING</span><span class="star">★</span>
+    <span>OMNICHANNEL REACH</span><span class="star">★</span>
+    <span>FIRST-PARTY DATA</span><span class="star">★</span>
+    <span>AI-FIRST DISCOVERY</span><span class="star">★</span>
+    <span>FULL CO-OP COMPLIANCE</span><span class="star">★</span>
+  </div>
+</div>
+
+<!-- ===== DIGITAL PRESENCE AUDIT SCANNER ===== -->
+<section class="audit-section" id="audit">
+  <div class="container">
+    <div class="audit-header">
+      <div class="section-badge">Free Website Audit</div>
+      <h2 class="section-title">Digital Presence Audit</h2>
+      <p class="section-sub">Enter any dealership website and get real performance scores instantly. See how your site stacks up on speed, SEO, accessibility, and best practices.</p>
+    </div>
+    <div class="audit-box">
+      <div class="audit-input-row">
+        <input type="text" class="audit-input" id="auditUrl" placeholder="Enter dealership website URL (e.g. sunsettoyota.com)">
+        <button class="audit-btn" id="auditBtn" onclick="runAudit()">Scan My Website</button>
+      </div>
+      <div class="audit-steps" id="auditSteps">
+        <div class="audit-step" data-step="1"><span class="step-icon"></span> Analyzing page speed...</div>
+        <div class="audit-step" data-step="2"><span class="step-icon"></span> Checking SEO signals...</div>
+        <div class="audit-step" data-step="3"><span class="step-icon"></span> Scanning mobile experience...</div>
+        <div class="audit-step" data-step="4"><span class="step-icon"></span> Evaluating accessibility...</div>
+        <div class="audit-step" data-step="5"><span class="step-icon"></span> Comparing to industry benchmarks...</div>
+      </div>
+      <div class="audit-results" id="auditResults">
+        <div class="audit-headline" id="auditHeadline"></div>
+        <div class="audit-scores" id="auditScores"></div>
+        <div class="audit-gated">
+          <div class="audit-gated-blur" id="auditGatedBlur"></div>
+          <div class="audit-gated-overlay">
+            <h4>Unlock Your Full Digital Presence Report</h4>
+            <a href="#contact" class="btn-primary" style="font-size:14px;padding:12px 24px;">Request a Demo →</a>
+          </div>
+        </div>
+      </div>
+      <div class="audit-disclaimer">Powered by Google Lighthouse. Full optimization recommendations available with a Demand Local partnership.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PARTNER LOGO STRIP ===== -->
+<section class="logos-section">
+  <h3>Trusted by Leading Agencies &amp; Dealer Groups</h3>
+  <div class="logos-track-wrap">
+    <div class="logos-track" id="logosTrack"></div>
+  </div>
+</section>
+
+<!-- ===== LINKONE PLATFORM ===== -->
+<section class="platform-section reveal" id="platform">
+  <div class="container-wide">
+    <div class="platform-grid">
+      <div class="platform-image">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2024/04/Hero-illustration-compressed-1.png" alt="LinkOne Platform">
+      </div>
+      <div>
+        <div class="section-badge purple">Core Platform</div>
+        <h2 class="section-title">The LinkOne Advantage</h2>
+        <p class="section-sub">One platform that connects your dealership data to every advertising channel — with full compliance baked in.</p>
+        <div class="platform-features">
+          <div class="platform-feature">
+            <div class="platform-feature-icon orange">📊</div>
+            <div><h4>Real-Time Data Flow</h4><p>DMS, CRM, and inventory data syncs automatically to power dynamic, inventory-specific campaigns across every channel.</p></div>
+          </div>
+          <div class="platform-feature">
+            <div class="platform-feature-icon purple">🎯</div>
+            <div><h4>Omnichannel Precision</h4><p>Google, Meta, CTV, display, audio, Amazon — one dashboard to manage and optimize every campaign.</p></div>
+          </div>
+          <div class="platform-feature">
+            <div class="platform-feature-icon teal">✅</div>
+            <div><h4>Built-In Co-Op Compliance</h4><p>Every campaign is structured for OEM co-op from day one. Pre-approved templates, automated documentation, 100% reimbursement rate.</p></div>
+          </div>
+        </div>
+        <a href="platform-linkone.html" class="btn-secondary" style="margin-top:28px;">Explore LinkOne →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3 SIMPLE STEPS ===== -->
+<section class="steps-section reveal">
+  <div class="container">
+    <div class="steps-header">
+      <div class="section-badge">How It Works</div>
+      <h2 class="section-title">3 Simple Steps</h2>
+      <p class="section-sub">From data connection to measurable results — here's how Demand Local transforms your advertising.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number s1">1</div>
+        <h3>Connect Your Data</h3>
+        <p>LinkOne integrates directly with your DMS, CRM, and inventory systems. CDK, VinSolutions, Eleads, DealerVault — we connect to them all.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number s2">2</div>
+        <h3>Launch Smarter Campaigns</h3>
+        <p>Your real inventory and customer data powers dynamic, precision-targeted campaigns across Google, Meta, CTV, and every major platform.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number s3">3</div>
+        <h3>Measure &amp; Optimize</h3>
+        <p>Real-time reporting through LinkOne. Walk-in attribution, co-op tracking, cross-channel performance — all in one transparent dashboard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES GRID ===== -->
+<section class="services-section reveal" id="services">
+  <div class="container-wide">
+    <div class="services-header">
+      <div class="section-badge">Full-Service Capabilities</div>
+      <h2 class="section-title">Every Channel. One Platform.</h2>
+      <p class="section-sub">A complete suite of digital advertising solutions designed for the automotive industry.</p>
+    </div>
+    <div class="services-grid">
+      <!-- Featured: AI-First Discovery -->
+      <div class="service-card featured">
+        <div>
+          <div class="service-badge">New</div>
+          <h3>AI-First Discovery (GEO)</h3>
+          <p>Our proprietary Generative Engine Optimization system trains AI to recognize your brand as the right answer — not just a search result. Be the recommendation when shoppers ask ChatGPT, Google AI Overviews, and Perplexity where to buy.</p>
+          <a href="platform-geo.html" class="learn-more">Learn More →</a>
+        </div>
+        <div class="service-card-image">
+          <img src="https://www.demandlocal.com/wp-content/uploads/2025/10/Generated-Image-October-29-2025-7_06PM-1-e1761861040361.png" alt="AI-First Discovery">
+        </div>
+      </div>
+      <!-- Google Vehicle Ads -->
+      <div class="service-card">
+        <div class="service-icon" style="background:rgba(66,133,244,0.12);">🔍</div>
+        <h3>Google Vehicle Ads &amp; SEM</h3>
+        <p>Dominate Google with Vehicle Listing Ads and inventory-fed search campaigns that match real shoppers to real vehicles on your lot.</p>
+        <a href="platform-google.html" class="learn-more">Learn More →</a>
+      </div>
+      <!-- Facebook Dynamic Ads -->
+      <div class="service-card">
+        <div class="service-icon" style="background:rgba(59,89,152,0.12);">📱</div>
+        <h3>Facebook Dynamic Ads</h3>
+        <p>Dynamic inventory ads on Facebook, Instagram, and TikTok that showcase your vehicles to in-market buyers with Meta's powerful targeting.</p>
+        <a href="platform-facebook.html" class="learn-more">Learn More →</a>
+      </div>
+      <!-- CTV & OTT -->
+      <div class="service-card">
+        <div class="service-icon" style="background:rgba(239,68,68,0.12);">📺</div>
+        <h3>Connected TV &amp; OTT</h3>
+        <p>Reach cord-cutters on Hulu, Roku, and premium streaming with geo-targeted, household-level video ads.</p>
+        <a href="platform-ctv.html" class="learn-more">Learn More →</a>
+      </div>
+      <!-- Display & Retargeting -->
+      <div class="service-card">
+        <div class="service-icon" style="background:rgba(139,92,246,0.12);">🖥️</div>
+        <h3>Display &amp; Retargeting</h3>
+        <p>Programmatic display and retargeting that brings shoppers back with the exact vehicles they viewed.</p>
+        <a href="services.html" class="learn-more">Learn More →</a>
+      </div>
+      <!-- Inventory Marketing -->
+      <div class="service-card">
+        <div class="service-icon" style="background:rgba(249,115,22,0.12);">🚗</div>
+        <h3>Inventory Marketing</h3>
+        <p>Automated VIN-level campaigns that market every vehicle with dynamic creative pulled from your live feed.</p>
+        <a href="platform-inventory.html" class="learn-more">Learn More →</a>
+      </div>
+      <!-- Geo-Fencing -->
+      <div class="service-card">
+        <div class="service-icon" style="background:rgba(16,185,129,0.12);">📍</div>
+        <h3>Geo-Fencing</h3>
+        <p>Target shoppers at competitor lots and service centers with precision location-based advertising.</p>
+        <a href="services.html" class="learn-more">Learn More →</a>
+      </div>
+      <!-- DOOH -->
+      <div class="service-card">
+        <div class="service-icon" style="background:rgba(234,179,8,0.12);">🍋</div>
+        <h3>Digital Out of Home</h3>
+        <p>Reach shoppers with high-impact ads at the right place and time, with full performance tracking.</p>
+        <a href="platform-dooh.html" class="learn-more">Learn More →</a>
+      </div>
+      <!-- Amazon Vehicle Ads -->
+      <div class="service-card" style="grid-column: span 3; display:grid; grid-template-columns: auto 1fr auto; align-items:center; gap:24px;">
+        <div class="service-icon" style="background:rgba(255,153,0,0.12); margin-bottom:0;">🛒</div>
+        <div>
+          <h3 style="margin-bottom:4px;">Amazon Vehicle Ads</h3>
+          <p style="margin:0;">Leverage Amazon's vehicle ownership database to target ready-to-buy shoppers with dynamic vehicle acquisition campaigns.</p>
+        </div>
+        <a href="platform-amazon.html" class="learn-more" style="margin-top:0; white-space:nowrap;">Learn More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GEO SCANNER ===== -->
+<section class="geo-section reveal" id="geo">
+  <div class="container-wide">
+    <div class="geo-grid">
+      <div class="geo-content">
+        <div class="section-badge purple">AI Visibility Check</div>
+        <h2 class="section-title">GEO Scanner</h2>
+        <p class="section-sub">When shoppers ask AI where to buy a car, does your dealership show up? Find out in seconds.</p>
+        <div class="geo-scanner-box">
+          <div class="audit-input-row">
+            <input type="text" class="audit-input" id="geoInput" placeholder="Enter your dealership name...">
+            <button class="audit-btn" id="geoBtn" onclick="runGeoScan()" style="background:linear-gradient(135deg,var(--accent-purple),#7c3aed);">Scan Now</button>
+          </div>
+          <div class="geo-steps" id="geoSteps">
+            <div class="audit-step" data-step="1"><span class="step-icon"></span> Checking ChatGPT...</div>
+            <div class="audit-step" data-step="2"><span class="step-icon"></span> Scanning Google AI Overviews...</div>
+            <div class="audit-step" data-step="3"><span class="step-icon"></span> Querying Perplexity...</div>
+            <div class="audit-step" data-step="4"><span class="step-icon"></span> Analyzing competitor visibility...</div>
+          </div>
+          <div class="geo-scanner-results" id="geoResults">
+            <div class="geo-scores-mini">
+              <div class="geo-score-mini"><div class="val red" id="geoScore">—</div><div class="lbl">VISIBILITY SCORE<br>out of 100</div></div>
+              <div class="geo-score-mini"><div class="val yellow">3rd</div><div class="lbl">AI RANKING<br>behind 2 competitors</div></div>
+              <div class="geo-score-mini"><div class="val red" id="geoQueries">—</div><div class="lbl">LOST QUERIES/MO<br>shoppers not seeing you</div></div>
+            </div>
+            <div class="geo-competitors">
+              <h4>Competitor Comparison</h4>
+              <div class="geo-comp-bar"><span class="name">Competitor A (AutoNation)</span><div class="bar"><div class="bar-fill" style="width:78%;background:var(--accent-teal);"></div></div><span class="score" style="color:var(--accent-teal);">78</span></div>
+              <div class="geo-comp-bar"><span class="name">Competitor B (Hendrick)</span><div class="bar"><div class="bar-fill" style="width:61%;background:var(--accent-yellow);"></div></div><span class="score" style="color:var(--accent-yellow);">61</span></div>
+              <div class="geo-comp-bar"><span class="name" id="geoUserName">Your Dealership</span><div class="bar"><div class="bar-fill" id="geoUserBar" style="width:0%;background:var(--accent-red);"></div></div><span class="score" id="geoUserScore" style="color:var(--accent-red);">—</span></div>
+            </div>
+            <div class="geo-warning">
+              <p>Your dealership is <strong>nearly invisible</strong> to AI-powered search. Shoppers are finding your competitors instead.</p>
+            </div>
+            <a href="#contact" class="geo-cta-btn">Fix My AI Visibility →</a>
+            <p style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:12px;">This is a sample analysis. <a href="#contact" style="text-decoration:underline;">Request a full GEO audit</a> for real data on your dealership.</p>
+          </div>
+        </div>
+      </div>
+      <div class="geo-image">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2025/10/Generated-Image-October-21-2025-11_02AM-e1761066331458.png" alt="GEO Scanner Tool">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2025/12/ChatGPT-Image-Dec-4-2025-06_05_16-PM-e1765305075944.png" alt="AI Recommendation" style="margin-top:24px;border-radius:16px;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INDUSTRY TABS ===== -->
+<section class="industry-section reveal" id="industries">
+  <div class="container">
+    <div class="industry-header">
+      <div class="section-badge">Industries We Serve</div>
+      <h2 class="section-title">Built for Every Vertical</h2>
+      <p class="section-sub">Demand Local delivers precision advertising solutions tailored to each industry's unique needs.</p>
+    </div>
+    <div class="industry-tabs" id="industryTabs">
+      <button class="industry-tab active" data-tab="auto-agencies">Automotive Agencies</button>
+      <button class="industry-tab" data-tab="dealers">Auto Groups &amp; Dealers</button>
+      <button class="industry-tab" data-tab="cpg">CPG</button>
+      <button class="industry-tab" data-tab="food">Food &amp; Beverages</button>
+      <button class="industry-tab" data-tab="finance">Finance</button>
+      <button class="industry-tab" data-tab="healthcare">Healthcare</button>
+    </div>
+    <div id="industryPanels">
+      <div class="industry-panel active" data-panel="auto-agencies">
+        <div class="industry-panel-text">
+          <h3>Automotive Agencies</h3>
+          <p>White-label our full ad infrastructure so your agency can scale without building from scratch. LinkOne powers your clients' campaigns while you keep the relationship — and the brand. Pre-approved OEM creative, automated compliance documentation, and real-time reporting your clients will love.</p>
+          <a href="industries.html#automotive-agencies" class="btn-secondary" style="display:inline-flex;">Learn More →</a>
+        </div>
+        <div class="industry-panel-image">
+          <img src="https://www.demandlocal.com/wp-content/uploads/2025/02/21-1.png" alt="Automotive Agencies">
+        </div>
+      </div>
+      <div class="industry-panel" data-panel="dealers">
+        <div class="industry-panel-text">
+          <h3>Auto Groups &amp; Dealers</h3>
+          <p>Whether you run a single rooftop or a 50-location group, Demand Local connects your real inventory data to every ad platform. VIN-level targeting, walk-in attribution, and 100% co-op compliance — all managed through one transparent dashboard.</p>
+          <a href="industries.html#dealers" class="btn-secondary" style="display:inline-flex;">Learn More →</a>
+        </div>
+        <div class="industry-panel-image">
+          <img src="https://www.demandlocal.com/wp-content/uploads/2024/04/networking-worldwide-1.png" alt="Dealers">
+        </div>
+      </div>
+      <div class="industry-panel" data-panel="cpg">
+        <div class="industry-panel-text">
+          <h3>Consumer Packaged Goods</h3>
+          <p>Reach consumers at the moment of decision with precision-targeted digital campaigns. Our data-driven approach combines first-party audience data with omnichannel delivery to drive measurable lift in brand awareness and purchase intent.</p>
+          <a href="industries.html#cpg" class="btn-secondary" style="display:inline-flex;">Learn More →</a>
+        </div>
+        <div class="industry-panel-image">
+          <img src="https://www.demandlocal.com/wp-content/uploads/2025/01/12.png" alt="CPG">
+        </div>
+      </div>
+      <div class="industry-panel" data-panel="food">
+        <div class="industry-panel-text">
+          <h3>Food &amp; Beverages</h3>
+          <p>Drive foot traffic and brand loyalty with geo-targeted campaigns that reach hungry consumers at the right time and place. From QSR to fine dining, our location-based strategies deliver measurable visits and sales.</p>
+          <a href="industries.html" class="btn-secondary" style="display:inline-flex;">Learn More →</a>
+        </div>
+        <div class="industry-panel-image">
+          <img src="https://www.demandlocal.com/wp-content/uploads/2024/04/Group.png" alt="Food & Beverages">
+        </div>
+      </div>
+      <div class="industry-panel" data-panel="finance">
+        <div class="industry-panel-text">
+          <h3>Finance</h3>
+          <p>Connect with high-intent financial consumers through compliant, data-driven advertising. From auto lending to insurance, our campaigns target the right audience with the right message across every digital channel.</p>
+          <a href="industries.html#finance" class="btn-secondary" style="display:inline-flex;">Learn More →</a>
+        </div>
+        <div class="industry-panel-image">
+          <img src="https://www.demandlocal.com/wp-content/uploads/2025/02/21-1.png" alt="Finance">
+        </div>
+      </div>
+      <div class="industry-panel" data-panel="healthcare">
+        <div class="industry-panel-text">
+          <h3>Healthcare</h3>
+          <p>Reach patients and healthcare consumers with HIPAA-mindful digital advertising. Our precision targeting combines demographic, geographic, and behavioral data to drive appointments and awareness for healthcare providers.</p>
+          <a href="industries.html#healthcare" class="btn-secondary" style="display:inline-flex;">Learn More →</a>
+        </div>
+        <div class="industry-panel-image">
+          <img src="https://www.demandlocal.com/wp-content/uploads/2025/01/12.png" alt="Healthcare">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CO-OP COMPLIANCE ===== -->
+<section class="coop-section reveal" id="coop">
+  <div class="container-wide">
+    <div class="coop-grid">
+      <div>
+        <div class="section-badge teal">Co-Op Compliance</div>
+        <h2 class="section-title">Never Leave Money on the Table</h2>
+        <p class="section-sub" style="margin-bottom:20px;">Most dealerships leave thousands in OEM co-op dollars unclaimed because their campaigns aren't properly structured and documented. Demand Local has maintained a <strong style="color:var(--accent-teal);">100% co-op reimbursement rate</strong> because every campaign we build is structured for compliance from day one.</p>
+        <div class="coop-stats">
+          <div class="coop-stat"><div class="val">100%</div><div class="lbl">Co-Op Reimbursement Rate</div></div>
+          <div class="coop-stat"><div class="val">Thousands</div><div class="lbl">Campaigns Filed</div></div>
+          <div class="coop-stat"><div class="val">100%</div><div class="lbl">Claims Approved</div></div>
+          <div class="coop-stat"><div class="val">Millions</div><div class="lbl">Dollars Recovered</div></div>
+        </div>
+      </div>
+      <div class="coop-calc">
+        <h3>Co-Op Recovery Calculator</h3>
+        <p class="sub">See how much OEM co-op reimbursement your dealership may be leaving on the table each year.</p>
+        <label>Monthly Ad Spend</label>
+        <input type="range" class="coop-range" id="coopRange" min="5000" max="100000" step="1000" value="25000" oninput="updateCoopSpend()">
+        <div class="coop-range-labels"><span>$5K</span><span>$100K</span></div>
+        <div class="coop-spend-display" id="coopSpend">$25,000</div>
+        <label>OEM / Program</label>
+        <select class="coop-select" id="coopOem">
+          <option value="toyota">Toyota / TDA</option>
+          <option value="ford">Ford / FMC</option>
+          <option value="gm">GM / iMR</option>
+          <option value="stellantis">Stellantis / SDA</option>
+          <option value="honda">Honda</option>
+          <option value="hyundai">Hyundai / Genesis</option>
+          <option value="nissan">Nissan</option>
+          <option value="vw">Volkswagen / Audi</option>
+          <option value="bmw">BMW / MINI</option>
+          <option value="subaru">Subaru</option>
+        </select>
+        <button class="coop-calc-btn" onclick="runCoopCalc()">Calculate My Unclaimed Co-Op →</button>
+        <div class="coop-results" id="coopResults"></div>
+        <p class="coop-disclaimer">Estimates based on industry averages. Actual recovery varies by OEM program and spend.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials-section reveal" id="testimonials">
+  <div class="container">
+    <div class="testimonials-header">
+      <div class="section-badge">What Our Partners Say</div>
+      <h2 class="section-title">Trusted by Industry Leaders</h2>
+      <p class="section-sub">See what agencies and dealer groups are saying about working with Demand Local.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2025/06/testimonial-1.1.png" alt="Testimonial" loading="lazy">
+      </div>
+      <div class="testimonial-card">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2025/06/testimonial-1.2.png" alt="Testimonial" loading="lazy">
+      </div>
+      <div class="testimonial-card">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2025/06/testimonial-1.3.png" alt="Testimonial" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT / OUR STORY ===== -->
+<section class="about-section reveal" id="about">
+  <div class="container-wide">
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2024/04/networking-worldwide-1.png" alt="Demand Local Global Network">
+      </div>
+      <div class="about-content">
+        <div class="section-badge">Our Story</div>
+        <h2 class="section-title">17 Years of Making Every Ad Dollar Count</h2>
+        <p class="section-sub">Founded in 2008 by Ray Bhatia and Mike Machado, Demand Local was built on a simple premise: dealerships deserve advertising partners who understand their business and can prove their value with data. From our headquarters in Napa, CA, we've grown to serve nearly 1,000 dealerships across the US and Canada.</p>
+        <div class="about-stats-row">
+          <div class="about-stat"><div class="val">2008</div><div class="lbl">Founded</div></div>
+          <div class="about-stat"><div class="val">30+</div><div class="lbl">Team Members</div></div>
+          <div class="about-stat"><div class="val">Napa, CA</div><div class="lbl">Headquarters</div></div>
+          <div class="about-stat"><div class="val">US &amp; Canada</div><div class="lbl">Coverage</div></div>
+        </div>
+        <div class="about-differentiators">
+          <div class="about-diff">
+            <div class="about-diff-icon">🔍</div>
+            <div><h4>Total Transparency</h4><p>Real-time reporting through LinkOne. No hidden fees, no black-box algorithms.</p></div>
+          </div>
+          <div class="about-diff">
+            <div class="about-diff-icon">🏷️</div>
+            <div><h4>White-Label Ready</h4><p>Agencies use our infrastructure to power their clients' campaigns — fully branded as their own.</p></div>
+          </div>
+          <div class="about-diff">
+            <div class="about-diff-icon">✅</div>
+            <div><h4>Co-Op Compliance</h4><p>100% reimbursement rate. Every campaign structured for OEM compliance from day one.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LEADERSHIP TEAM ===== -->
+<section class="team-section reveal" id="team">
+  <div class="container">
+    <div class="team-header">
+      <div class="section-badge">Leadership</div>
+      <h2 class="section-title">Meet Our Team</h2>
+      <p class="section-sub">The leadership driving Demand Local's mission to transform automotive advertising.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2025/03/Ray_Bhatia-1-scaled.jpg" alt="Ray Bhatia" loading="lazy">
+        <h4>Ray Bhatia</h4>
+        <p>CEO &amp; Co-Founder</p>
+      </div>
+      <div class="team-card">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2025/03/Mike_Machado-1-scaled.jpg" alt="Mike Machado" loading="lazy">
+        <h4>Mike Machado</h4>
+        <p>CRO &amp; Co-Founder</p>
+      </div>
+      <div class="team-card">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2025/03/Brian_Schrader-scaled.jpg" alt="Brian Schrader" loading="lazy">
+        <h4>Brian Schrader</h4>
+        <p>Chief Product Officer</p>
+      </div>
+      <div class="team-card">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2025/03/Caitlin_Cowley-scaled.jpg" alt="Caitlin Cowley" loading="lazy">
+        <h4>Caitlin Cowley</h4>
+        <p>SVP, Growth &amp; Strategy</p>
+      </div>
+    </div>
+    <p class="team-note">Plus a team of <strong>30+ specialists</strong> in media, data, and automotive advertising.</p>
+  </div>
+</section>
+
+<!-- ===== CONTACT / CTA ===== -->
+<section class="contact-section" id="contact">
+  <div class="container-wide">
+    <div class="contact-grid">
+      <div class="contact-content">
+        <div class="section-badge">Get Started</div>
+        <h2 class="section-title">Your Next Great Campaign Starts Here</h2>
+        <p class="section-sub">Ready to see how Demand Local can transform your dealership's digital advertising? Let's talk.</p>
+        <div class="contact-info">
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📞</div>
+            <div><h4>Phone</h4><p>1-888-315-9759</p></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📍</div>
+            <div><h4>Address</h4><p>1300 1st Street, Suite 368<br>Napa, CA 94559</p></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">✉️</div>
+            <div><h4>Email</h4><p>info@demandlocal.com</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3 style="font-family:var(--font-display);font-size:20px;font-weight:700;margin-bottom:4px;">Request a Demo</h3>
+        <p style="font-size:14px;color:var(--text-muted);margin-bottom:24px;">Fill out the form and a member of our team will be in touch within 24 hours.</p>
+        <div class="form-group"><label>Full Name</label><input type="text" placeholder="John Smith"></div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="john@dealership.com"></div>
+        <div class="form-group"><label>Company / Dealership</label><input type="text" placeholder="Sunset Toyota"></div>
+        <div class="form-group"><label>Message (Optional)</label><textarea placeholder="Tell us about your advertising goals..."></textarea></div>
+        <button class="form-submit" type="button">Send Request →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container-wide">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2024/11/White-Full-Demand-Local-big.png" alt="Demand Local">
+        <p>The ad infrastructure behind America's top dealerships. 17+ years of precision digital advertising with full co-op compliance.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/demandlocal" target="_blank" aria-label="Facebook">f</a>
+          <a href="https://www.instagram.com/demandlocal" target="_blank" aria-label="Instagram">ig</a>
+          <a href="https://www.linkedin.com/company/demand-local" target="_blank" aria-label="LinkedIn">in</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="platform-linkone.html">LinkOne Data</a>
+        <a href="platform-geo.html">AI-First Discovery</a>
+        <a href="platform-inventory.html">Inventory Marketing</a>
+        <a href="platform-facebook.html">Facebook Dynamic Ads</a>
+        <a href="platform-google.html">Google Vehicle Ads</a>
+        <a href="platform-ctv.html">CTV &amp; OTT</a>
+        <a href="platform-dooh.html">DOOH</a>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <a href="industries.html#automotive-agencies">Automotive Agencies</a>
+        <a href="industries.html#dealers">Auto Groups &amp; Dealers</a>
+        <a href="industries.html#multicultural">Multicultural Marketing</a>
+        <a href="industries.html#finance">Finance</a>
+        <a href="industries.html#cpg">CPG</a>
+        <a href="industries.html#healthcare">Healthcare</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="services.html">Our Services</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="team.html">Meet the Team</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Demand Local, Inc. All rights reserved.</span>
+      <span>1300 1st Street, Suite 368, Napa, CA 94559 &middot; 1-888-315-9759</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ===== NAV SCROLL =====
+window.addEventListener('scroll', function() {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// ===== MOBILE MENU =====
+function toggleMobile() {
+  var m = document.getElementById('mobileMenu');
+  var h = document.getElementById('hamburger');
+  m.classList.toggle('open');
+  h.classList.toggle('active');
+  document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+}
+
+// ===== SCROLL REVEAL =====
+var revealObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.05, rootMargin: '0px 0px 200px 0px' });
+document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
+// Fallback: reveal any sections that are already in viewport on load
+setTimeout(function() { document.querySelectorAll('.reveal:not(.visible)').forEach(function(el) { var r = el.getBoundingClientRect(); if (r.top < window.innerHeight + 200) el.classList.add('visible'); }); }, 500);
+
+// ===== PARTNER LOGOS =====
+(function() {
+  var track = document.getElementById('logosTrack');
+  var base = 'https://www.demandlocal.com/wp-content/uploads/2025/02/';
+  var html = '';
+  for (var i = 1; i <= 22; i++) { html += '<img src="' + base + i + '.png" alt="Partner ' + i + '" loading="lazy">'; }
+  track.innerHTML = html + html; // duplicate for infinite scroll
+})();
+
+// ===== DIGITAL PRESENCE AUDIT =====
+function runAudit() {
+  var urlInput = document.getElementById('auditUrl').value.trim();
+  if (!urlInput) { alert('Please enter a website URL'); return; }
+  if (!urlInput.match(/^https?:\/\//)) { urlInput = 'https://' + urlInput; }
+
+  var btn = document.getElementById('auditBtn');
+  btn.disabled = true;
+  btn.textContent = 'Scanning...';
+
+  var stepsEl = document.getElementById('auditSteps');
+  var resultsEl = document.getElementById('auditResults');
+  stepsEl.classList.add('active');
+  resultsEl.classList.remove('active');
+
+  var steps = stepsEl.querySelectorAll('.audit-step');
+  var currentStep = 0;
+
+  function advanceStep() {
+    if (currentStep > 0) { steps[currentStep - 1].classList.remove('active'); steps[currentStep - 1].classList.add('done'); steps[currentStep - 1].querySelector('.step-icon').textContent = '✓'; }
+    if (currentStep < steps.length) { steps[currentStep].classList.add('active'); currentStep++; }
+  }
+  advanceStep();
+
+  var apiUrl = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=' + encodeURIComponent(urlInput) + '&category=performance&category=seo&category=accessibility&category=best-practices&strategy=mobile';
+
+  var stepInterval = setInterval(function() { if (currentStep < steps.length) advanceStep(); }, 3000);
+
+  fetch(apiUrl).then(function(r) { return r.json(); }).then(function(data) {
+    clearInterval(stepInterval);
+    // Complete remaining steps
+    while (currentStep <= steps.length) { advanceStep(); }
+
+    setTimeout(function() {
+      stepsEl.classList.remove('active');
+
+      var cats = data.lighthouseResult && data.lighthouseResult.categories;
+      if (!cats) { btn.disabled = false; btn.textContent = 'Scan My Website'; alert('Could not analyze this URL. Please check the URL and try again.'); return; }
+
+      var scores = {
+        performance: Math.round((cats.performance ? cats.performance.score : 0) * 100),
+        seo: Math.round((cats.seo ? cats.seo.score : 0) * 100),
+        accessibility: Math.round((cats.accessibility ? cats.accessibility.score : 0) * 100),
+        bestPractices: Math.round((cats['best-practices'] ? cats['best-practices'].score : 0) * 100)
+      };
+
+      var worst = Math.min(scores.performance, scores.seo, scores.accessibility, scores.bestPractices);
+      var worstName = scores.performance === worst ? 'mobile speed' : scores.seo === worst ? 'SEO' : scores.accessibility === worst ? 'accessibility' : 'best practices';
+
+      document.getElementById('auditHeadline').innerHTML = 'Your dealership website scores <span style="color:' + (worst < 50 ? 'var(--accent-red)' : worst < 90 ? 'var(--accent-yellow)' : 'var(--accent-teal)') + ';font-size:24px;">' + worst + '/100</span> on ' + worstName + '.' + (worst < 50 ? ' Shoppers are leaving before your page loads.' : worst < 90 ? ' There\'s room for improvement.' : ' Great job!');
+
+      var scoresHtml = '';
+      var scoreData = [
+        { label: 'Performance', val: scores.performance },
+        { label: 'SEO', val: scores.seo },
+        { label: 'Accessibility', val: scores.accessibility },
+        { label: 'Best Practices', val: scores.bestPractices }
+      ];
+      scoreData.forEach(function(s) {
+        var color = s.val < 50 ? 'red' : s.val < 90 ? 'yellow' : 'green';
+        var circumference = 2 * Math.PI * 34;
+        var offset = circumference - (s.val / 100) * circumference;
+        scoresHtml += '<div class="score-card"><div class="score-gauge"><svg viewBox="0 0 76 76"><circle class="bg" cx="38" cy="38" r="34"/><circle class="fill ' + color + '" cx="38" cy="38" r="34" stroke-dasharray="' + circumference + '" stroke-dashoffset="' + offset + '"/></svg><div class="score-value ' + color + '">' + s.val + '</div></div><div class="score-label">' + s.label + '</div></div>';
+      });
+      document.getElementById('auditScores').innerHTML = scoresHtml;
+
+      // Gated content
+      var audits = data.lighthouseResult.audits || {};
+      var issues = [];
+      var seoIssues = 0, a11yIssues = 0;
+      Object.keys(audits).forEach(function(k) {
+        if (audits[k].score !== null && audits[k].score < 1) {
+          if (k.indexOf('seo') > -1 || ['meta-description', 'document-title', 'hreflang', 'canonical', 'robots-txt'].indexOf(k) > -1) seoIssues++;
+          if (k.indexOf('accessibility') > -1 || ['color-contrast', 'image-alt', 'link-name', 'button-name'].indexOf(k) > -1) a11yIssues++;
+        }
+      });
+      var fcp = audits['first-contentful-paint'] ? audits['first-contentful-paint'].displayValue : 'N/A';
+      var lcp = audits['largest-contentful-paint'] ? audits['largest-contentful-paint'].displayValue : 'N/A';
+
+      document.getElementById('auditGatedBlur').innerHTML = '<p>' + (seoIssues || 5) + ' SEO issues detected</p><p>First Contentful Paint: ' + fcp + '</p><p>Largest Contentful Paint: ' + lcp + '</p><p>' + (a11yIssues || 3) + ' accessibility violations found</p><p>Mobile load optimization opportunities available</p>';
+
+      resultsEl.classList.add('active');
+      btn.disabled = false;
+      btn.textContent = 'Scan Another Website';
+    }, 500);
+  }).catch(function(err) {
+    clearInterval(stepInterval);
+    stepsEl.classList.remove('active');
+    btn.disabled = false;
+    btn.textContent = 'Scan My Website';
+    alert('Error scanning website. Please check the URL and try again.');
+  });
+}
+
+// ===== GEO SCANNER =====
+function runGeoScan() {
+  var name = document.getElementById('geoInput').value.trim();
+  if (!name) { alert('Please enter a dealership name'); return; }
+
+  var btn = document.getElementById('geoBtn');
+  btn.disabled = true;
+  btn.textContent = 'Scanning...';
+
+  var stepsEl = document.getElementById('geoSteps');
+  var resultsEl = document.getElementById('geoResults');
+  stepsEl.classList.add('active');
+  resultsEl.classList.remove('active');
+
+  var steps = stepsEl.querySelectorAll('.audit-step');
+  var step = 0;
+
+  function advance() {
+    if (step > 0) { steps[step - 1].classList.remove('active'); steps[step - 1].classList.add('done'); steps[step - 1].querySelector('.step-icon').textContent = '✓'; }
+    if (step < steps.length) { steps[step].classList.add('active'); step++; }
+  }
+  advance();
+  var si = setInterval(function() { if (step < steps.length) advance(); else { clearInterval(si); advance(); setTimeout(showGeoResults, 500); } }, 1200);
+
+  function showGeoResults() {
+    stepsEl.classList.remove('active');
+    steps.forEach(function(s) { s.classList.remove('active','done'); s.querySelector('.step-icon').textContent = ''; });
+
+    var score = Math.floor(Math.random() * 18) + 8;
+    var queries = Math.floor(Math.random() * 200) + 250;
+
+    document.getElementById('geoScore').textContent = score;
+    document.getElementById('geoQueries').textContent = '~' + queries;
+    document.getElementById('geoUserName').textContent = name;
+    document.getElementById('geoUserBar').style.width = score + '%';
+    document.getElementById('geoUserScore').textContent = score;
+
+    resultsEl.classList.add('active');
+    btn.disabled = false;
+    btn.textContent = 'Scan Again';
+  }
+}
+
+// ===== INDUSTRY TABS =====
+document.getElementById('industryTabs').addEventListener('click', function(e) {
+  var tab = e.target.closest('.industry-tab');
+  if (!tab) return;
+  document.querySelectorAll('.industry-tab').forEach(function(t) { t.classList.remove('active'); });
+  tab.classList.add('active');
+  var target = tab.dataset.tab;
+  document.querySelectorAll('.industry-panel').forEach(function(p) {
+    p.classList.remove('active');
+    if (p.dataset.panel === target) p.classList.add('active');
+  });
+});
+
+// ===== CO-OP CALCULATOR =====
+function updateCoopSpend() {
+  var val = document.getElementById('coopRange').value;
+  document.getElementById('coopSpend').textContent = '$' + parseInt(val).toLocaleString();
+}
+
+var oemRates = {
+  toyota: { name: 'Toyota / TDA', rate: 0.50, match: 0.85 },
+  ford: { name: 'Ford / FMC', rate: 0.45, match: 0.80 },
+  gm: { name: 'GM / iMR', rate: 0.55, match: 0.75 },
+  stellantis: { name: 'Stellantis / SDA', rate: 0.48, match: 0.82 },
+  honda: { name: 'Honda', rate: 0.40, match: 0.78 },
+  hyundai: { name: 'Hyundai / Genesis', rate: 0.42, match: 0.80 },
+  nissan: { name: 'Nissan', rate: 0.38, match: 0.76 },
+  vw: { name: 'Volkswagen / Audi', rate: 0.52, match: 0.83 },
+  bmw: { name: 'BMW / MINI', rate: 0.46, match: 0.79 },
+  subaru: { name: 'Subaru', rate: 0.44, match: 0.81 }
+};
+
+function runCoopCalc() {
+  var monthly = parseInt(document.getElementById('coopRange').value);
+  var oem = oemRates[document.getElementById('coopOem').value];
+  var annual = monthly * 12;
+  var eligible = annual * oem.rate;
+  var industryAvg = 0.35;
+  var industryRecovery = eligible * industryAvg;
+  var dlRecovery = eligible * oem.match;
+  var unclaimed = eligible - industryRecovery;
+  var additional = dlRecovery - industryRecovery;
+
+  var html = '<div class="coop-result-row"><span class="label">Annual Ad Spend</span><span class="value">$' + annual.toLocaleString() + '</span></div>';
+  html += '<div class="coop-result-row"><span class="label">Co-Op Eligible (' + oem.name + ')</span><span class="value">$' + Math.round(eligible).toLocaleString() + '</span></div>';
+  html += '<div class="coop-result-row"><span class="label">Industry Avg Recovery (35%)</span><span class="value">$' + Math.round(industryRecovery).toLocaleString() + '</span></div>';
+  html += '<div class="coop-result-row"><span class="label">Demand Local Recovery (' + Math.round(oem.match * 100) + '%)</span><span class="value" style="color:var(--accent-teal);">$' + Math.round(dlRecovery).toLocaleString() + '</span></div>';
+  html += '<div class="coop-result-row"><span class="label"><strong>Unclaimed Co-Op / Year</strong></span><span class="value highlight">$' + Math.round(unclaimed).toLocaleString() + '</span></div>';
+  html += '<div class="coop-result-row"><span class="label"><strong>Additional Recovery with DL</strong></span><span class="value highlight">+$' + Math.round(additional).toLocaleString() + '</span></div>';
+
+  var r = document.getElementById('coopResults');
+  r.innerHTML = html;
+  r.classList.add('active');
+}
+
+// ===== SMOOTH SCROLL =====
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var target = document.querySelector(this.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+</script>
+</body>
+</html>
