@@ -1,4 +1,10 @@
-import { Section, SectionLabel, SectionTitle } from '../components/SharedUI'import { Link } from 'react-router-dom'import { motion } from 'framer-motion'import team from '../data/team'import { ArrowRight, Users, Building2, Target, Globe, Clock, Award, MapPin } from 'lucide-react'const containerVariants = {
+import { Section, SectionLabel, SectionTitle } from '../components/SharedUI'
+import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import team from '../data/team'
+import { ArrowRight, Users, Building2, Target, Globe, Clock, Award, MapPin } from 'lucide-react'
+
+const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -7,9 +13,71 @@ import { Section, SectionLabel, SectionTitle } from '../components/SharedUI'impo
       delayChildren: 0.2,
     },
   },
-}const itemVariants = {
-  hidden: { opacity: 0, y: 20 },(€Ù¥Í¥‰±”èì(€€€½Á…¥Ñäè€Ä°(€€€äè€À°(€€€ÑÉ…¹Í¥Ñ¥½¸èì‘ÕÉ…Ñ¥½¸è€À¸Ôô°(€ô°)õ½¹ÍĞÑ¥µ•±¥¹•Ù•¹ÑÌ€ôl(€ìå•…Èè€ÈÀÀà°Ñ¥Ñ±”è€½Õ¹‘•¥¸M…¸É…¹¥Í¼œ°‘•ÍÉ¥ÁÑ¥½¸è€¥ÉÍĞ‘•…±•È±¥•¹ÑÌ¸œô°(€ìå•…Èè€ÈÀÄÀ°Ñ¥Ñ±”è€¥ÉÍĞ•¼µ™•¹¥¹œÑ•¡¹½±½äœ°‘•ÍÉ¥ÁÑ¥½¸è€½È…ÕÑ¼‘•…±•ÉÌ¸œô°(€ìå•…Èè€ÈÀÄÈ°Ñ¥Ñ±”è€•¼µ™•¹¥¹œ€˜İ…±¬µ¥¸…ÑÑÉ¥‰ÕÑ¥½¸œ°‘•ÍÉ¥ÁÑ¥½¸è€1…Õ¹¡•¸œô°(€ìå•…Èè€ÈÀÄĞ°Ñ¥Ñ±”è€•¹äÁ…ÉÑ¹•Èµ½‘•°œ°‘•ÍÉ¥ÁÑ¥½¸è€%¹ÑÉ½‘Õ•¸œô°(€ìå•…Èè€ÈÀÄØ°Ñ¥Ñ±”è€M…±•Ñ¼€ÔÀÀ¬‘•…±•ÉÍ¡¥ÁÌœ°‘•ÍÉ¥ÁÑ¥½¸è€œœô°(€ìå•…Èè€ÈÀÄà°Ñ¥Ñ±”è€5Õ±Ñ¥Õ±ÑÕÉ…°µ…É­•Ñ¥¹œ‘¥Ù¥Í¥½¸œ°‘•ÍÉ¥ÁÑ¥½¸è€1…Õ¹¡•¸œô°(€ìå•…Èè€ÈÀÈÀ°Ñ¥Ñ±”è€áÁ…¹‘•‰•å½¹…ÕÑ¼œ°‘•ÍÉ¥ÁÑ¥½¸è€A°¥¹…¹”°!•…±Ñ¡…É”¸œô°(€ìå•…Èè€ÈÀÈÈ°Ñ¥Ñ±”è€½¹¹•Ñ•QX…¹¥¥Ñ…°== œ°‘•ÍÉ¥ÁÑ¥½¸è€‘‘•¸œô°(€ìå•…Èè€ÈÀÈĞ°Ñ¥Ñ±”è€1¥¹­=¹”…Ñ„Á±…Ñ™½É´œ°‘•ÍÉ¥ÁÑ¥½¸è€1…Õ¹¡•¸œô°(€ìå•…Èè€ÈÀÈÔ°Ñ¥Ñ±”è€$µ¥ÉÍĞ¥Í½Ù•Éä€¡<¤œ°‘•ÍÉ¥ÁÑ¥½¸è€½•Ì±¥Ù”¸œô°)u½¹ÍĞÍÑ…ÑÌ€ôl(€ì±…‰•°è€œÄÜ¬e…ÉÌœ°¥½¸è±½¬°Ù…±Õ”è€¥¸	ÕÍ¥¹•ÍÌœô°(€ì±…‰•°è€øÄ°ÀÀÀ•…±•ÉÍ¡¥ÁÌœ°¥½¸è	Õ¥±‘¥¹œÈ°Ù…±Õ”è€½¸A±…Ñ™½É´œô°(€ì±…‰•°è€œÈÕ4¬¹¹Õ…°Y½±Õµ”œ°¥½¸èQ…É•Ğ°Ù…±Õ”è€AÉ½•ÍÍ•œô°(€ì±…‰•°è€œÄÀÀ”¼µ=ÀI•½Ù•Éäœ°¥½¸èİ…É°Ù…±Õ”è€¡¥•Ù•œô°)u•áÁ½ÉĞ‘•™…Õ±Ğ™Õ¹Ñ¥½¸‰½ÕÑA…” ¤ì(€½¹ÍĞ•á•ÕÑ¥Ù•Ì€ôÑ•…´¹™¥±Ñ•È ¡µ•µ‰•È¤€ôøµ•µ‰•È¹Ñ¥•È€ôôô€•á•ÕÑ¥Ù”œ¤(€½¹ÍĞ½Ñ¡•ÉQ•…´€ôÑ•…´¹™¥±Ñ•È ¡µ•µ‰•È¤€ôøµ•µ‰•È¹Ñ¥•È€„ôô€•á•ÕÑ¥Ù”œ¤((€É•ÑÕÉ¸€ (€€€€ñ‘¥Ø±…ÍÍ9…µ”ô‰Üµ™Õ±°‰œµİ¡¥Ñ”ˆø(€€€€€ì¼¨!•É¼M•Ñ¥½¸€¨½ô(€€€€€€ñÍ•Ñ¥½¸±…ÍÍ9…µ”ô‰É•±…Ñ¥Ù”Üµ™Õ±°½Ù•É™±½Üµ¡¥‘‘•¸‰œµÉ…‘¥•¹ĞµÑ¼µ‰È™É½´µÍ±…Ñ”´äÀÀÑ¼µ‰±Õ”´äÀÀ¼ÈÀÁä´ÈĞÍ´éÁä´ÌÈˆø(€€€€€€€€ñ‘¥Ø±…ÍÍ9…µ”ô‰µàµ…ÕÑ¼µ…àµÜ´Ùá°Áà´ĞÍ´éÁà´Ø±œéÁà´àˆø(€€€€€€€€€€ñµ½Ñ¥½¸¹‘¥Ø(€€€€€€€€€€€¥¹¥Ñ¥…°õíì½Á…¥Ñäè€À°äè€´ÈÀõô(€€€€€€€€€€€…¹¥µ…Ñ”õíì½Á…¥Ñäè€Ä°äè€Àõô(€€€€€€€€€€€ÑÉ…¹Í¥Ñ¥½¸õíì‘ÕÉ…Ñ¥½¸è€À¸Øõô(€€€€€€€€€€€±…ÍÍ9…µ”ô‰Ñ•áĞµ•¹Ñ•Èˆ(€€€€€€€€€€ø(€€€€€€€€€€€€ñ Ä±…ÍÍ9…µ”ô‰Ñ•áĞ´Õá°Í´éÑ•áĞ´Ùá°™½¹Ğµ‰½±Ñ•áĞµİ¡¥Ñ”µˆ´Øˆø(€€€€€€€€€€€€€=ÕÈMÑ½Éä(€€€€€€€€€€€€ğ½ Äø(€€€€€€€€€€€€ñÀ±…ÍÍ9…µ”ô‰Ñ•áĞµá°Ñ•áĞµÍ±…Ñ”´ÌÀÀµ…àµÜ´Éá°µàµ…ÕÑ¼ˆø(€€€€€€€€€€€€€	Õ¥±‘¥¹œÑ¡”¥¹™É…ÍÑÉÕÑÕÉ”™½È…ÕÑ½µ½Ñ¥Ù”…‘Ù•ÉÑ¥Í¥¹œ(€€€€€€€€€€€€ğ½Àø(€€€€€€€€€€ğ½µ½Ñ¥½¸¹‘¥Øø(€€€€€€€€ğ½‘¥Øø(€€€€€€ğ½Í•Ñ¥½¸ø((€€€€€ì¼¨½Õ¹‘¥¹œMÑ½ÉäM•Ñ¥½¸€¨½ô(€€€€€€ñM•Ñ¥½¸ø(€€€€€€€€ñµ½Ñ¥½¸¹‘¥Ø(€€€€€€€€€Ù…É¥…¹ÑÌõí½¹Ñ…¥¹•ÉY…É¥…¹ÑÍô(€€€€€€€€€¥¹¥Ñ¥…°ô‰¡¥‘‘•¸ˆ(€€€€€€€€€İ¡¥±•%¹Y¥•Üô‰Ù¥Í¥‰±”ˆ(€€€€€€€€€Ù¥•İÁ½ÉĞõíì½¹”èÑÉÕ”°…µ½Õ¹Ğè€À¸Ìõô(€€€€€€€€€±…ÍÍ9…µ”ô‰µ…àµÜ´Íá°µàµ…ÕÑ¼ˆ
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 },
+  },
+}
+
+const timelineEvents = [
+  { year: 2008, title: 'Founded in San Francisco', description: 'First dealer clients.' },
+  { year: 2010, title: 'First geo-fencing technology', description: 'For auto dealers.' },
+  { year: 2012, title: 'Geo-fencing & walk-in attribution', description: 'Launched.' },
+  { year: 2014, title: 'Agency partner model', description: 'Introduced.' },
+  { year: 2016, title: 'Scaled to 500+ dealerships', description: '' },
+  { year: 2018, title: 'Multicultural marketing division', description: 'Launched.' },
+  { year: 2020, title: 'Expanded beyond auto', description: 'CPG, Finance, Healthcare.' },
+  { year: 2022, title: 'Connected TV and Digital OOH', description: 'Added.' },
+  { year: 2024, title: 'LinkOne Data platform', description: 'Launched.' },
+  { year: 2025, title: 'AI-First Discovery (GEO)', description: 'Goes live.' },
+]
+
+const stats = [
+  { label: '17+ Years', icon: Clock, value: 'in Business' },
+  { label: '~1,000 Dealerships', icon: Building2, value: 'on Platform' },
+  { label: '$25M+ Annual Volume', icon: Target, value: 'Processed' },
+  { label: '100% Co-Op Recovery', icon: Award, value: 'Achieved' },
+]
+
+export default function AboutPage() {
+  const executives = team.filter((member) => member.tier === 'executive')
+  const otherTeam = team.filter((member) => member.tier !== 'executive')
+
+  return (
+    <div className="w-full bg-white">
+      {/* Hero Section */}
+      <section className="relative w-full overflow-hidden bg-gradient-to-br from-slate-900 to-blue-900/20 py-24 sm:py-32">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
           >
+            <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6">
+              Our Story
+            </h1>
+            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+              Building the infrastructure for automotive advertising
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Founding Story Section */}
+      <Section>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="max-w-3xl mx-auto"
+        >
           <SectionLabel>Founded 2008</SectionLabel>
           <SectionTitle>The Beginning</SectionTitle>
           
@@ -30,7 +98,7 @@ import { Section, SectionLabel, SectionTitle } from '../components/SharedUI'impo
           <motion.p
             variants={itemVariants}
             className="text-lg text-slate-700 leading-relaxed"
-         >
+          >
             Today, nearly 1,000 dealerships across North America run on the platform.
           </motion.p>
         </motion.div>
@@ -65,21 +133,21 @@ import { Section, SectionLabel, SectionTitle } from '../components/SharedUI'impo
                     variants={itemVariants}
                     className="relative pl-24"
                   >
-                    <div className="absolute left-0 top-2 w-16 h-16 bg-gradient-to-br&from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                    <div className="absolute left-0 top-2 w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
                       {event.year}
                     </div>
                     <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
                       <h3 className="font-semibold text-slate-900 mb-1">
                         {event.title}
                       </h3>
-                        {event.description && (
-                          <p className="text-sm text-slate-600">{event.description}</p>
-                        )}
-                     </div>
+                      {event.description && (
+                        <p className="text-sm text-slate-600">{event.description}</p>
+                      )}
+                    </div>
                   </motion.div>
-                  ))}
+                ))}
               </motion.div>
-             </div>
+            </div>
 
             {/* Stats Grid */}
             <motion.div
@@ -109,12 +177,12 @@ import { Section, SectionLabel, SectionTitle } from '../components/SharedUI'impo
                       </div>
                     </motion.div>
                   )
-                  }}
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </Section>
+                })}
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </Section>
 
       {/* Team Section */}
       <Section>
@@ -128,7 +196,7 @@ import { Section, SectionLabel, SectionTitle } from '../components/SharedUI'impo
           <SectionTitle>Meet the Team</SectionTitle>
 
           {/* Executives */}
-          { executives.length > 0 && (
+          {executives.length > 0 && (
             <div className="mb-16">
               <h3 className="text-xl font-semibold text-slate-900 mb-8">
                 Leadership
@@ -140,7 +208,7 @@ import { Section, SectionLabel, SectionTitle } from '../components/SharedUI'impo
                 viewport={{ once: true, amount: 0.2 }}
                 className="grid md:grid-cols-3 gap-8"
               >
-                {executives.map((member) => 
+                {executives.map((member) => (
                   <motion.div
                     key={member.name}
                     variants={itemVariants}
@@ -156,8 +224,8 @@ import { Section, SectionLabel, SectionTitle } from '../components/SharedUI'impo
                     <h4 className="text-lg font-bold text-slate-900 mb-1">
                       {member.name}
                     </h4>
-                    <p className="text-sm text-slate-500">{bomber.title}</p>
-                    </motion.div>
+                    <p className="text-sm text-slate-500">{member.title}</p>
+                  </motion.div>
                 ))}
               </motion.div>
             </div>
@@ -190,7 +258,7 @@ import { Section, SectionLabel, SectionTitle } from '../components/SharedUI'impo
                       />
                     </div>
                     <h4 className="font-semibold text-slate-900 mb-0.5 text-sm">
-                       {member.name}
+                      {member.name}
                     </h4>
                     <p className="text-xs text-slate-500">{member.title}</p>
                   </motion.div>
@@ -202,7 +270,7 @@ import { Section, SectionLabel, SectionTitle } from '../components/SharedUI'impo
       </Section>
 
       {/* CTA Section */}
-      <Section className="bg-gradient-to-br from-blue-50 to-slate-50" >
+      <Section className="bg-gradient-to-br from-blue-50 to-slate-50">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -225,6 +293,6 @@ import { Section, SectionLabel, SectionTitle } from '../components/SharedUI'impo
           </Link>
         </motion.div>
       </Section>
-  </div>
+    </div>
   )
 }
