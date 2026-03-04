@@ -1151,7 +1151,7 @@ function runAudit() {
   }
   advanceStep();
 
-  var apiUrl = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=' + encodeURIComponent(urlInput) + '&category=performance&category=seo&category=accessibility&category=best-practices&strategy=mobile';
+  var apiUrl = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=' + encodeURIComponent(urlInput) + '&category=performance&category=seo&category=accessibility&category=best-practices&strategy=mobile&key=AIzaSyDFQo1K0tr5sJ1NAJlz_yODi-F9NbYgS8Y';
 
   var stepInterval = setInterval(function() { if (currentStep < steps.length) advanceStep(); }, 3000);
 
