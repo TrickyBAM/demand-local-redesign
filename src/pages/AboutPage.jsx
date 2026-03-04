@@ -24,6 +24,52 @@ const itemVariants = {
   },
 }
 
+// Professional gradient palette for avatar backgrounds
+const avatarGradients = [
+  'from-blue-500 to-blue-700',
+  'from-indigo-500 to-indigo-700',
+  'from-sky-500 to-sky-700',
+  'from-teal-500 to-teal-700',
+  'from-cyan-500 to-cyan-700',
+  'from-violet-500 to-violet-700',
+  'from-slate-500 to-slate-700',
+  'from-blue-600 to-indigo-600',
+  'from-emerald-500 to-emerald-700',
+  'from-purple-500 to-purple-700',
+]
+
+function getInitials(name) {
+  return name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()
+}
+
+function getGradient(name) {
+  let hash = 0
+  for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash)
+  return avatarGradients[Math.abs(hash) % avatarGradients.length]
+}
+
+function Avatar({ name, photo, size = 'md' }) {
+  const sizeClasses = size === 'lg' ? 'text-3xl' : 'text-lg'
+
+  if (photo) {
+    return (
+      <img
+        src={photo}
+        alt={name}
+        className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-300"
+      />
+    )
+  }
+
+  return (
+    <div className={`w-full aspect-square bg-gradient-to-br ${getGradient(name)} flex items-center justify-center group-hover:scale-105 transition-transform duration-300`}>
+      <span className={`${sizeClasses} font-bold text-white/90 tracking-wide`}>
+        {getInitials(name)}
+      </span>
+    </div>
+  )
+}
+
 const timelineEvents = [
   { year: 2008, title: 'Founded in San Francisco', description: 'First dealer clients.' },
   { year: 2010, title: 'First geo-fencing technology', description: 'For auto dealers.' },
@@ -215,11 +261,7 @@ export default function AboutPage() {
                     className="group"
                   >
                     <div className="relative mb-4 overflow-hidden rounded-lg border-2 border-slate-200 group-hover:border-blue-400 transition-colors">
-                      <img
-                        src={member.photo}
-                        alt={member.name}
-                        className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
+                      <Avatar name={member.name} photo={member.photo} size="lg" />
                     </div>
                     <h4 className="text-lg font-bold text-slate-900 mb-1">
                       {member.name}
@@ -251,11 +293,7 @@ export default function AboutPage() {
                     className="group"
                   >
                     <div className="relative mb-3 overflow-hidden rounded-lg border border-slate-200 group-hover:border-blue-400 transition-colors">
-                      <img
-                        src={member.photo}
-                        alt={member.name}
-                        className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
+                      <Avatar name={member.name} photo={member.photo} size="md" />
                     </div>
                     <h4 className="font-semibold text-slate-900 mb-0.5 text-sm">
                       {member.name}
