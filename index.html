@@ -1,1031 +1,969 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Demand Local | The Ad Infrastructure Behind America's Top Dealerships</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      fontFamily: { inter: ['Inter', 'sans-serif'] },
-      colors: {
-        dl: {
-          900: '#0a0a1a',
-          800: '#12122e',
-          700: '#1a1a3e',
-          600: '#252550',
-          500: '#6c3fc9',
-          400: '#8b5cf6',
-          300: '#a78bfa',
-          200: '#c4b5fd',
-          accent: '#f97316',
-          glow: '#7c3aed',
-        }
-      }
-    }
-  }
-}
-</script>
+<meta name="description" content="Demand Local powers nearly 1,000 dealerships with precision digital advertising, full co-op compliance, and the LinkOne data platform. 17+ years of automotive expertise.">
+<link rel="icon" href="https://www.demandlocal.com/wp-content/uploads/2024/11/DL-2024-initials-only.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-* { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-body { background: #0a0a1a; color: #fff; }
-.gradient-text { background: linear-gradient(135deg, #a78bfa 0%, #f97316 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.hero-glow { background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(124,58,237,0.15) 0%, transparent 70%); }
-.card-glow:hover { box-shadow: 0 0 40px rgba(124,58,237,0.15); }
-.stat-bar { background: linear-gradient(90deg, #7c3aed 0%, #f97316 100%); }
-.linkone-gradient { background: linear-gradient(135deg, #1a1a3e 0%, #252550 50%, #1a1a3e 100%); }
-.btn-primary { background: linear-gradient(135deg, #7c3aed, #6c3fc9); transition: all 0.3s; }
-.btn-primary:hover { background: linear-gradient(135deg, #8b5cf6, #7c3aed); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(124,58,237,0.4); }
-.btn-secondary { border: 2px solid rgba(167,139,250,0.4); transition: all 0.3s; }
-.btn-secondary:hover { border-color: #a78bfa; background: rgba(167,139,250,0.1); transform: translateY(-2px); }
-.btn-accent { background: linear-gradient(135deg, #f97316, #ea580c); transition: all 0.3s; }
-.btn-accent:hover { background: linear-gradient(135deg, #fb923c, #f97316); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(249,115,22,0.4); }
-.section-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(167,139,250,0.3), transparent); }
-.logo-strip { animation: scroll-logos 30s linear infinite; }
-@keyframes scroll-logos { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-.fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-.platform-card { background: linear-gradient(135deg, rgba(30,30,60,0.8), rgba(40,40,80,0.6)); border: 1px solid rgba(167,139,250,0.15); }
-.platform-card:hover { border-color: rgba(167,139,250,0.4); background: linear-gradient(135deg, rgba(35,35,70,0.9), rgba(45,45,90,0.7)); }
-.coop-badge { background: linear-gradient(135deg, #065f46, #047857); border: 2px solid #10b981; }
-.nav-blur { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
-.flow-line { background: linear-gradient(180deg, #7c3aed, #f97316); }
-.pulse-dot { animation: pulse-ring 2s ease-out infinite; }
-@keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(124,58,237,0.4); } 70% { box-shadow: 0 0 0 12px rgba(124,58,237,0); } 100% { box-shadow: 0 0 0 0 rgba(124,58,237,0); } }
-.counter { font-variant-numeric: tabular-nums; }
-.blink { animation: blink-cursor 1.2s infinite; }
-@keyframes blink-cursor { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
-.nav-dropdown { display: none; position: absolute; top: 100%; left: 0; min-width: 220px; background: rgba(18,18,46,0.98); border: 1px solid rgba(167,139,250,0.15); border-radius: 0.75rem; padding: 0.5rem 0; backdrop-filter: blur(20px); z-index: 60; }
-.nav-group:hover .nav-dropdown { display: block; }
-.nav-dropdown a { display: block; padding: 0.5rem 1rem; font-size: 0.8rem; color: #9ca3af; transition: all 0.2s; }
-.nav-dropdown a:hover { color: #fff; background: rgba(124,58,237,0.1); }
-.ai-card-glow { background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(249,115,22,0.1)); border: 2px solid rgba(124,58,237,0.4); }
-.ai-card-glow:hover { border-color: rgba(167,139,250,0.6); box-shadow: 0 0 50px rgba(124,58,237,0.2); }
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg-primary: #09090f;
+  --bg-secondary: #0d0d1a;
+  --bg-card: #111125;
+  --bg-card-hover: #16163a;
+  --text-primary: #f0f0f5;
+  --text-secondary: #9d9db8;
+  --text-muted: #6b6b85;
+  --accent-orange: #f97316;
+  --accent-orange-glow: rgba(249, 115, 22, 0.3);
+  --accent-purple: #8b5cf6;
+  --accent-purple-glow: rgba(139, 92, 246, 0.2);
+  --accent-teal: #10b981;
+  --accent-teal-glow: rgba(16, 185, 129, 0.2);
+  --accent-red: #ef4444;
+  --accent-yellow: #eab308;
+  --border-subtle: rgba(255,255,255,0.06);
+  --border-hover: rgba(255,255,255,0.12);
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --container: 1280px;
+  --container-wide: 1440px;
+}
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font-body); background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: var(--font-body); cursor: pointer; border: none; background: none; }
+input, select, textarea { font-family: var(--font-body); }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+.container-wide { max-width: var(--container-wide); margin: 0 auto; padding: 0 24px; }
+h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 700; line-height: 1.15; }
+
+/* ===== NAVIGATION ===== */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 16px 0; transition: background 0.3s, backdrop-filter 0.3s, padding 0.3s; }
+.nav.scrolled { background: rgba(9,9,15,0.92); backdrop-filter: blur(20px); padding: 10px 0; border-bottom: 1px solid var(--border-subtle); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: var(--container-wide); margin: 0 auto; padding: 0 24px; }
+.nav-logo img { height: 36px; width: auto; }
+.nav-links { display: flex; align-items: center; gap: 8px; }
+.nav-dropdown { position: relative; }
+.nav-dropdown > button { padding: 8px 14px; color: var(--text-secondary); font-size: 14px; font-weight: 500; border-radius: 8px; transition: color 0.2s, background 0.2s; display: flex; align-items: center; gap: 4px; }
+.nav-dropdown > button:hover { color: var(--text-primary); background: rgba(255,255,255,0.05); }
+.nav-dropdown > button svg { width: 12px; height: 12px; transition: transform 0.2s; }
+.nav-dropdown:hover > button svg { transform: rotate(180deg); }
+.dropdown-menu { position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(4px); opacity: 0; pointer-events: none; transition: opacity 0.25s, transform 0.25s; background: #151530; border: 1px solid var(--border-subtle); border-radius: 12px; padding: 8px; min-width: 240px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+.nav-dropdown:hover .dropdown-menu { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: all; }
+.dropdown-menu a { display: block; padding: 10px 14px; font-size: 14px; color: var(--text-secondary); border-radius: 8px; transition: background 0.15s, color 0.15s; white-space: nowrap; }
+.dropdown-menu a:hover { background: rgba(255,255,255,0.06); color: var(--text-primary); }
+.nav-login { padding: 8px 14px; color: var(--text-secondary); font-size: 14px; font-weight: 500; border-radius: 8px; transition: color 0.2s; }
+.nav-login:hover { color: var(--text-primary); }
+.nav-cta { padding: 10px 22px; background: var(--accent-orange); color: #fff; font-size: 14px; font-weight: 600; border-radius: 10px; transition: transform 0.2s, box-shadow 0.2s; }
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 30px var(--accent-orange-glow); }
+.hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; cursor: pointer; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+.mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(9,9,15,0.98); backdrop-filter: blur(20px); z-index: 999; padding: 80px 24px 40px; overflow-y: auto; }
+.mobile-menu.open { display: block; animation: fadeIn 0.3s ease; }
+.mobile-menu-section { margin-bottom: 28px; }
+.mobile-menu-section h4 { font-family: var(--font-display); font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+.mobile-menu-section a { display: block; padding: 10px 0; font-size: 16px; color: var(--text-secondary); border-bottom: 1px solid var(--border-subtle); }
+.mobile-menu-section a:last-child { border-bottom: none; }
+.mobile-menu-cta { display: block; width: 100%; padding: 16px; background: var(--accent-orange); color: #fff; font-size: 16px; font-weight: 600; border-radius: 12px; text-align: center; margin-top: 20px; }
+
+/* ===== HERO ===== */
+.hero { min-height: 100vh; display: flex; align-items: center; position: relative; padding: 120px 0 80px; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -20%; right: -10%; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-purple-glow) 0%, transparent 70%); pointer-events: none; }
+.hero::after { content: ''; position: absolute; bottom: -10%; left: -5%; width: 600px; height: 600px; background: radial-gradient(circle, var(--accent-orange-glow) 0%, transparent 70%); pointer-events: none; opacity: 0.5; }
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px 6px 10px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); border-radius: 100px; font-size: 13px; color: var(--accent-teal); font-weight: 500; margin-bottom: 24px; }
+.hero-badge::before { content: ''; width: 8px; height: 8px; background: var(--accent-teal); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.hero h1 { font-size: clamp(40px, 5vw, 64px); font-weight: 800; line-height: 1.08; margin-bottom: 20px; letter-spacing: -0.02em; }
+.hero h1 .gradient-text { background: linear-gradient(135deg, var(--accent-orange) 0%, #fb923c 50%, var(--accent-purple) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-size: 18px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 36px; max-width: 520px; }
+.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
+.btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: var(--accent-orange); color: #fff; font-size: 16px; font-weight: 600; border-radius: 12px; transition: transform 0.2s, box-shadow 0.2s; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px var(--accent-orange-glow); }
+.btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-hover); color: var(--text-primary); font-size: 16px; font-weight: 500; border-radius: 12px; transition: background 0.2s, border-color 0.2s; }
+.btn-secondary:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); }
+.hero-stats { display: flex; gap: 40px; }
+.hero-stat-value { font-family: var(--font-display); font-size: 28px; font-weight: 800; color: var(--text-primary); }
+.hero-stat-label { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+.hero-visual { position: relative; }
+.hero-image { width: 100%; border-radius: 16px; position: relative; z-index: 1; }
+.hero-image img { border-radius: 16px; width: 100%; }
+.hero-float { position: absolute; z-index: 2; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 14px 18px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); animation: float 6s ease-in-out infinite; }
+.hero-float-1 { top: -20px; right: -20px; animation-delay: 0s; }
+.hero-float-2 { bottom: 40px; left: -30px; animation-delay: 2s; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.hero-float-label { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
+.hero-float-value { font-family: var(--font-display); font-size: 20px; font-weight: 700; }
+.hero-float-value.green { color: var(--accent-teal); }
+.hero-float-value.orange { color: var(--accent-orange); }
+
+/* ===== MARQUEE ===== */
+.marquee-section { padding: 20px 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); overflow: hidden; background: var(--bg-secondary); }
+.marquee-track { display: flex; width: max-content; animation: marquee 30s linear infinite; }
+.marquee-track span { font-family: var(--font-display); font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); white-space: nowrap; padding: 0 20px; }
+.marquee-track .star { color: var(--accent-orange); }
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* ===== DIGITAL AUDIT SCANNER ===== */
+.audit-section { padding: 100px 0; position: relative; }
+.audit-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(249,115,22,0.06) 0%, transparent 60%); pointer-events: none; }
+.section-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.2); border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--accent-orange); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+.section-badge.purple { background: rgba(139,92,246,0.1); border-color: rgba(139,92,246,0.2); color: var(--accent-purple); }
+.section-badge.teal { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.2); color: var(--accent-teal); }
+.section-title { font-size: clamp(32px, 4vw, 48px); font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
+.section-sub { font-size: 18px; color: var(--text-secondary); max-width: 640px; line-height: 1.7; }
+.audit-header { text-align: center; margin-bottom: 48px; }
+.audit-header .section-sub { margin: 0 auto; }
+.audit-box { max-width: 720px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 32px; position: relative; overflow: hidden; }
+.audit-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent-orange), var(--accent-purple)); }
+.audit-input-row { display: flex; gap: 12px; margin-bottom: 24px; }
+.audit-input { flex: 1; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle); border-radius: 10px; color: var(--text-primary); font-size: 16px; transition: border-color 0.2s; }
+.audit-input:focus { outline: none; border-color: var(--accent-orange); }
+.audit-input::placeholder { color: var(--text-muted); }
+.audit-btn { padding: 14px 28px; background: linear-gradient(135deg, var(--accent-orange), #ea580c); color: #fff; font-size: 15px; font-weight: 600; border-radius: 10px; white-space: nowrap; transition: transform 0.2s, box-shadow 0.2s; }
+.audit-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 30px var(--accent-orange-glow); }
+.audit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
+.audit-steps { display: none; }
+.audit-steps.active { display: block; }
+.audit-step { display: flex; align-items: center; gap: 12px; padding: 10px 0; font-size: 14px; color: var(--text-muted); }
+.audit-step.active { color: var(--accent-orange); }
+.audit-step.done { color: var(--accent-teal); }
+.audit-step .step-icon { width: 20px; height: 20px; border-radius: 50%; border: 2px solid currentColor; display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; }
+.audit-step.active .step-icon { border-color: var(--accent-orange); animation: pulse 1s infinite; }
+.audit-step.done .step-icon { border-color: var(--accent-teal); background: var(--accent-teal); color: #fff; }
+.audit-results { display: none; margin-top: 32px; }
+.audit-results.active { display: block; animation: fadeUp 0.5s ease; }
+.audit-headline { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 24px; text-align: center; }
+.audit-scores { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+.score-card { text-align: center; padding: 20px 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 12px; }
+.score-gauge { width: 80px; height: 80px; margin: 0 auto 12px; position: relative; }
+.score-gauge svg { width: 80px; height: 80px; transform: rotate(-90deg); }
+.score-gauge circle { fill: none; stroke-width: 6; stroke-linecap: round; }
+.score-gauge .bg { stroke: rgba(255,255,255,0.06); }
+.score-gauge .fill { transition: stroke-dashoffset 1.5s ease; }
+.score-gauge .fill.red { stroke: var(--accent-red); }
+.score-gauge .fill.yellow { stroke: var(--accent-yellow); }
+.score-gauge .fill.green { stroke: var(--accent-teal); }
+.score-value { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 22px; font-weight: 800; }
+.score-value.red { color: var(--accent-red); }
+.score-value.yellow { color: var(--accent-yellow); }
+.score-value.green { color: var(--accent-teal); }
+.score-label { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+.audit-gated { position: relative; padding: 24px; border-radius: 12px; overflow: hidden; text-align: center; }
+.audit-gated-blur { filter: blur(6px); opacity: 0.5; pointer-events: none; padding: 16px 0; }
+.audit-gated-blur p { font-size: 14px; color: var(--text-secondary); margin-bottom: 8px; }
+.audit-gated-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(9,9,15,0.6); }
+.audit-gated-overlay h4 { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+.audit-disclaimer { text-align: center; margin-top: 20px; font-size: 12px; color: var(--text-muted); }
+
+/* ===== LOGO STRIP ===== */
+.logos-section { padding: 60px 0; border-top: 1px solid var(--border-subtle); }
+.logos-section h3 { text-align: center; font-size: 14px; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 32px; }
+.logos-track-wrap { overflow: hidden; mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent); }
+.logos-track { display: flex; align-items: center; gap: 48px; width: max-content; animation: logoScroll 40s linear infinite; }
+.logos-track img { height: 40px; width: auto; opacity: 0.6; filter: brightness(0) invert(1); transition: opacity 0.3s; }
+.logos-track img:hover { opacity: 1; }
+@keyframes logoScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* ===== LINKONE PLATFORM ===== */
+.platform-section { padding: 100px 0; position: relative; }
+.platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.platform-image { position: relative; }
+.platform-image img { width: 100%; border-radius: 16px; }
+.platform-features { display: grid; gap: 24px; margin-top: 32px; }
+.platform-feature { display: flex; gap: 16px; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); border-radius: 12px; transition: border-color 0.3s, background 0.3s; }
+.platform-feature:hover { border-color: var(--border-hover); background: rgba(255,255,255,0.04); }
+.platform-feature-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 20px; }
+.platform-feature-icon.orange { background: rgba(249,115,22,0.12); }
+.platform-feature-icon.purple { background: rgba(139,92,246,0.12); }
+.platform-feature-icon.teal { background: rgba(16,185,129,0.12); }
+.platform-feature h4 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+.platform-feature p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+
+/* ===== 3 STEPS ===== */
+.steps-section { padding: 100px 0; background: var(--bg-secondary); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+.steps-header { text-align: center; margin-bottom: 60px; }
+.steps-header .section-sub { margin: 0 auto; }
+.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; position: relative; }
+.steps-grid::before { content: ''; position: absolute; top: 40px; left: 16%; right: 16%; height: 2px; background: linear-gradient(90deg, var(--accent-orange), var(--accent-purple), var(--accent-teal)); opacity: 0.3; }
+.step-card { text-align: center; position: relative; }
+.step-number { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 28px; font-weight: 800; margin: 0 auto 24px; position: relative; z-index: 1; }
+.step-number.s1 { background: rgba(249,115,22,0.12); color: var(--accent-orange); border: 2px solid rgba(249,115,22,0.3); }
+.step-number.s2 { background: rgba(139,92,246,0.12); color: var(--accent-purple); border: 2px solid rgba(139,92,246,0.3); }
+.step-number.s3 { background: rgba(16,185,129,0.12); color: var(--accent-teal); border: 2px solid rgba(16,185,129,0.3); }
+.step-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+.step-card p { font-size: 15px; color: var(--text-secondary); line-height: 1.6; max-width: 320px; margin: 0 auto; }
+.step-image { margin-top: 24px; border-radius: 12px; overflow: hidden; }
+.step-image img { width: 100%; }
+
+/* ===== SERVICES GRID ===== */
+.services-section { padding: 100px 0; }
+.services-header { text-align: center; margin-bottom: 60px; }
+.services-header .section-sub { margin: 0 auto; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.service-card { padding: 28px; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
+.service-card:hover { transform: translateY(-4px); border-color: var(--border-hover); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+.service-card.featured { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; border-color: rgba(139,92,246,0.3); }
+.service-card.featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent-purple), var(--accent-orange)); }
+.service-badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; background: rgba(139,92,246,0.15); border-radius: 6px; font-size: 11px; font-weight: 600; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+.service-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 22px; }
+.service-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.service-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+.service-card .learn-more { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-size: 14px; font-weight: 600; color: var(--accent-orange); transition: gap 0.2s; }
+.service-card:hover .learn-more { gap: 10px; }
+.service-card-image { border-radius: 10px; overflow: hidden; }
+.service-card-image img { width: 100%; }
+
+/* ===== GEO SCANNER ===== */
+.geo-section { padding: 100px 0; background: var(--bg-secondary); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); position: relative; }
+.geo-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(139,92,246,0.06) 0%, transparent 60%); pointer-events: none; }
+.geo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.geo-content .section-sub { margin-bottom: 32px; }
+.geo-image img { width: 100%; border-radius: 16px; }
+.geo-scanner-box { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 28px; }
+.geo-scanner-box .audit-input-row { margin-bottom: 16px; }
+.geo-scanner-results { display: none; margin-top: 20px; }
+.geo-scanner-results.active { display: block; animation: fadeUp 0.5s ease; }
+.geo-scores-mini { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+.geo-score-mini { text-align: center; padding: 14px 8px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 10px; }
+.geo-score-mini .val { font-family: var(--font-display); font-size: 24px; font-weight: 800; }
+.geo-score-mini .val.red { color: var(--accent-red); }
+.geo-score-mini .val.yellow { color: var(--accent-yellow); }
+.geo-score-mini .val.green { color: var(--accent-teal); }
+.geo-score-mini .lbl { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.geo-competitors { margin-bottom: 20px; }
+.geo-competitors h4 { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+.geo-comp-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; font-size: 13px; }
+.geo-comp-bar .name { width: 140px; color: var(--text-secondary); flex-shrink: 0; }
+.geo-comp-bar .bar { flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
+.geo-comp-bar .bar-fill { height: 100%; border-radius: 4px; transition: width 1s ease; }
+.geo-comp-bar .score { width: 40px; text-align: right; font-weight: 600; font-size: 12px; }
+.geo-warning { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: 10px; padding: 16px; text-align: center; margin-bottom: 16px; }
+.geo-warning p { font-size: 14px; color: var(--text-secondary); }
+.geo-warning strong { color: var(--accent-red); }
+.geo-cta-btn { display: block; width: 100%; padding: 14px; background: var(--accent-purple); color: #fff; font-size: 15px; font-weight: 600; border-radius: 10px; text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
+.geo-cta-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 30px var(--accent-purple-glow); }
+.geo-steps { display: none; }
+.geo-steps.active { display: block; }
+
+/* ===== INDUSTRY TABS ===== */
+.industry-section { padding: 100px 0; }
+.industry-header { text-align: center; margin-bottom: 48px; }
+.industry-header .section-sub { margin: 0 auto; }
+.industry-tabs { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 48px; }
+.industry-tab { padding: 10px 20px; background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle); border-radius: 100px; font-size: 14px; font-weight: 500; color: var(--text-secondary); transition: all 0.3s; cursor: pointer; }
+.industry-tab:hover { border-color: var(--border-hover); color: var(--text-primary); }
+.industry-tab.active { background: var(--accent-orange); border-color: var(--accent-orange); color: #fff; }
+.industry-panel { display: none; animation: fadeUp 0.4s ease; }
+.industry-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.industry-panel-text h3 { font-size: 28px; font-weight: 700; margin-bottom: 16px; }
+.industry-panel-text p { font-size: 16px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 24px; }
+.industry-panel-image { border-radius: 16px; overflow: hidden; }
+.industry-panel-image img { width: 100%; }
+
+/* ===== CO-OP SECTION ===== */
+.coop-section { padding: 100px 0; background: var(--bg-secondary); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+.coop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.coop-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 32px; }
+.coop-stat { padding: 20px; background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.15); border-radius: 12px; }
+.coop-stat .val { font-family: var(--font-display); font-size: 28px; font-weight: 800; color: var(--accent-teal); }
+.coop-stat .lbl { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+.coop-calc { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 28px; }
+.coop-calc h3 { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.coop-calc .sub { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
+.coop-calc label { display: block; font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 8px; }
+.coop-range { width: 100%; -webkit-appearance: none; appearance: none; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1); outline: none; margin-bottom: 4px; }
+.coop-range::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--accent-teal); cursor: pointer; border: 2px solid #064e3b; }
+.coop-range::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--accent-teal); cursor: pointer; border: 2px solid #064e3b; }
+.coop-range-labels { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 20px; }
+.coop-spend-display { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--accent-teal); text-align: center; margin-bottom: 20px; }
+.coop-select { width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle); border-radius: 10px; color: var(--text-primary); font-size: 15px; margin-bottom: 20px; }
+.coop-select option { background: var(--bg-card); }
+.coop-calc-btn { width: 100%; padding: 14px; background: var(--accent-teal); color: #fff; font-size: 15px; font-weight: 600; border-radius: 10px; transition: transform 0.2s, box-shadow 0.2s; }
+.coop-calc-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 30px var(--accent-teal-glow); }
+.coop-results { display: none; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border-subtle); }
+.coop-results.active { display: block; animation: fadeUp 0.4s ease; }
+.coop-result-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border-subtle); }
+.coop-result-row:last-child { border-bottom: none; }
+.coop-result-row .label { font-size: 14px; color: var(--text-secondary); }
+.coop-result-row .value { font-family: var(--font-display); font-size: 16px; font-weight: 700; }
+.coop-result-row .value.highlight { color: var(--accent-teal); font-size: 20px; }
+.coop-disclaimer { font-size: 12px; color: var(--text-muted); margin-top: 16px; text-align: center; }
+
+/* ===== TESTIMONIALS ===== */
+.testimonials-section { padding: 100px 0; }
+.testimonials-header { text-align: center; margin-bottom: 60px; }
+.testimonials-header .section-sub { margin: 0 auto; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.testimonial-card { border-radius: 16px; overflow: hidden; border: 1px solid var(--border-subtle); transition: transform 0.3s; }
+.testimonial-card:hover { transform: translateY(-4px); }
+.testimonial-card img { width: 100%; }
+
+/* ===== ABOUT ===== */
+.about-section { padding: 100px 0; background: var(--bg-secondary); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.about-image img { width: 100%; border-radius: 16px; }
+.about-content .section-sub { margin-bottom: 32px; }
+.about-stats-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.about-stat { padding: 20px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 12px; }
+.about-stat .val { font-family: var(--font-display); font-size: 28px; font-weight: 800; color: var(--accent-orange); }
+.about-stat .lbl { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+.about-differentiators { margin-top: 32px; display: grid; gap: 16px; }
+.about-diff { display: flex; gap: 14px; padding: 16px; border-radius: 10px; background: rgba(255,255,255,0.02); }
+.about-diff-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px; background: rgba(249,115,22,0.12); }
+.about-diff h4 { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+.about-diff p { font-size: 13px; color: var(--text-secondary); }
+
+/* ===== TEAM ===== */
+.team-section { padding: 100px 0; }
+.team-header { text-align: center; margin-bottom: 60px; }
+.team-header .section-sub { margin: 0 auto; }
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 960px; margin: 0 auto; }
+.team-card { text-align: center; }
+.team-card img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 16px; margin-bottom: 16px; border: 2px solid var(--border-subtle); transition: border-color 0.3s; }
+.team-card:hover img { border-color: var(--accent-orange); }
+.team-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+.team-card p { font-size: 13px; color: var(--accent-orange); font-weight: 500; }
+.team-note { text-align: center; margin-top: 32px; font-size: 16px; color: var(--text-secondary); }
+.team-note strong { color: var(--text-primary); }
+
+/* ===== CONTACT / CTA ===== */
+.contact-section { padding: 100px 0; background: var(--bg-secondary); border-top: 1px solid var(--border-subtle); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.contact-content .section-sub { margin-bottom: 32px; }
+.contact-info { display: grid; gap: 20px; }
+.contact-info-item { display: flex; gap: 14px; align-items: flex-start; }
+.contact-info-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(249,115,22,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
+.contact-info-item h4 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+.contact-info-item p { font-size: 14px; color: var(--text-secondary); }
+.contact-form { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 32px; }
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; }
+.form-group input, .form-group textarea { width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle); border-radius: 10px; color: var(--text-primary); font-size: 15px; }
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent-orange); }
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-submit { width: 100%; padding: 14px; background: var(--accent-orange); color: #fff; font-size: 16px; font-weight: 600; border-radius: 10px; transition: transform 0.2s, box-shadow 0.2s; margin-top: 8px; }
+.form-submit:hover { transform: translateY(-1px); box-shadow: 0 8px 30px var(--accent-orange-glow); }
+
+/* ===== FOOTER ===== */
+.footer { padding: 60px 0 30px; border-top: 1px solid var(--border-subtle); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+.footer-brand img { height: 32px; margin-bottom: 16px; }
+.footer-brand p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; max-width: 280px; }
+.footer-socials { display: flex; gap: 12px; margin-top: 20px; }
+.footer-socials a { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; transition: background 0.2s; font-size: 14px; }
+.footer-socials a:hover { background: rgba(255,255,255,0.1); }
+.footer-col h4 { font-family: var(--font-display); font-size: 13px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; }
+.footer-col a { display: block; font-size: 14px; color: var(--text-secondary); padding: 4px 0; transition: color 0.2s; }
+.footer-col a:hover { color: var(--text-primary); }
+.footer-bottom { border-top: 1px solid var(--border-subtle); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-muted); }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .hero-grid, .platform-grid, .geo-grid, .coop-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-visual { order: -1; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .service-card.featured { grid-column: span 2; }
+  .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: repeat(3, 1fr); }
+  .industry-panel.active { grid-template-columns: 1fr; }
+  .audit-scores { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: 1fr; gap: 48px; }
+  .steps-grid::before { display: none; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero h1 { font-size: 32px; }
+  .hero-stats { flex-wrap: wrap; gap: 24px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .service-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .audit-input-row { flex-direction: column; }
+  .audit-scores { grid-template-columns: repeat(2, 1fr); }
+  .coop-stats { grid-template-columns: 1fr; }
+  .about-stats-row { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+}
+@media (max-width: 480px) {
+  .hero-buttons { flex-direction: column; }
+  .hero-buttons a, .hero-buttons button { width: 100%; justify-content: center; }
+  .industry-tabs { gap: 6px; }
+  .industry-tab { font-size: 12px; padding: 8px 14px; }
+  .team-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+}
 
 .hidden { display: none !important; }
-@keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
-.animate-fadeIn { animation: fadeIn 0.4s ease-out; }
-input[type="range"]::-webkit-slider-thumb { -webkit-appearance:none; height:20px; width:20px; border-radius:50%; background:#10b981; cursor:pointer; border:2px solid #064e3b; }
-input[type="range"]::-moz-range-thumb { height:20px; width:20px; border-radius:50%; background:#10b981; cursor:pointer; border:2px solid #064e3b; }
 </style>
 </head>
 <body>
 
-<!-- ========== NAVIGATION ========== -->
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 nav-blur bg-dl-900/80 border-b border-white/5 transition-all duration-300">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16 lg:h-20">
-      <!-- Logo -->
-      <a href="#" class="flex items-center">
-        <img src="https://www.demandlocal.com/wp-content/uploads/2024/11/White-Full-Demand-Local-big.png" alt="Demand Local" class="h-8 sm:h-10 w-auto"/>
-      </a>
-      <!-- Desktop Nav -->
-      <div class="hidden lg:flex items-center gap-6">
-        <div class="nav-group relative">
-          <button class="text-sm text-gray-300 hover:text-white transition flex items-center gap-1">Industries <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></button>
-          <div class="nav-dropdown">
-            <a href="#industries">Automotive Agencies</a>
-            <a href="#industries">Multicultural Marketing</a>
-            <a href="#industries">Dealers</a>
-            <a href="#industries">Finance</a>
-            <a href="#industries">CPG</a>
-            <a href="#industries">Healthcare</a>
-          </div>
-        </div>
-        <div class="nav-group relative">
-          <button class="text-sm text-gray-300 hover:text-white transition flex items-center gap-1">Platform <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></button>
-          <div class="nav-dropdown">
-            <a href="#platform">LinkOne Data</a>
-            <a href="#services">AI-First Discovery</a>
-            <a href="#services">Inventory Marketing</a>
-            <a href="#services">Facebook Dynamic Ads</a>
-            <a href="#services">Meta Sales Event</a>
-            <a href="#services">Google Ads</a>
-            <a href="#services">Dynamic Vehicle Acquisition</a>
-            <a href="#services">Connect TV & OTT</a>
-            <a href="#services">Digital Out of Home (DOOH)</a>
-          </div>
-        </div>
-        <div class="nav-group relative">
-          <button class="text-sm text-gray-300 hover:text-white transition flex items-center gap-1">Why Demand Local <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></button>
-          <div class="nav-dropdown">
-            <a href="#about">About Us</a>
-            <a href="#services">Our Services</a>
-            <a href="#resources">Case Studies</a>
-            <a href="#team">Meet the Team</a>
-            <a href="#contact">Contact Us</a>
-          </div>
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav" id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="https://www.demandlocal.com/wp-content/uploads/2024/11/White-Full-Demand-Local-big.png" alt="Demand Local">
+    </a>
+    <div class="nav-links">
+      <div class="nav-dropdown">
+        <button>Industries <svg viewBox="0 0 12 12" fill="none"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="dropdown-menu">
+          <a href="industries.html#automotive-agencies">Automotive Agencies</a>
+          <a href="industries.html#multicultural">Multicultural Marketing</a>
+          <a href="industries.html#dealers">Auto Groups &amp; Dealers</a>
+          <a href="industries.html#finance">Finance</a>
+          <a href="industries.html#cpg">CPG</a>
+          <a href="industries.html#healthcare">Healthcare</a>
         </div>
       </div>
-      <!-- CTA + Hamburger -->
-      <div class="flex items-center gap-3">
-        <a href="https://app.link1data.com/auth/login?next=/dashboard" target="_blank" class="hidden sm:inline-flex text-sm text-dl-300 hover:text-white transition font-medium">LinkOne Login</a>
-        <a href="#contact" class="btn-primary text-white text-sm font-semibold px-5 py-2.5 rounded-lg hidden sm:inline-flex">Request a Demo</a>
-        <button id="hamburger-btn" class="lg:hidden flex flex-col gap-1.5 p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-          <span class="w-6 h-0.5 bg-white"></span>
-          <span class="w-6 h-0.5 bg-white"></span>
-          <span class="w-6 h-0.5 bg-white"></span>
-        </button>
+      <div class="nav-dropdown">
+        <button>Platform <svg viewBox="0 0 12 12" fill="none"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="dropdown-menu">
+          <a href="platform-linkone.html">LinkOne Data</a>
+          <a href="platform-geo.html">AI-First Discovery</a>
+          <a href="platform-inventory.html">Inventory Marketing</a>
+          <a href="platform-facebook.html">Facebook Dynamic Ads</a>
+          <a href="platform-meta-sales.html">Meta Sales Event</a>
+          <a href="platform-google.html">Google Vehicle Ads</a>
+          <a href="platform-amazon.html">Dynamic Vehicle Acquisition</a>
+          <a href="platform-ctv.html">Connected TV &amp; OTT</a>
+          <a href="platform-dooh.html">Digital Out of Home</a>
+        </div>
       </div>
+      <div class="nav-dropdown">
+        <button>Why Demand Local <svg viewBox="0 0 12 12" fill="none"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="dropdown-menu">
+          <a href="about.html">About Us</a>
+          <a href="services.html">Our Services</a>
+          <a href="case-studies.html">Case Studies</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="team.html">Meet the Team</a>
+        </div>
+      </div>
+      <a href="https://app.link1data.com/auth/login?next=/dashboard" class="nav-login" target="_blank">Log in (LinkOne)</a>
+      <a href="#contact" class="nav-cta">Request a Demo</a>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+      <span></span><span></span><span></span>
     </div>
   </div>
 </nav>
+
 <!-- Mobile Menu -->
-<div id="mobile-menu" class="hidden fixed top-16 left-0 right-0 z-40 bg-dl-900/98 border-b border-white/10 nav-blur lg:hidden">
-  <div class="max-w-7xl mx-auto px-4 py-6 space-y-4">
-    <p class="text-xs text-gray-500 uppercase tracking-wider">Industries</p>
-    <a href="#industries" class="block text-sm text-gray-300 hover:text-white pl-3" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Automotive Agencies</a>
-    <a href="#industries" class="block text-sm text-gray-300 hover:text-white pl-3" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Multicultural Marketing</a>
-    <a href="#industries" class="block text-sm text-gray-300 hover:text-white pl-3" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Dealers</a>
-    <div class="border-t border-white/5 pt-4"><p class="text-xs text-gray-500 uppercase tracking-wider">Platform</p></div>
-    <a href="#platform" class="block text-sm text-gray-300 hover:text-white pl-3" onclick="document.getElementById('mobile-menu').classList.add('hidden')">LinkOne Data</a>
-    <a href="#services" class="block text-sm text-gray-300 hover:text-white pl-3" onclick="document.getElementById('mobile-menu').classList.add('hidden')">AI-First Discovery</a>
-    <a href="#services" class="block text-sm text-gray-300 hover:text-white pl-3" onclick="document.getElementById('mobile-menu').classList.add('hidden')">All Services</a>
-    <div class="border-t border-white/5 pt-4"><p class="text-xs text-gray-500 uppercase tracking-wider">Company</p></div>
-    <a href="#about" class="block text-sm text-gray-300 hover:text-white pl-3" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About Us</a>
-    <a href="#team" class="block text-sm text-gray-300 hover:text-white pl-3" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Meet the Team</a>
-    <a href="#contact" class="block text-sm text-gray-300 hover:text-white pl-3" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contact</a>
-    <div class="border-t border-white/5 pt-4 flex flex-col gap-3">
-      <a href="https://app.link1data.com/auth/login?next=/dashboard" target="_blank" class="text-sm text-dl-300 font-medium">LinkOne Login</a>
-      <a href="#contact" class="btn-primary text-white text-sm font-semibold px-5 py-2.5 rounded-lg text-center">Request a Demo</a>
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-section">
+    <h4>Industries</h4>
+    <a href="industries.html#automotive-agencies" onclick="toggleMobile()">Automotive Agencies</a>
+    <a href="industries.html#multicultural" onclick="toggleMobile()">Multicultural Marketing</a>
+    <a href="industries.html#dealers" onclick="toggleMobile()">Auto Groups &amp; Dealers</a>
+    <a href="industries.html#finance" onclick="toggleMobile()">Finance</a>
+    <a href="industries.html#cpg" onclick="toggleMobile()">CPG</a>
+    <a href="industries.html#healthcare" onclick="toggleMobile()">Healthcare</a>
+  </div>
+  <div class="mobile-menu-section">
+    <h4>Platform</h4>
+    <a href="platform-linkone.html" onclick="toggleMobile()">LinkOne Data</a>
+    <a href="platform-geo.html" onclick="toggleMobile()">AI-First Discovery</a>
+    <a href="platform-inventory.html" onclick="toggleMobile()">Inventory Marketing</a>
+    <a href="platform-facebook.html" onclick="toggleMobile()">Facebook Dynamic Ads</a>
+    <a href="platform-google.html" onclick="toggleMobile()">Google Vehicle Ads</a>
+    <a href="platform-ctv.html" onclick="toggleMobile()">Connected TV &amp; OTT</a>
+    <a href="platform-dooh.html" onclick="toggleMobile()">Digital Out of Home</a>
+  </div>
+  <div class="mobile-menu-section">
+    <h4>Company</h4>
+    <a href="about.html" onclick="toggleMobile()">About Us</a>
+    <a href="services.html" onclick="toggleMobile()">Our Services</a>
+    <a href="case-studies.html" onclick="toggleMobile()">Case Studies</a>
+    <a href="contact.html" onclick="toggleMobile()">Contact Us</a>
+    <a href="team.html" onclick="toggleMobile()">Meet the Team</a>
+  </div>
+  <a href="https://app.link1data.com/auth/login?next=/dashboard" class="mobile-menu-section" target="_blank" style="display:block;color:var(--accent-purple);font-weight:600;font-size:16px;padding:10px 0;">Log in to LinkOne →</a>
+  <a href="#contact" class="mobile-menu-cta" onclick="toggleMobile()">Request a Demo</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="container-wide">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="hero-badge">Powering nearly 1,000 dealerships since 2008</div>
+        <h1>The Ad Infrastructure <span class="gradient-text">Behind America's</span> Top Dealerships</h1>
+        <p class="hero-sub">LinkOne connects your DMS, CRM, and inventory data directly to every major ad platform — delivering precision-targeted campaigns with full co-op compliance. Built for dealers. Trusted by agencies.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn-primary">Request a Demo →</a>
+          <a href="platform-linkone.html" class="btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 5.5l4 2.5-4 2.5V5.5z" fill="currentColor"/></svg>
+            See LinkOne in Action
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="hero-stat-value">17+</div><div class="hero-stat-label">Years in Business</div></div>
+          <div><div class="hero-stat-value">~1,000</div><div class="hero-stat-label">Dealerships Served</div></div>
+          <div><div class="hero-stat-value">100%</div><div class="hero-stat-label">Co-Op Compliant</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-image">
+          <img src="https://www.demandlocal.com/wp-content/uploads/2025/01/7.png" alt="Demand Local Platform Overview">
+        </div>
+        <div class="hero-float hero-float-1">
+          <div class="hero-float-label">Co-Op Recovery</div>
+          <div class="hero-float-value green">100%</div>
+        </div>
+        <div class="hero-float hero-float-2">
+          <div class="hero-float-label">Campaign ROAS</div>
+          <div class="hero-float-value orange">4.8x</div>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== SCROLLING MARQUEE ===== -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span>POWER YOUR BRAND WITH</span><span class="star">★</span>
+    <span>PRECISION MARKETING</span><span class="star">★</span>
+    <span>OMNICHANNEL REACH</span><span class="star">★</span>
+    <span>FIRST-PARTY DATA</span><span class="star">★</span>
+    <span>AI-FIRST DISCOVERY</span><span class="star">★</span>
+    <span>FULL CO-OP COMPLIANCE</span><span class="star">★</span>
+    <span>POWER YOUR BRAND WITH</span><span class="star">★</span>
+    <span>PRECISION MARKETING</span><span class="star">★</span>
+    <span>OMNICHANNEL REACH</span><span class="star">★</span>
+    <span>FIRST-PARTY DATA</span><span class="star">★</span>
+    <span>AI-FIRST DISCOVERY</span><span class="star">★</span>
+    <span>FULL CO-OP COMPLIANCE</span><span class="star">★</span>
   </div>
 </div>
 
-<!-- ========== HERO SECTION ========== -->
-<section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-  <div class="hero-glow absolute inset-0"></div>
-  <!-- Floating shapes -->
-  <div class="absolute top-32 right-20 w-72 h-72 bg-dl-500/10 rounded-full blur-3xl"></div>
-  <div class="absolute bottom-20 left-10 w-96 h-96 bg-dl-accent/5 rounded-full blur-3xl"></div>
+<!-- ===== DIGITAL PRESENCE AUDIT SCANNER ===== -->
+<section class="audit-section" id="audit">
+  <div class="container">
+    <div class="audit-header">
+      <div class="section-badge">Free Website Audit</div>
+      <h2 class="section-title">Digital Presence Audit</h2>
+      <p class="section-sub">Enter any dealership website and get real performance scores instantly. See how your site stacks up on speed, SEO, accessibility, and best practices.</p>
+    </div>
+    <div class="audit-box">
+      <div class="audit-input-row">
+        <input type="text" class="audit-input" id="auditUrl" placeholder="Enter dealership website URL (e.g. sunsettoyota.com)">
+        <button class="audit-btn" id="auditBtn" onclick="runAudit()">Scan My Website</button>
+      </div>
+      <div class="audit-steps" id="auditSteps">
+        <div class="audit-step" data-step="1"><span class="step-icon"></span> Analyzing page speed...</div>
+        <div class="audit-step" data-step="2"><span class="step-icon"></span> Checking SEO signals...</div>
+        <div class="audit-step" data-step="3"><span class="step-icon"></span> Scanning mobile experience...</div>
+        <div class="audit-step" data-step="4"><span class="step-icon"></span> Evaluating accessibility...</div>
+        <div class="audit-step" data-step="5"><span class="step-icon"></span> Comparing to industry benchmarks...</div>
+      </div>
+      <div class="audit-results" id="auditResults">
+        <div class="audit-headline" id="auditHeadline"></div>
+        <div class="audit-scores" id="auditScores"></div>
+        <div class="audit-gated">
+          <div class="audit-gated-blur" id="auditGatedBlur"></div>
+          <div class="audit-gated-overlay">
+            <h4>Unlock Your Full Digital Presence Report</h4>
+            <a href="#contact" class="btn-primary" style="font-size:14px;padding:12px 24px;">Request a Demo →</a>
+          </div>
+        </div>
+      </div>
+      <div class="audit-disclaimer">Powered by Google Lighthouse. Full optimization recommendations available with a Demand Local partnership.</div>
+    </div>
+  </div>
+</section>
 
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-      <!-- Left: Copy -->
+<!-- ===== PARTNER LOGO STRIP ===== -->
+<section class="logos-section">
+  <h3>Trusted by Leading Agencies &amp; Dealer Groups</h3>
+  <div class="logos-track-wrap">
+    <div class="logos-track" id="logosTrack"></div>
+  </div>
+</section>
+
+<!-- ===== LINKONE PLATFORM ===== -->
+<section class="platform-section reveal" id="platform">
+  <div class="container-wide">
+    <div class="platform-grid">
+      <div class="platform-image">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2024/04/Hero-illustration-compressed-1.png" alt="LinkOne Platform">
+      </div>
       <div>
-        <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-6">
-          <span class="w-2 h-2 rounded-full bg-green-400 pulse-dot"></span>
-          <span class="text-sm text-gray-300">Powering nearly 1,000 dealerships since 2008</span>
-        </div>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight mb-6">
-          The Ad Infrastructure
-          <span class="gradient-text"> Behind America's</span>
-          Top Dealerships
-        </h1>
-        <p class="text-lg text-gray-400 leading-relaxed mb-8 max-w-xl">
-          LinkOne connects your DMS, CRM, and inventory data directly to every major ad platform — delivering precision-targeted campaigns with full co-op compliance. Built for dealers. Trusted by agencies.
-        </p>
-        <div class="flex flex-wrap gap-4 mb-10">
-          <a href="#contact" class="btn-primary text-white font-semibold px-7 py-3.5 rounded-lg text-base inline-flex items-center gap-2">
-            Request a Demo
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
-          <a href="#platform" class="btn-secondary text-dl-300 font-semibold px-7 py-3.5 rounded-lg text-base inline-flex items-center gap-2">
-            See LinkOne in Action
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </a>
-        </div>
-        <!-- Stats Row -->
-        <div class="grid grid-cols-3 gap-6">
-          <div>
-            <div class="text-3xl font-extrabold text-white counter">17+</div>
-            <div class="text-sm text-gray-500 mt-1">Years in Business</div>
+        <div class="section-badge purple">Core Platform</div>
+        <h2 class="section-title">The LinkOne Advantage</h2>
+        <p class="section-sub">One platform that connects your dealership data to every advertising channel — with full compliance baked in.</p>
+        <div class="platform-features">
+          <div class="platform-feature">
+            <div class="platform-feature-icon orange">📊</div>
+            <div><h4>Real-Time Data Flow</h4><p>DMS, CRM, and inventory data syncs automatically to power dynamic, inventory-specific campaigns across every channel.</p></div>
           </div>
-          <div>
-            <div class="text-3xl font-extrabold text-white counter">~1,000</div>
-            <div class="text-sm text-gray-500 mt-1">Dealerships Served</div>
+          <div class="platform-feature">
+            <div class="platform-feature-icon purple">🎯</div>
+            <div><h4>Omnichannel Precision</h4><p>Google, Meta, CTV, display, audio, Amazon — one dashboard to manage and optimize every campaign.</p></div>
           </div>
-          <div>
-            <div class="text-3xl font-extrabold text-white counter">100%</div>
-            <div class="text-sm text-gray-500 mt-1">Co-Op Compliant</div>
+          <div class="platform-feature">
+            <div class="platform-feature-icon teal">✅</div>
+            <div><h4>Built-In Co-Op Compliance</h4><p>Every campaign is structured for OEM co-op from day one. Pre-approved templates, automated documentation, 100% reimbursement rate.</p></div>
           </div>
         </div>
-      </div>
-      <!-- Right: Platform Visual -->
-      <div class="relative hidden lg:block">
-        <div class="relative bg-gradient-to-br from-dl-700/60 to-dl-800/40 rounded-2xl border border-white/10 p-6 shadow-2xl">
-          <!-- Mock Dashboard - Interactive -->
-          <div class="flex items-center gap-2 mb-4">
-            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
-            <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-            <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
-            <span class="ml-3 text-xs text-gray-500">LinkOne Dashboard</span>
-          </div>
-          <!-- Dashboard Tabs -->
-          <div class="flex gap-1 mb-4 bg-dl-900/40 rounded-lg p-1" id="dashTabs">
-            <button onclick="switchDashTab('overview')" class="dash-tab active text-xs px-3 py-1.5 rounded-md transition-all font-medium text-white bg-blue-600/80" data-tab="overview">Overview</button>
-            <button onclick="switchDashTab('campaigns')" class="dash-tab text-xs px-3 py-1.5 rounded-md transition-all font-medium text-gray-400 hover:text-white" data-tab="campaigns">Campaigns</button>
-            <button onclick="switchDashTab('walkin')" class="dash-tab text-xs px-3 py-1.5 rounded-md transition-all font-medium text-gray-400 hover:text-white" data-tab="walkin">Walk-In</button>
-            <button onclick="switchDashTab('coop')" class="dash-tab text-xs px-3 py-1.5 rounded-md transition-all font-medium text-gray-400 hover:text-white" data-tab="coop">Co-Op</button>
-          </div>
-          <!-- Tab: Overview -->
-          <div id="tab-overview" class="dash-panel">
-            <div class="grid grid-cols-3 gap-3 mb-4">
-              <div class="bg-dl-900/60 rounded-lg p-3">
-                <div class="text-xs text-gray-500 mb-1">Active Campaigns</div>
-                <div class="text-xl font-bold text-white counter" data-target="247">0</div>
-                <div class="text-xs text-green-400">↑ 12% this month</div>
-              </div>
-              <div class="bg-dl-900/60 rounded-lg p-3">
-                <div class="text-xs text-gray-500 mb-1">VINs Marketed</div>
-                <div class="text-xl font-bold text-white counter" data-target="18420">0</div>
-                <div class="text-xs text-green-400">↑ 8% this month</div>
-              </div>
-              <div class="bg-dl-900/60 rounded-lg p-3">
-                <div class="text-xs text-gray-500 mb-1">Monthly Clicks</div>
-                <div class="text-xl font-bold text-white counter" data-target="94200">0</div>
-                <div class="text-xs text-green-400">↑ 15% this month</div>
-              </div>
-            </div>
-            <div class="bg-dl-900/60 rounded-lg p-3 mb-3">
-              <div class="flex justify-between items-center mb-2">
-                <span class="text-xs text-gray-400">Performance Trend</span>
-                <span class="text-xs text-green-400 font-medium">+23% overall</span>
-              </div>
-              <div class="flex items-end gap-1 h-16">
-                <div class="dash-bar bg-blue-500/60 rounded-sm w-full" style="height:40%"></div>
-                <div class="dash-bar bg-blue-500/60 rounded-sm w-full" style="height:55%"></div>
-                <div class="dash-bar bg-blue-500/60 rounded-sm w-full" style="height:45%"></div>
-                <div class="dash-bar bg-blue-500/60 rounded-sm w-full" style="height:65%"></div>
-                <div class="dash-bar bg-blue-500/70 rounded-sm w-full" style="height:60%"></div>
-                <div class="dash-bar bg-blue-500/70 rounded-sm w-full" style="height:75%"></div>
-                <div class="dash-bar bg-blue-500/80 rounded-sm w-full" style="height:70%"></div>
-                <div class="dash-bar bg-blue-500/80 rounded-sm w-full" style="height:85%"></div>
-                <div class="dash-bar bg-blue-500/90 rounded-sm w-full" style="height:80%"></div>
-                <div class="dash-bar bg-blue-600 rounded-sm w-full" style="height:95%"></div>
-                <div class="dash-bar bg-blue-500 rounded-sm w-full" style="height:90%"></div>
-                <div class="dash-bar bg-blue-400 rounded-sm w-full" style="height:100%"></div>
-              </div>
-            </div>
-          </div>
-          <!-- Tab: Campaigns -->
-          <div id="tab-campaigns" class="dash-panel hidden">
-            <div class="grid grid-cols-2 gap-3 mb-4">
-              <div class="bg-dl-900/60 rounded-lg p-3">
-                <div class="text-xs text-gray-500 mb-1">Search Campaigns</div>
-                <div class="text-lg font-bold text-white">86</div>
-                <div class="text-xs text-blue-400">Google + Bing</div>
-              </div>
-              <div class="bg-dl-900/60 rounded-lg p-3">
-                <div class="text-xs text-gray-500 mb-1">Social Campaigns</div>
-                <div class="text-lg font-bold text-white">64</div>
-                <div class="text-xs text-purple-400">Meta + TikTok</div>
-              </div>
-              <div class="bg-dl-900/60 rounded-lg p-3">
-                <div class="text-xs text-gray-500 mb-1">Display / Video</div>
-                <div class="text-lg font-bold text-white">52</div>
-                <div class="text-xs text-amber-400">CTV + Programmatic</div>
-              </div>
-              <div class="bg-dl-900/60 rounded-lg p-3">
-                <div class="text-xs text-gray-500 mb-1">Avg. CTR</div>
-                <div class="text-lg font-bold text-emerald-400">4.8%</div>
-                <div class="text-xs text-green-400">↑ vs 1.9% industry avg</div>
-              </div>
-            </div>
-            <div class="bg-dl-900/60 rounded-lg p-3">
-              <div class="text-xs text-gray-400 mb-2">Channel Mix</div>
-              <div class="space-y-2">
-                <div><div class="flex justify-between text-xs mb-1"><span class="text-gray-300">Search</span><span class="text-blue-400">38%</span></div><div class="h-1.5 bg-dl-900 rounded-full"><div class="h-full bg-blue-500 rounded-full" style="width:38%"></div></div></div>
-                <div><div class="flex justify-between text-xs mb-1"><span class="text-gray-300">Social</span><span class="text-purple-400">28%</span></div><div class="h-1.5 bg-dl-900 rounded-full"><div class="h-full bg-purple-500 rounded-full" style="width:28%"></div></div></div>
-                <div><div class="flex justify-between text-xs mb-1"><span class="text-gray-300">CTV/Video</span><span class="text-amber-400">22%</span></div><div class="h-1.5 bg-dl-900 rounded-full"><div class="h-full bg-amber-500 rounded-full" style="width:22%"></div></div></div>
-                <div><div class="flex justify-between text-xs mb-1"><span class="text-gray-300">Display</span><span class="text-green-400">12%</span></div><div class="h-1.5 bg-dl-900 rounded-full"><div class="h-full bg-green-500 rounded-full" style="width:12%"></div></div></div>
-              </div>
-            </div>
-          </div>
-          <!-- Tab: Walk-In Attribution -->
-          <div id="tab-walkin" class="dash-panel hidden">
-            <div class="grid grid-cols-3 gap-3 mb-4">
-              <div class="bg-dl-900/60 rounded-lg p-3">
-                <div class="text-xs text-gray-500 mb-1">Showroom Visits</div>
-                <div class="text-xl font-bold text-white">1,847</div>
-                <div class="text-xs text-green-400">This month</div>
-              </div>
-              <div class="bg-dl-900/60 rounded-lg p-3">
-                <div class="text-xs text-gray-500 mb-1">Attribution Rate</div>
-                <div class="text-xl font-bold text-emerald-400">34%</div>
-                <div class="text-xs text-green-400">Ad-driven visits</div>
-              </div>
-              <div class="bg-dl-900/60 rounded-lg p-3">
-                <div class="text-xs text-gray-500 mb-1">Cost / Visit</div>
-                <div class="text-xl font-bold text-white">$8.42</div>
-                <div class="text-xs text-green-400">↓ vs $12 avg</div>
-              </div>
-            </div>
-            <div class="bg-dl-900/60 rounded-lg p-3">
-              <div class="text-xs text-gray-400 mb-3">Weekly Walk-In Trend</div>
-              <div class="flex items-end gap-2 h-20">
-                <div class="flex flex-col items-center gap-1 flex-1"><div class="bg-emerald-500/60 rounded-sm w-full" style="height:45px"></div><span class="text-[9px] text-gray-500">Mon</span></div>
-                <div class="flex flex-col items-center gap-1 flex-1"><div class="bg-emerald-500/60 rounded-sm w-full" style="height:52px"></div><span class="text-[9px] text-gray-500">Tue</span></div>
-                <div class="flex flex-col items-center gap-1 flex-1"><div class="bg-emerald-500/70 rounded-sm w-full" style="height:38px"></div><span class="text-[9px] text-gray-500">Wed</span></div>
-                <div class="flex flex-col items-center gap-1 flex-1"><div class="bg-emerald-500/70 rounded-sm w-full" style="height:62px"></div><span class="text-[9px] text-gray-500">Thu</span></div>
-                <div class="flex flex-col items-center gap-1 flex-1"><div class="bg-emerald-500/80 rounded-sm w-full" style="height:55px"></div><span class="text-[9px] text-gray-500">Fri</span></div>
-                <div class="flex flex-col items-center gap-1 flex-1"><div class="bg-emerald-400 rounded-sm w-full" style="height:72px"></div><span class="text-[9px] text-gray-500">Sat</span></div>
-                <div class="flex flex-col items-center gap-1 flex-1"><div class="bg-emerald-500/40 rounded-sm w-full" style="height:28px"></div><span class="text-[9px] text-gray-500">Sun</span></div>
-              </div>
-            </div>
-          </div>
-          <!-- Tab: Co-Op Tracker -->
-          <div id="tab-coop" class="dash-panel hidden">
-            <div class="grid grid-cols-2 gap-3 mb-4">
-              <div class="bg-dl-900/60 rounded-lg p-3">
-                <div class="text-xs text-gray-500 mb-1">Co-Op Claimed</div>
-                <div class="text-xl font-bold text-emerald-400">$42,800</div>
-                <div class="text-xs text-green-400">This quarter</div>
-              </div>
-              <div class="bg-dl-900/60 rounded-lg p-3">
-                <div class="text-xs text-gray-500 mb-1">Compliance Rate</div>
-                <div class="text-xl font-bold text-white">98.2%</div>
-                <div class="text-xs text-green-400">↑ from 91%</div>
-              </div>
-            </div>
-            <div class="bg-dl-900/60 rounded-lg p-3 mb-3">
-              <div class="text-xs text-gray-400 mb-2">OEM Program Status</div>
-              <div class="space-y-2">
-                <div class="flex items-center justify-between"><span class="text-xs text-gray-300">Toyota / TDA</span><span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full">Approved</span></div>
-                <div class="flex items-center justify-between"><span class="text-xs text-gray-300">Ford / FMC</span><span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full">Approved</span></div>
-                <div class="flex items-center justify-between"><span class="text-xs text-gray-300">GM / iMR</span><span class="text-xs bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded-full">Pending</span></div>
-                <div class="flex items-center justify-between"><span class="text-xs text-gray-300">Stellantis / SDA</span><span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full">Approved</span></div>
-              </div>
-            </div>
-            <div class="bg-dl-900/60 rounded-lg p-3">
-              <div class="flex justify-between"><span class="text-xs text-gray-400">Unclaimed Balance</span><span class="text-xs font-bold text-amber-400">$12,400 remaining</span></div>
-            </div>
-          </div><!-- Channel logos -->
-          <div class="flex items-center justify-between mt-4 px-2">
-            <div class="flex items-center gap-1.5"><div class="w-6 h-6 rounded bg-blue-600 flex items-center justify-center text-[10px] font-bold">G</div><span class="text-[10px] text-gray-500">Google</span></div>
-            <div class="flex items-center gap-1.5"><div class="w-6 h-6 rounded bg-blue-500 flex items-center justify-center text-[10px] font-bold">f</div><span class="text-[10px] text-gray-500">Meta</span></div>
-            <div class="flex items-center gap-1.5"><div class="w-6 h-6 rounded bg-black flex items-center justify-center text-[10px] font-bold">T</div><span class="text-[10px] text-gray-500">TikTok</span></div>
-            <div class="flex items-center gap-1.5"><div class="w-6 h-6 rounded bg-green-700 flex items-center justify-center text-[10px] font-bold">TD</div><span class="text-[10px] text-gray-500">Trade Desk</span></div>
-          </div>
-        </div>
-        <!-- Floating badge -->
-        <div class="absolute -bottom-4 -left-4 bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl px-4 py-2 shadow-xl border border-green-500/30">
-          <div class="flex items-center gap-2">
-            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-            <span class="text-white text-sm font-semibold">Co-Op Compliant</span>
-          </div>
-        </div>
+        <a href="platform-linkone.html" class="btn-secondary" style="margin-top:28px;">Explore LinkOne →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== PARTNER LOGO BAR ========== -->
-<section class="relative border-y border-white/5 bg-dl-900/50 py-8 overflow-hidden">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <p class="text-center text-sm text-gray-500 mb-6 uppercase tracking-widest">Integrated with the platforms that matter</p>
-    <div class="flex items-center justify-center flex-wrap gap-x-8 gap-y-4">
-      <div class="flex items-center gap-2 opacity-50 hover:opacity-100 transition"><div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 via-red-500 to-yellow-500 flex items-center justify-center text-white font-bold text-sm">G</div><span class="text-gray-400 font-semibold text-sm">Google</span></div>
-      <div class="flex items-center gap-2 opacity-50 hover:opacity-100 transition"><div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-sm">M</div><span class="text-gray-400 font-semibold text-sm">Meta</span></div>
-      <div class="flex items-center gap-2 opacity-50 hover:opacity-100 transition"><div class="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center text-orange-400 font-bold text-xs">amz</div><span class="text-gray-400 font-semibold text-sm">Amazon</span></div>
-      <div class="flex items-center gap-2 opacity-50 hover:opacity-100 transition"><div class="w-8 h-8 rounded-full bg-black border border-white/20 flex items-center justify-center text-white font-bold text-xs">♪</div><span class="text-gray-400 font-semibold text-sm">TikTok</span></div>
-      <div class="flex items-center gap-2 opacity-50 hover:opacity-100 transition"><div class="w-8 h-8 rounded-full bg-green-700 flex items-center justify-center text-white font-bold text-[9px]">TTD</div><span class="text-gray-400 font-semibold text-sm">Trade Desk</span></div>
-      <div class="flex items-center gap-2 opacity-50 hover:opacity-100 transition"><div class="w-8 h-8 rounded-lg bg-green-500 flex items-center justify-center text-white font-bold text-[10px]">hulu</div><span class="text-gray-400 font-semibold text-sm">Hulu</span></div>
-      <div class="flex items-center gap-2 opacity-50 hover:opacity-100 transition"><div class="w-8 h-8 rounded-sm bg-transparent flex items-center justify-center"><div class="grid grid-cols-2 gap-0.5"><div class="w-3 h-3 bg-red-500"></div><div class="w-3 h-3 bg-green-500"></div><div class="w-3 h-3 bg-blue-500"></div><div class="w-3 h-3 bg-yellow-500"></div></div></div><span class="text-gray-400 font-semibold text-sm">Microsoft</span></div>
-      <div class="flex items-center gap-2 opacity-50 hover:opacity-100 transition"><div class="w-8 h-8 rounded-full bg-green-600 flex items-center justify-center text-white font-bold text-lg">≋</div><span class="text-gray-400 font-semibold text-sm">Spotify</span></div>
+<!-- ===== 3 SIMPLE STEPS ===== -->
+<section class="steps-section reveal">
+  <div class="container">
+    <div class="steps-header">
+      <div class="section-badge">How It Works</div>
+      <h2 class="section-title">3 Simple Steps</h2>
+      <p class="section-sub">From data connection to measurable results — here's how Demand Local transforms your advertising.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number s1">1</div>
+        <h3>Connect Your Data</h3>
+        <p>LinkOne integrates directly with your DMS, CRM, and inventory systems. CDK, VinSolutions, Eleads, DealerVault — we connect to them all.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number s2">2</div>
+        <h3>Launch Smarter Campaigns</h3>
+        <p>Your real inventory and customer data powers dynamic, precision-targeted campaigns across Google, Meta, CTV, and every major platform.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number s3">3</div>
+        <h3>Measure &amp; Optimize</h3>
+        <p>Real-time reporting through LinkOne. Walk-in attribution, co-op tracking, cross-channel performance — all in one transparent dashboard.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ========== LINKONE PLATFORM ========== -->
-<section id="platform" class="py-24 relative">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <div class="inline-flex items-center gap-2 bg-dl-500/10 border border-dl-500/20 rounded-full px-4 py-1.5 mb-4">
-        <span class="text-sm text-dl-300 font-medium">Proprietary Technology</span>
-      </div>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">
-        Meet <span class="gradient-text">LinkOne</span>
-      </h2>
-      <p class="text-lg text-gray-400 max-w-2xl mx-auto">
-        The intelligence layer that connects your dealership data to every advertising channel — automatically, accurately, and with full co-op compliance.
-      </p>
+<!-- ===== SERVICES GRID ===== -->
+<section class="services-section reveal" id="services">
+  <div class="container-wide">
+    <div class="services-header">
+      <div class="section-badge">Full-Service Capabilities</div>
+      <h2 class="section-title">Every Channel. One Platform.</h2>
+      <p class="section-sub">A complete suite of digital advertising solutions designed for the automotive industry.</p>
     </div>
-
-    <!-- Data Flow Diagram -->
-    <div class="grid lg:grid-cols-[1fr,auto,1fr,auto,1fr] gap-6 items-start mb-16">
-      <!-- Input: Dealer Data -->
-      <div class="space-y-4">
-        <h3 class="text-lg font-bold text-white text-center mb-4">Your Data</h3>
-        <div class="platform-card rounded-xl p-4 transition-all duration-300">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center">
-              <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7C5 4 4 5 4 7z"/><path d="M9 12h6M12 9v6"/></svg>
-            </div>
-            <span class="text-sm font-semibold text-white">DMS / CRM</span>
-          </div>
-          <p class="text-xs text-gray-500">CDK, VinSolutions, Eleads, DealerVault</p>
-        </div>
-        <div class="platform-card rounded-xl p-4 transition-all duration-300">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center">
-              <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-            </div>
-            <span class="text-sm font-semibold text-white">Inventory Feed</span>
-          </div>
-          <p class="text-xs text-gray-500">Live VIN data, pricing, photos, specs</p>
-        </div>
-        <div class="platform-card rounded-xl p-4 transition-all duration-300">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
-              <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-            </div>
-            <span class="text-sm font-semibold text-white">1st Party Audiences</span>
-          </div>
-          <p class="text-xs text-gray-500">Service, sales, and equity data</p>
-        </div>
-      </div>
-
-      <!-- Arrow -->
-      <div class="hidden lg:flex items-center justify-center self-center">
-        <svg class="w-8 h-8 text-dl-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-      </div>
-
-      <!-- Center: LinkOne -->
-      <div class="relative self-center">
-        <div class="bg-gradient-to-br from-dl-500/20 to-dl-accent/10 border-2 border-dl-500/30 rounded-2xl p-8 text-center relative overflow-hidden">
-          <div class="absolute inset-0 bg-gradient-to-br from-dl-500/5 to-transparent"></div>
-          <div class="relative">
-            <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-dl-500 to-dl-accent flex items-center justify-center">
-              <span class="text-white font-black text-xl">L1</span>
-            </div>
-            <h3 class="text-xl font-bold text-white mb-2">LinkOne</h3>
-            <p class="text-sm text-gray-400 mb-4">Intelligence Engine</p>
-            <div class="space-y-2 text-left">
-              <div class="flex items-center gap-2 text-xs text-gray-300">
-                <svg class="w-3.5 h-3.5 text-dl-accent flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                Automated audience matching
-              </div>
-              <div class="flex items-center gap-2 text-xs text-gray-300">
-                <svg class="w-3.5 h-3.5 text-dl-accent flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                Dynamic creative assembly
-              </div>
-              <div class="flex items-center gap-2 text-xs text-gray-300">
-                <svg class="w-3.5 h-3.5 text-dl-accent flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                Real-time bid optimization
-              </div>
-              <div class="flex items-center gap-2 text-xs text-gray-300">
-                <svg class="w-3.5 h-3.5 text-dl-accent flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                Co-op compliance tracking
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Arrow -->
-      <div class="hidden lg:flex items-center justify-center self-center">
-        <svg class="w-8 h-8 text-dl-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-      </div>
-
-      <!-- Output: Ad Channels -->
-      <div class="space-y-4">
-        <h3 class="text-lg font-bold text-white text-center mb-4">Ad Channels</h3>
-        <div class="platform-card rounded-xl p-4 transition-all duration-300">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-8 h-8 rounded-lg bg-red-500/20 flex items-center justify-center text-xs font-bold text-red-400">SEM</div>
-            <span class="text-sm font-semibold text-white">Search & Display</span>
-          </div>
-          <p class="text-xs text-gray-500">Google, Bing, programmatic display</p>
-        </div>
-        <div class="platform-card rounded-xl p-4 transition-all duration-300">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-8 h-8 rounded-lg bg-pink-500/20 flex items-center justify-center text-xs font-bold text-pink-400">SOC</div>
-            <span class="text-sm font-semibold text-white">Social Advertising</span>
-          </div>
-          <p class="text-xs text-gray-500">Meta, TikTok, Instagram, Snapchat</p>
-        </div>
-        <div class="platform-card rounded-xl p-4 transition-all duration-300">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-8 h-8 rounded-lg bg-orange-500/20 flex items-center justify-center text-xs font-bold text-orange-400">CTV</div>
-            <span class="text-sm font-semibold text-white">Connected TV & Video</span>
-          </div>
-          <p class="text-xs text-gray-500">Hulu, Roku, YouTube, OTT, audio</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="text-center">
-      <a href="#contact" class="btn-primary text-white font-semibold px-7 py-3.5 rounded-lg text-base inline-flex items-center gap-2">
-        See LinkOne in Action
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ========== SERVICES ========== -->
-<section id="services" class="py-24">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <div class="inline-flex items-center gap-2 bg-dl-accent/10 border border-dl-accent/20 rounded-full px-4 py-1.5 mb-4">
-        <span class="text-sm text-dl-accent font-medium">Full-Service Capabilities</span>
-      </div>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">
-        Every Channel. <span class="gradient-text">One Platform.</span>
-      </h2>
-      <p class="text-lg text-gray-400 max-w-2xl mx-auto">
-        From search to streaming, we manage your entire digital advertising ecosystem through LinkOne.
-      </p>
-    </div>
-
-    <!-- AI-First Discovery — Featured -->
-    <div class="ai-card-glow rounded-2xl p-8 mb-8 relative overflow-hidden transition-all duration-300 card-glow">
-      <div class="absolute top-4 right-4 bg-gradient-to-r from-dl-accent to-orange-400 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">New</div>
-      <div class="grid md:grid-cols-[auto,1fr] gap-6 items-center">
-        <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-dl-500 to-dl-accent flex items-center justify-center">
-          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"/></svg>
-        </div>
+    <div class="services-grid">
+      <!-- Featured: AI-First Discovery -->
+      <div class="service-card featured">
         <div>
-          <h3 class="text-xl font-bold text-white mb-2">AI-First Discovery <span class="text-dl-300">(GEO)</span></h3>
-          <p class="text-sm text-gray-400 mb-3">Get found, trusted, and recommended by AI engines like ChatGPT, Gemini, and Perplexity. Our proprietary Generative Engine Optimization system trains AI to recognize your brand as the right answer — not just a search result.</p>
-          <div class="flex flex-wrap gap-3 text-xs">
-            <span class="bg-dl-500/10 text-dl-300 px-3 py-1 rounded-full">GEO Scan</span>
-            <span class="bg-dl-500/10 text-dl-300 px-3 py-1 rounded-full">Entity Authority Framework</span>
-            <span class="bg-dl-500/10 text-dl-300 px-3 py-1 rounded-full">Content Intelligence Layer</span>
-            <span class="bg-dl-500/10 text-dl-300 px-3 py-1 rounded-full">Discovery Dashboard</span>
-          </div>
+          <div class="service-badge">New</div>
+          <h3>AI-First Discovery (GEO)</h3>
+          <p>Our proprietary Generative Engine Optimization system trains AI to recognize your brand as the right answer — not just a search result. Be the recommendation when shoppers ask ChatGPT, Google AI Overviews, and Perplexity where to buy.</p>
+          <a href="platform-geo.html" class="learn-more">Learn More →</a>
+        </div>
+        <div class="service-card-image">
+          <img src="https://www.demandlocal.com/wp-content/uploads/2025/10/Generated-Image-October-29-2025-7_06PM-1-e1761861040361.png" alt="AI-First Discovery">
         </div>
       </div>
-    </div>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <!-- Google Vehicle Ads -->
-      <div class="platform-card rounded-2xl p-6 transition-all duration-300 card-glow group">
-        <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition">
-          <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2">Google Vehicle Ads & SEM</h3>
-        <p class="text-sm text-gray-400">Dominate Google with Vehicle Listing Ads and inventory-fed search campaigns that match real shoppers to real vehicles on your lot.</p>
+      <div class="service-card">
+        <div class="service-icon" style="background:rgba(66,133,244,0.12);">🔍</div>
+        <h3>Google Vehicle Ads &amp; SEM</h3>
+        <p>Dominate Google with Vehicle Listing Ads and inventory-fed search campaigns that match real shoppers to real vehicles on your lot.</p>
+        <a href="platform-google.html" class="learn-more">Learn More →</a>
       </div>
-      <!-- Social -->
-      <div class="platform-card rounded-2xl p-6 transition-all duration-300 card-glow group">
-        <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition">
-          <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/></svg>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2">Facebook Dynamic Ads</h3>
-        <p class="text-sm text-gray-400">Dynamic inventory ads on Facebook, Instagram, and TikTok that showcase your vehicles to in-market buyers with Meta's powerful targeting.</p>
+      <!-- Facebook Dynamic Ads -->
+      <div class="service-card">
+        <div class="service-icon" style="background:rgba(59,89,152,0.12);">📱</div>
+        <h3>Facebook Dynamic Ads</h3>
+        <p>Dynamic inventory ads on Facebook, Instagram, and TikTok that showcase your vehicles to in-market buyers with Meta's powerful targeting.</p>
+        <a href="platform-facebook.html" class="learn-more">Learn More →</a>
       </div>
-      <!-- CTV -->
-      <div class="platform-card rounded-2xl p-6 transition-all duration-300 card-glow group">
-        <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition">
-          <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2">Connected TV & OTT</h3>
-        <p class="text-sm text-gray-400">Reach cord-cutters on Hulu, Roku, and premium streaming with geo-targeted, household-level video ads.</p>
+      <!-- CTV & OTT -->
+      <div class="service-card">
+        <div class="service-icon" style="background:rgba(239,68,68,0.12);">📺</div>
+        <h3>Connected TV &amp; OTT</h3>
+        <p>Reach cord-cutters on Hulu, Roku, and premium streaming with geo-targeted, household-level video ads.</p>
+        <a href="platform-ctv.html" class="learn-more">Learn More →</a>
       </div>
-      <!-- Display -->
-      <div class="platform-card rounded-2xl p-6 transition-all duration-300 card-glow group">
-        <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition">
-          <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2">Display & Retargeting</h3>
-        <p class="text-sm text-gray-400">Programmatic display and retargeting that brings shoppers back with the exact vehicles they viewed.</p>
+      <!-- Display & Retargeting -->
+      <div class="service-card">
+        <div class="service-icon" style="background:rgba(139,92,246,0.12);">🖥️</div>
+        <h3>Display &amp; Retargeting</h3>
+        <p>Programmatic display and retargeting that brings shoppers back with the exact vehicles they viewed.</p>
+        <a href="services.html" class="learn-more">Learn More →</a>
       </div>
-      <!-- Inventory -->
-      <div class="platform-card rounded-2xl p-6 transition-all duration-300 card-glow group">
-        <div class="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition">
-          <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2">Inventory Marketing</h3>
-        <p class="text-sm text-gray-400">Automated VIN-level campaigns that market every vehicle with dynamic creative pulled from your live feed.</p>
-      </div>
-      <!-- Audio -->
-      <div class="platform-card rounded-2xl p-6 transition-all duration-300 card-glow group">
-        <div class="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition">
-          <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2">Audio Advertising</h3>
-        <p class="text-sm text-gray-400">Spotify, Pandora, and podcast advertising that reaches buyers during their commute and daily routines.</p>
+      <!-- Inventory Marketing -->
+      <div class="service-card">
+        <div class="service-icon" style="background:rgba(249,115,22,0.12);">🚗</div>
+        <h3>Inventory Marketing</h3>
+        <p>Automated VIN-level campaigns that market every vehicle with dynamic creative pulled from your live feed.</p>
+        <a href="platform-inventory.html" class="learn-more">Learn More →</a>
       </div>
       <!-- Geo-Fencing -->
-      <div class="platform-card rounded-2xl p-6 transition-all duration-300 card-glow group">
-        <div class="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition">
-          <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2">Geo-Fencing</h3>
-        <p class="text-sm text-gray-400">Target shoppers at competitor lots, auto shows, and service centers with precision location-based advertising that drives foot traffic to your dealership.</p>
+      <div class="service-card">
+        <div class="service-icon" style="background:rgba(16,185,129,0.12);">📍</div>
+        <h3>Geo-Fencing</h3>
+        <p>Target shoppers at competitor lots and service centers with precision location-based advertising.</p>
+        <a href="services.html" class="learn-more">Learn More →</a>
       </div>
       <!-- DOOH -->
-      <div class="platform-card rounded-2xl p-6 transition-all duration-300 card-glow group">
-        <div class="w-12 h-12 rounded-xl bg-yellow-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition">
-          <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2">Digital Out-of-Home</h3>
-        <p class="text-sm text-gray-400">Data-powered billboard and digital signage advertising. Reach shoppers with high-impact ads at the right place and time, with full performance tracking.</p>
+      <div class="service-card">
+        <div class="service-icon" style="background:rgba(234,179,8,0.12);">📋</div>
+        <h3>Digital Out of Home</h3>
+        <p>Reach shoppers with high-impact ads at the right place and time, with full performance tracking.</p>
+        <a href="platform-dooh.html" class="learn-more">Learn More →</a>
       </div>
       <!-- Amazon Vehicle Ads -->
-      <div class="platform-card rounded-2xl p-6 transition-all duration-300 card-glow group">
-        <div class="w-12 h-12 rounded-xl bg-orange-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition">
-          <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2">Amazon Vehicle Ads</h3>
-        <p class="text-sm text-gray-400">Leverage Amazon's vehicle ownership database to target ready-to-buy shoppers with dynamic vehicle acquisition campaigns that fill your lot.</p>
+      <div class="service-card">
+        <div class="service-icon" style="background:rgba(255,153,0,0.12);">🛒</div>
+        <h3>Amazon Vehicle Ads</h3>
+        <p>Leverage Amazon's vehicle ownership database to target ready-to-buy shoppers with dynamic vehicle acquisition campaigns.</p>
+        <a href="platform-amazon.html" class="learn-more">Learn More →</a>
       </div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
-
-
-<!-- ========== GEO SCANNER ========== -->
-<section id="geo-scanner" class="py-24 relative overflow-hidden">
-  <div class="absolute inset-0 bg-gradient-to-br from-purple-900/15 via-transparent to-blue-900/10"></div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-12">
-      <div class="inline-flex items-center gap-2 bg-purple-500/10 border border-purple-500/20 rounded-full px-4 py-1.5 mb-4">
-        <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-        <span class="text-sm text-purple-400 font-medium">AI Visibility Check</span>
+<!-- ===== GEO SCANNER ===== -->
+<section class="geo-section reveal" id="geo">
+  <div class="container-wide">
+    <div class="geo-grid">
+      <div class="geo-content">
+        <div class="section-badge purple">AI Visibility Check</div>
+        <h2 class="section-title">GEO Scanner</h2>
+        <p class="section-sub">When shoppers ask AI where to buy a car, does your dealership show up? Find out in seconds.</p>
+        <div class="geo-scanner-box">
+          <div class="audit-input-row">
+            <input type="text" class="audit-input" id="geoInput" placeholder="Enter your dealership name...">
+            <button class="audit-btn" id="geoBtn" onclick="runGeoScan()" style="background:linear-gradient(135deg,var(--accent-purple),#7c3aed);">Scan Now</button>
+          </div>
+          <div class="geo-steps" id="geoSteps">
+            <div class="audit-step" data-step="1"><span class="step-icon"></span> Checking ChatGPT...</div>
+            <div class="audit-step" data-step="2"><span class="step-icon"></span> Scanning Google AI Overviews...</div>
+            <div class="audit-step" data-step="3"><span class="step-icon"></span> Querying Perplexity...</div>
+            <div class="audit-step" data-step="4"><span class="step-icon"></span> Analyzing competitor visibility...</div>
+          </div>
+          <div class="geo-scanner-results" id="geoResults">
+            <div class="geo-scores-mini">
+              <div class="geo-score-mini"><div class="val red" id="geoScore">—</div><div class="lbl">VISIBILITY SCORE<br>out of 100</div></div>
+              <div class="geo-score-mini"><div class="val yellow">3rd</div><div class="lbl">AI RANKING<br>behind 2 competitors</div></div>
+              <div class="geo-score-mini"><div class="val red" id="geoQueries">—</div><div class="lbl">LOST QUERIES/MO<br>shoppers not seeing you</div></div>
+            </div>
+            <div class="geo-competitors">
+              <h4>Competitor Comparison</h4>
+              <div class="geo-comp-bar"><span class="name">Competitor A (AutoNation)</span><div class="bar"><div class="bar-fill" style="width:78%;background:var(--accent-teal);"></div></div><span class="score" style="color:var(--accent-teal);">78</span></div>
+              <div class="geo-comp-bar"><span class="name">Competitor B (Hendrick)</span><div class="bar"><div class="bar-fill" style="width:61%;background:var(--accent-yellow);"></div></div><span class="score" style="color:var(--accent-yellow);">61</span></div>
+              <div class="geo-comp-bar"><span class="name" id="geoUserName">Your Dealership</span><div class="bar"><div class="bar-fill" id="geoUserBar" style="width:0%;background:var(--accent-red);"></div></div><span class="score" id="geoUserScore" style="color:var(--accent-red);">—</span></div>
+            </div>
+            <div class="geo-warning">
+              <p>Your dealership is <strong>nearly invisible</strong> to AI-powered search. Shoppers are finding your competitors instead.</p>
+            </div>
+            <a href="#contact" class="geo-cta-btn">Fix My AI Visibility →</a>
+            <p style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:12px;">This is a sample analysis. <a href="#contact" style="text-decoration:underline;">Request a full GEO audit</a> for real data on your dealership.</p>
+          </div>
+        </div>
       </div>
-      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">GEO Scanner</h2>
-      <p class="text-xl text-gray-400 max-w-3xl mx-auto">When shoppers ask AI where to buy a car, does your dealership show up? Find out in seconds.</p>
+      <div class="geo-image">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2025/10/Generated-Image-October-21-2025-11_02AM-e1761066331458.png" alt="GEO Scanner Tool">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2025/12/ChatGPT-Image-Dec-4-2025-06_05_16-PM-e1765305075944.png" alt="AI Recommendation" style="margin-top:24px;border-radius:16px;">
+      </div>
     </div>
-    <div class="max-w-3xl mx-auto">
-      <div class="bg-gradient-to-br from-dl-800/80 to-dl-900/80 backdrop-blur border border-white/5 rounded-2xl p-8">
-        <!-- Input -->
-        <div class="flex gap-3 mb-6" id="geoInputArea">
-          <div class="flex-1 relative">
-            <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-            <input type="text" id="geoInput" placeholder="Enter your dealership name..." class="w-full bg-dl-900/80 border border-white/10 rounded-lg pl-12 pr-4 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/50 text-lg">
-          </div>
-          <button onclick="runGeoScan()" id="geoScanBtn" class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-semibold px-8 py-4 rounded-lg transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-purple-500/20 whitespace-nowrap">
-            Scan Now
-          </button>
+  </div>
+</section>
+
+<!-- ===== INDUSTRY TABS ===== -->
+<section class="industry-section reveal" id="industries">
+  <div class="container">
+    <div class="industry-header">
+      <div class="section-badge">Industries We Serve</div>
+      <h2 class="section-title">Built for Every Vertical</h2>
+      <p class="section-sub">Demand Local delivers precision advertising solutions tailored to each industry's unique needs.</p>
+    </div>
+    <div class="industry-tabs" id="industryTabs">
+      <button class="industry-tab active" data-tab="auto-agencies">Automotive Agencies</button>
+      <button class="industry-tab" data-tab="dealers">Auto Groups &amp; Dealers</button>
+      <button class="industry-tab" data-tab="cpg">CPG</button>
+      <button class="industry-tab" data-tab="food">Food &amp; Beverages</button>
+      <button class="industry-tab" data-tab="finance">Finance</button>
+      <button class="industry-tab" data-tab="healthcare">Healthcare</button>
+    </div>
+    <div id="industryPanels">
+      <div class="industry-panel active" data-panel="auto-agencies">
+        <div class="industry-panel-text">
+          <h3>Automotive Agencies</h3>
+          <p>White-label our full ad infrastructure so your agency can scale without building from scratch. LinkOne powers your clients' campaigns while you keep the relationship — and the brand. Pre-approved OEM creative, automated compliance documentation, and real-time reporting your clients will love.</p>
+          <a href="industries.html#automotive-agencies" class="btn-secondary" style="display:inline-flex;">Learn More →</a>
         </div>
-        <!-- Progress Area (hidden initially) -->
-        <div id="geoProgress" class="hidden">
-          <div class="space-y-3 mb-6">
-            <div class="geo-step flex items-center gap-3" data-step="1">
-              <div class="w-6 h-6 rounded-full border-2 border-gray-600 flex items-center justify-center flex-shrink-0"><div class="w-2 h-2 rounded-full bg-gray-600"></div></div>
-              <span class="text-sm text-gray-500">Checking ChatGPT responses...</span>
-            </div>
-            <div class="geo-step flex items-center gap-3" data-step="2">
-              <div class="w-6 h-6 rounded-full border-2 border-gray-600 flex items-center justify-center flex-shrink-0"><div class="w-2 h-2 rounded-full bg-gray-600"></div></div>
-              <span class="text-sm text-gray-500">Scanning Google AI Overviews...</span>
-            </div>
-            <div class="geo-step flex items-center gap-3" data-step="3">
-              <div class="w-6 h-6 rounded-full border-2 border-gray-600 flex items-center justify-center flex-shrink-0"><div class="w-2 h-2 rounded-full bg-gray-600"></div></div>
-              <span class="text-sm text-gray-500">Analyzing Perplexity mentions...</span>
-            </div>
-            <div class="geo-step flex items-center gap-3" data-step="4">
-              <div class="w-6 h-6 rounded-full border-2 border-gray-600 flex items-center justify-center flex-shrink-0"><div class="w-2 h-2 rounded-full bg-gray-600"></div></div>
-              <span class="text-sm text-gray-500">Comparing against local competitors...</span>
-            </div>
-          </div>
-          <div class="h-2 bg-dl-900 rounded-full overflow-hidden">
-            <div id="geoProgressBar" class="h-full bg-gradient-to-r from-purple-500 to-blue-500 rounded-full transition-all duration-700" style="width:0%"></div>
-          </div>
+        <div class="industry-panel-image">
+          <img src="https://www.demandlocal.com/wp-content/uploads/2025/02/21-1.png" alt="Automotive Agencies">
         </div>
-        <!-- Results (hidden initially) -->
-        <div id="geoResults" class="hidden">
-          <div class="border-t border-white/5 pt-6 mt-2">
-            <div class="grid md:grid-cols-3 gap-4 mb-6">
-              <div class="bg-red-500/10 border border-red-500/20 rounded-xl p-5 text-center">
-                <div class="text-4xl font-bold text-red-400 mb-1" id="geoScore">12</div>
-                <div class="text-xs text-red-300/70 uppercase tracking-wider font-medium">Visibility Score</div>
-                <div class="text-xs text-gray-500 mt-1">out of 100</div>
-              </div>
-              <div class="bg-amber-500/10 border border-amber-500/20 rounded-xl p-5 text-center">
-                <div class="text-4xl font-bold text-amber-400 mb-1">3rd</div>
-                <div class="text-xs text-amber-300/70 uppercase tracking-wider font-medium">AI Ranking</div>
-                <div class="text-xs text-gray-500 mt-1">behind 2 competitors</div>
-              </div>
-              <div class="bg-purple-500/10 border border-purple-500/20 rounded-xl p-5 text-center">
-                <div class="text-4xl font-bold text-purple-400 mb-1">~340</div>
-                <div class="text-xs text-purple-300/70 uppercase tracking-wider font-medium">Lost Queries/Mo</div>
-                <div class="text-xs text-gray-500 mt-1">shoppers not seeing you</div>
-              </div>
-            </div>
-            <div class="bg-dl-900/60 rounded-xl p-5 mb-6">
-              <div class="text-sm font-medium text-gray-300 mb-3">Competitor Comparison</div>
-              <div class="space-y-3">
-                <div>
-                  <div class="flex justify-between text-xs mb-1"><span class="text-gray-400">Competitor A (AutoNation)</span><span class="text-emerald-400 font-medium">Score: 78</span></div>
-                  <div class="h-2 bg-dl-900 rounded-full"><div class="h-full bg-emerald-500 rounded-full" style="width:78%"></div></div>
-                </div>
-                <div>
-                  <div class="flex justify-between text-xs mb-1"><span class="text-gray-400">Competitor B (Hendrick)</span><span class="text-blue-400 font-medium">Score: 61</span></div>
-                  <div class="h-2 bg-dl-900 rounded-full"><div class="h-full bg-blue-500 rounded-full" style="width:61%"></div></div>
-                </div>
-                <div>
-                  <div class="flex justify-between text-xs mb-1"><span class="text-amber-300" id="geoYourName">Your Dealership</span><span class="text-red-400 font-medium">Score: 12</span></div>
-                  <div class="h-2 bg-dl-900 rounded-full"><div class="h-full bg-red-500 rounded-full" style="width:12%"></div></div>
-                </div>
-              </div>
-            </div>
-            <div class="bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20 rounded-xl p-5 text-center">
-              <p class="text-gray-300 mb-3">Your dealership is <span class="text-red-400 font-bold">nearly invisible</span> to AI-powered search. Shoppers are finding your competitors instead.</p>
-              <a href="#contact" class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-semibold px-6 py-3 rounded-lg transition-all">
-                Fix My AI Visibility <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-              </a>
-            
-            <p class="text-xs text-gray-500 mt-4 text-center">This is a sample analysis. <a href="#contact" class="text-purple-400 hover:text-purple-300 underline">Request a full GEO audit</a> for real data on your dealership.</p></div>
-          </div>
+      </div>
+      <div class="industry-panel" data-panel="dealers">
+        <div class="industry-panel-text">
+          <h3>Auto Groups &amp; Dealers</h3>
+          <p>Whether you run a single rooftop or a 50-location group, Demand Local connects your real inventory data to every ad platform. VIN-level targeting, walk-in attribution, and 100% co-op compliance — all managed through one transparent dashboard.</p>
+          <a href="industries.html#dealers" class="btn-secondary" style="display:inline-flex;">Learn More →</a>
+        </div>
+        <div class="industry-panel-image">
+          <img src="https://www.demandlocal.com/wp-content/uploads/2024/04/networking-worldwide-1.png" alt="Dealers">
+        </div>
+      </div>
+      <div class="industry-panel" data-panel="cpg">
+        <div class="industry-panel-text">
+          <h3>Consumer Packaged Goods</h3>
+          <p>Reach consumers at the moment of decision with precision-targeted digital campaigns. Our data-driven approach combines first-party audience data with omnichannel delivery to drive measurable lift in brand awareness and purchase intent.</p>
+          <a href="industries.html#cpg" class="btn-secondary" style="display:inline-flex;">Learn More →</a>
+        </div>
+        <div class="industry-panel-image">
+          <img src="https://www.demandlocal.com/wp-content/uploads/2025/01/12.png" alt="CPG">
+        </div>
+      </div>
+      <div class="industry-panel" data-panel="food">
+        <div class="industry-panel-text">
+          <h3>Food &amp; Beverages</h3>
+          <p>Drive foot traffic and brand loyalty with geo-targeted campaigns that reach hungry consumers at the right time and place. From QSR to fine dining, our location-based strategies deliver measurable visits and sales.</p>
+          <a href="industries.html" class="btn-secondary" style="display:inline-flex;">Learn More →</a>
+        </div>
+        <div class="industry-panel-image">
+          <img src="https://www.demandlocal.com/wp-content/uploads/2024/04/Group.png" alt="Food & Beverages">
+        </div>
+      </div>
+      <div class="industry-panel" data-panel="finance">
+        <div class="industry-panel-text">
+          <h3>Finance</h3>
+          <p>Connect with high-intent financial consumers through compliant, data-driven advertising. From auto lending to insurance, our campaigns target the right audience with the right message across every digital channel.</p>
+          <a href="industries.html#finance" class="btn-secondary" style="display:inline-flex;">Learn More →</a>
+        </div>
+        <div class="industry-panel-image">
+          <img src="https://www.demandlocal.com/wp-content/uploads/2025/02/21-1.png" alt="Finance">
+        </div>
+      </div>
+      <div class="industry-panel" data-panel="healthcare">
+        <div class="industry-panel-text">
+          <h3>Healthcare</h3>
+          <p>Reach patients and healthcare consumers with HIPAA-mindful digital advertising. Our precision targeting combines demographic, geographic, and behavioral data to drive appointments and awareness for healthcare providers.</p>
+          <a href="industries.html#healthcare" class="btn-secondary" style="display:inline-flex;">Learn More →</a>
+        </div>
+        <div class="industry-panel-image">
+          <img src="https://www.demandlocal.com/wp-content/uploads/2025/01/12.png" alt="Healthcare">
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
-
-<!-- ========== CO-OP COMPLIANCE ========== -->
-<section id="coop" class="py-24 relative overflow-hidden">
-  <div class="absolute inset-0 bg-gradient-to-br from-emerald-900/20 to-transparent"></div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
+<!-- ===== CO-OP COMPLIANCE ===== -->
+<section class="coop-section reveal" id="coop">
+  <div class="container-wide">
+    <div class="coop-grid">
       <div>
-        <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-4 py-1.5 mb-4">
-          <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-          <span class="text-sm text-emerald-400 font-medium">Co-Op Compliance</span>
-        </div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-6">
-          Get Reimbursed for
-          <span class="text-emerald-400"> Every Dollar</span>
-        </h2>
-        <p class="text-lg text-gray-400 leading-relaxed mb-8">
-          Co-op advertising is one of the most underutilized profit tools in the dealer's arsenal. OEMs allocate millions annually for qualifying ad spend — but dealers leave money on the table when campaigns aren't properly structured and documented.
-        </p>
-        <p class="text-lg text-gray-400 leading-relaxed mb-8">
-          Demand Local has maintained a <span class="text-white font-semibold">100% co-op reimbursement rate</span> because every campaign we build is structured for compliance from day one. LinkOne tracks eligibility, documents everything, and ensures you get every dollar back.
-        </p>
-        <div class="space-y-4">
-          <div class="flex items-start gap-3">
-            <div class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            </div>
-            <span class="text-gray-300">Pre-approved creative templates for all major OEM programs</span>
-          </div>
-          <div class="flex items-start gap-3">
-            <div class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            </div>
-            <span class="text-gray-300">Automated documentation and proof-of-performance reporting</span>
-          </div>
-          <div class="flex items-start gap-3">
-            <div class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            </div>
-            <span class="text-gray-300">Full claims management and submission support</span>
-          </div>
-          <div class="flex items-start gap-3">
-            <div class="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            </div>
-            <span class="text-gray-300">Works across all major OEM co-op programs</span>
-          </div>
+        <div class="section-badge teal">Co-Op Compliance</div>
+        <h2 class="section-title">Never Leave Money on the Table</h2>
+        <p class="section-sub" style="margin-bottom:20px;">Most dealerships leave thousands in OEM co-op dollars unclaimed because their campaigns aren't properly structured and documented. Demand Local has maintained a <strong style="color:var(--accent-teal);">100% co-op reimbursement rate</strong> because every campaign we build is structured for compliance from day one.</p>
+        <div class="coop-stats">
+          <div class="coop-stat"><div class="val">100%</div><div class="lbl">Co-Op Reimbursement Rate</div></div>
+          <div class="coop-stat"><div class="val">Thousands</div><div class="lbl">Campaigns Filed</div></div>
+          <div class="coop-stat"><div class="val">100%</div><div class="lbl">Claims Approved</div></div>
+          <div class="coop-stat"><div class="val">Millions</div><div class="lbl">Dollars Recovered</div></div>
         </div>
       </div>
-      <!-- Right: Visual -->
-      <div class="relative">
-        <div class="bg-gradient-to-br from-emerald-900/30 to-dl-800/50 rounded-2xl border border-emerald-500/20 p-8">
-          <div class="text-center mb-8">
-            <div class="text-6xl font-black text-emerald-400 mb-2">100%</div>
-            <div class="text-lg text-gray-400">Co-Op Reimbursement Rate</div>
-          </div>
-          <div class="space-y-4">
-            <div class="bg-dl-900/60 rounded-xl p-4">
-              <div class="flex justify-between items-center mb-2">
-                <span class="text-sm text-gray-400">Campaigns Filed</span>
-                <span class="text-sm font-bold text-emerald-400">Thousands</span>
-              </div>
-              <div class="h-2 bg-dl-900 rounded-full"><div class="h-2 bg-emerald-500 rounded-full w-full"></div></div>
-            </div>
-            <div class="bg-dl-900/60 rounded-xl p-4">
-              <div class="flex justify-between items-center mb-2">
-                <span class="text-sm text-gray-400">Claims Approved</span>
-                <span class="text-sm font-bold text-emerald-400">100%</span>
-              </div>
-              <div class="h-2 bg-dl-900 rounded-full"><div class="h-2 bg-emerald-500 rounded-full w-full"></div></div>
-            </div>
-            <div class="bg-dl-900/60 rounded-xl p-4">
-              <div class="flex justify-between items-center mb-2">
-                <span class="text-sm text-gray-400">Dollars Recovered</span>
-                <span class="text-sm font-bold text-dl-accent">Millions</span>
-              </div>
-              <div class="h-2 bg-dl-900 rounded-full"><div class="h-2 bg-gradient-to-r from-emerald-500 to-dl-accent rounded-full w-full"></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-    <!-- Co-Op Recovery Calculator -->
-    <div class="mt-20 max-w-4xl mx-auto">
-      <div class="text-center mb-10">
-        <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 rounded-full px-4 py-1.5 mb-4">
-          <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-          <span class="text-sm text-amber-400 font-medium">Interactive Tool</span>
-        </div>
-        <h3 class="text-3xl font-bold text-white mb-3">Co-Op Recovery Calculator</h3>
-        <p class="text-gray-400 max-w-2xl mx-auto">See how much OEM co-op reimbursement your dealership may be leaving on the table each year.</p>
-      </div>
-      <div class="bg-gradient-to-br from-dl-800/80 to-dl-900/80 backdrop-blur border border-white/5 rounded-2xl p-8" id="coopCalcBox">
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="space-y-6">
-            <div>
-              <label class="block text-sm font-medium text-gray-300 mb-3">Monthly Ad Spend</label>
-              <div class="relative">
-                <input type="range" id="spendSlider" min="5000" max="100000" step="1000" value="25000" class="w-full h-2 bg-dl-900 rounded-lg appearance-none cursor-pointer accent-emerald-500" oninput="updateSpendLabel(this.value)">
-                <div class="flex justify-between mt-2">
-                  <span class="text-xs text-gray-500">$5K</span>
-                  <span id="spendLabel" class="text-lg font-bold text-emerald-400">$25,000</span>
-                  <span class="text-xs text-gray-500">$100K</span>
-                </div>
-              </div>
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-300 mb-3">OEM / Program</label>
-              <select id="oemSelect" class="w-full bg-dl-900/80 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-emerald-500/50 appearance-none cursor-pointer">
-                <option value="toyota">Toyota / TDA</option>
-                <option value="ford">Ford / FMC</option>
-                <option value="gm">GM / iMR</option>
-                <option value="stellantis">Stellantis / SDA</option>
-                <option value="honda">Honda</option>
-                <option value="hyundai">Hyundai / Genesis</option>
-                <option value="nissan">Nissan</option>
-                <option value="vw">Volkswagen / Audi</option>
-                <option value="bmw">BMW / MINI</option>
-                <option value="subaru">Subaru</option>
-              </select>
-            </div>
-            <button onclick="runCoopCalc()" class="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white font-semibold py-3 px-6 rounded-lg transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-emerald-500/20">
-              Calculate My Unclaimed Co-Op →
-            </button>
-          </div>
-          <p class="text-xs text-gray-500 mt-3 text-center">Estimates based on industry averages. Actual recovery varies by OEM program and spend.</p>
-          <div id="calcResults" class="flex items-center justify-center">
-            <div class="text-center text-gray-500">
-              <svg class="w-16 h-16 mx-auto mb-3 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-              <p class="text-sm">Adjust the sliders and click<br>Calculate to see your results</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div></section>
-
-<div class="section-divider"></div>
-
-<!-- ========== INDUSTRIES ========== -->
-<section id="industries" class="py-24">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">
-        Built for <span class="gradient-text">Automotive</span>. Ready for More.
-      </h2>
-      <p class="text-lg text-gray-400 max-w-2xl mx-auto">
-        Our roots are in automotive, but LinkOne's infrastructure powers campaigns across industries.
-      </p>
-    </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="platform-card rounded-2xl p-6 transition-all duration-300 card-glow text-center group">
-        <div class="w-14 h-14 rounded-xl bg-blue-500/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
-          <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>
-        </div>
-        <h3 class="font-bold text-white mb-2">Auto Dealers & Groups</h3>
-        <p class="text-sm text-gray-500">Direct campaigns for single rooftops and enterprise dealer groups</p>
-      </div>
-      <div class="platform-card rounded-2xl p-6 transition-all duration-300 card-glow text-center group">
-        <div class="w-14 h-14 rounded-xl bg-purple-500/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
-          <svg class="w-7 h-7 text-purple-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
-        </div>
-        <h3 class="font-bold text-white mb-2">Automotive Agencies</h3>
-        <p class="text-sm text-gray-500">White-label infrastructure for agencies managing dealer accounts</p>
-      </div>
-      <div class="platform-card rounded-2xl p-6 transition-all duration-300 card-glow text-center group">
-        <div class="w-14 h-14 rounded-xl bg-orange-500/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
-          <svg class="w-7 h-7 text-orange-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
-        </div>
-        <h3 class="font-bold text-white mb-2">Multicultural Marketing</h3>
-        <p class="text-sm text-gray-500">Reach Hispanic, Asian, and diverse audiences with culturally relevant campaigns</p>
-      </div>
-      <div class="platform-card rounded-2xl p-6 transition-all duration-300 card-glow text-center group">
-        <div class="w-14 h-14 rounded-xl bg-emerald-500/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
-          <svg class="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/></svg>
-        </div>
-        <h3 class="font-bold text-white mb-2">Other Industries</h3>
-        <p class="text-sm text-gray-500">Finance, healthcare, CPG — any business that needs precision digital advertising</p>
+      <div class="coop-calc">
+        <h3>Co-Op Recovery Calculator</h3>
+        <p class="sub">See how much OEM co-op reimbursement your dealership may be leaving on the table each year.</p>
+        <label>Monthly Ad Spend</label>
+        <input type="range" class="coop-range" id="coopRange" min="5000" max="100000" step="1000" value="25000" oninput="updateCoopSpend()">
+        <div class="coop-range-labels"><span>$5K</span><span>$100K</span></div>
+        <div class="coop-spend-display" id="coopSpend">$25,000</div>
+        <label>OEM / Program</label>
+        <select class="coop-select" id="coopOem">
+          <option value="toyota">Toyota / TDA</option>
+          <option value="ford">Ford / FMC</option>
+          <option value="gm">GM / iMR</option>
+          <option value="stellantis">Stellantis / SDA</option>
+          <option value="honda">Honda</option>
+          <option value="hyundai">Hyundai / Genesis</option>
+          <option value="nissan">Nissan</option>
+          <option value="vw">Volkswagen / Audi</option>
+          <option value="bmw">BMW / MINI</option>
+          <option value="subaru">Subaru</option>
+        </select>
+        <button class="coop-calc-btn" onclick="runCoopCalc()">Calculate My Unclaimed Co-Op →</button>
+        <div class="coop-results" id="coopResults"></div>
+        <p class="coop-disclaimer">Estimates based on industry averages. Actual recovery varies by OEM program and spend.</p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
-
-<!-- ========== TESTIMONIALS ========== -->
-<section class="py-24 relative">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
-        Trusted by Industry Leaders
-      </h2>
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials-section reveal" id="testimonials">
+  <div class="container">
+    <div class="testimonials-header">
+      <div class="section-badge">What Our Partners Say</div>
+      <h2 class="section-title">Trusted by Industry Leaders</h2>
+      <p class="section-sub">See what agencies and dealer groups are saying about working with Demand Local.</p>
     </div>
-    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-      <div class="platform-card rounded-2xl p-6">
-        <div class="flex items-center gap-1 mb-4">
-          <svg class="w-5 h-5 text-dl-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          <svg class="w-5 h-5 text-dl-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          <svg class="w-5 h-5 text-dl-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          <svg class="w-5 h-5 text-dl-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          <svg class="w-5 h-5 text-dl-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-        </div>
-        <p class="text-gray-300 text-sm leading-relaxed mb-6">"Their velocity for campaign launches is unmatched by competitors. As an agency owner, I've not had a better partner than Demand Local."</p>
-        <div class="text-sm"><span class="font-semibold text-white">COO</span><span class="text-gray-500"> — NJ-based Automotive Agency</span></div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2025/06/testimonial-1.1.png" alt="Testimonial" loading="lazy">
       </div>
-      <div class="platform-card rounded-2xl p-6">
-        <div class="flex items-center gap-1 mb-4">
-          <svg class="w-5 h-5 text-dl-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          <svg class="w-5 h-5 text-dl-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          <svg class="w-5 h-5 text-dl-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          <svg class="w-5 h-5 text-dl-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          <svg class="w-5 h-5 text-dl-accent" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-        </div>
-        <p class="text-gray-300 text-sm leading-relaxed mb-6">"Demand Local provides outstanding thought leadership and excellent execution that sets your agency apart from the rest of the competition."</p>
-        <div class="text-sm"><span class="font-semibold text-white">CEO & Founder</span><span class="text-gray-500"> — Houston Automotive Agency</span></div>
+      <div class="testimonial-card">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2025/06/testimonial-1.2.png" alt="Testimonial" loading="lazy">
       </div>
-      
+      <div class="testimonial-card">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2025/06/testimonial-1.3.png" alt="Testimonial" loading="lazy">
+      </div>
+    </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
-
-<!-- ========== ABOUT ========== -->
-<section id="about" class="py-24">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
-      <div>
-        <div class="inline-flex items-center gap-2 bg-dl-500/10 border border-dl-500/20 rounded-full px-4 py-1.5 mb-4">
-          <span class="text-sm text-dl-300 font-medium">Our Story</span>
-        </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-6">
-          17 Years of Making
-          <span class="gradient-text"> Every Ad Dollar Count</span>
-        </h2>
-        <p class="text-lg text-gray-400 leading-relaxed mb-6">
-          Founded in 2008 by Ray Bhatia and Mike Machado, Demand Local was built on a simple premise: dealerships deserve advertising partners who understand their business and can prove their value with data.
-        </p>
-        <p class="text-lg text-gray-400 leading-relaxed mb-8">
-          From our headquarters in Napa, CA, we've grown to serve nearly 1,000 dealerships across the US and Canada. Our team of 30+ specialists combines deep automotive expertise with cutting-edge ad technology to deliver results that matter.
-        </p>
-        <div class="grid grid-cols-2 gap-6">
-          <div class="bg-dl-800/50 rounded-xl p-4 border border-white/5">
-            <div class="text-2xl font-extrabold text-white">2008</div>
-            <div class="text-sm text-gray-500">Founded</div>
-          </div>
-          <div class="bg-dl-800/50 rounded-xl p-4 border border-white/5">
-            <div class="text-2xl font-extrabold text-white">30+</div>
-            <div class="text-sm text-gray-500">Team Members</div>
-          </div>
-          <div class="bg-dl-800/50 rounded-xl p-4 border border-white/5">
-            <div class="text-2xl font-extrabold text-white">Napa, CA</div>
-            <div class="text-sm text-gray-500">Headquarters</div>
-          </div>
-          <div class="bg-dl-800/50 rounded-xl p-4 border border-white/5">
-            <div class="text-2xl font-extrabold text-white">US & Canada</div>
-            <div class="text-sm text-gray-500">Coverage</div>
-          </div>
-        </div>
+<!-- ===== ABOUT / OUR STORY ===== -->
+<section class="about-section reveal" id="about">
+  <div class="container-wide">
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2024/04/networking-worldwide-1.png" alt="Demand Local Global Network">
       </div>
-      <div>
-        <div class="bg-gradient-to-br from-dl-700/60 to-dl-800/40 rounded-2xl border border-white/10 p-8">
-          <h3 class="text-xl font-bold text-white mb-6">Why Dealers & Agencies Choose Us</h3>
-          <div class="space-y-5">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-xl bg-dl-500/20 flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-dl-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-              </div>
-              <div>
-                <h4 class="font-semibold text-white mb-1">Speed to Market</h4>
-                <p class="text-sm text-gray-400">We launch campaigns faster than any competitor. Our agency partners consistently cite our velocity as the #1 reason they stay.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-xl bg-dl-accent/20 flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-dl-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-              </div>
-              <div>
-                <h4 class="font-semibold text-white mb-1">Total Transparency</h4>
-                <p class="text-sm text-gray-400">Real-time reporting through LinkOne. No hidden fees, no black-box algorithms. You see exactly where every dollar goes.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-              </div>
-              <div>
-                <h4 class="font-semibold text-white mb-1">White-Label Ready</h4>
-                <p class="text-sm text-gray-400">Agencies use our infrastructure to power their clients' campaigns — fully branded as their own. We're the engine; you're the brand.</p>
-              </div>
-            </div>
+      <div class="about-content">
+        <div class="section-badge">Our Story</div>
+        <h2 class="section-title">17 Years of Making Every Ad Dollar Count</h2>
+        <p class="section-sub">Founded in 2008 by Ray Bhatia and Mike Machado, Demand Local was built on a simple premise: dealerships deserve advertising partners who understand their business and can prove their value with data. From our headquarters in Napa, CA, we've grown to serve nearly 1,000 dealerships across the US and Canada.</p>
+        <div class="about-stats-row">
+          <div class="about-stat"><div class="val">2008</div><div class="lbl">Founded</div></div>
+          <div class="about-stat"><div class="val">30+</div><div class="lbl">Team Members</div></div>
+          <div class="about-stat"><div class="val">Napa, CA</div><div class="lbl">Headquarters</div></div>
+          <div class="about-stat"><div class="val">US &amp; Canada</div><div class="lbl">Coverage</div></div>
+        </div>
+        <div class="about-differentiators">
+          <div class="about-diff">
+            <div class="about-diff-icon">🔍</div>
+            <div><h4>Total Transparency</h4><p>Real-time reporting through LinkOne. No hidden fees, no black-box algorithms.</p></div>
+          </div>
+          <div class="about-diff">
+            <div class="about-diff-icon">🏷️</div>
+            <div><h4>White-Label Ready</h4><p>Agencies use our infrastructure to power their clients' campaigns — fully branded as their own.</p></div>
+          </div>
+          <div class="about-diff">
+            <div class="about-diff-icon">✅</div>
+            <div><h4>Co-Op Compliance</h4><p>100% reimbursement rate. Every campaign structured for OEM compliance from day one.</p></div>
           </div>
         </div>
       </div>
@@ -1033,319 +971,311 @@ input[type="range"]::-moz-range-thumb { height:20px; width:20px; border-radius:5
   </div>
 </section>
 
-<div class="section-divider"></div>
-
-<!-- ========== LEADERSHIP TEAM ========== -->
-<section id="team" class="py-24">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">Meet Our <span class="gradient-text">Leadership</span></h2>
-      <p class="text-lg text-gray-400 max-w-2xl mx-auto">Experienced and proactive communication — the team behind nearly 1,000 dealership partnerships.</p>
+<!-- ===== LEADERSHIP TEAM ===== -->
+<section class="team-section reveal" id="team">
+  <div class="container">
+    <div class="team-header">
+      <div class="section-badge">Leadership</div>
+      <h2 class="section-title">Meet Our Team</h2>
+      <p class="section-sub">The leadership driving Demand Local's mission to transform automotive advertising.</p>
     </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      <div class="text-center group">
-        <div class="w-36 h-36 mx-auto mb-4 rounded-2xl overflow-hidden border-2 border-white/10 group-hover:border-dl-500/40 transition">
-          <img src="https://www.demandlocal.com/wp-content/uploads/2025/03/Ray_Bhatia-1-scaled.jpg" alt="Ray Bhatia" class="w-full h-full object-cover" loading="lazy"/>
-        </div>
-        <h3 class="text-white font-bold text-lg">Ray Bhatia</h3>
-        <p class="text-sm text-dl-300">CEO & Co-Founder</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2025/03/Ray_Bhatia-1-scaled.jpg" alt="Ray Bhatia" loading="lazy">
+        <h4>Ray Bhatia</h4>
+        <p>CEO &amp; Co-Founder</p>
       </div>
-      <div class="text-center group">
-        <div class="w-36 h-36 mx-auto mb-4 rounded-2xl overflow-hidden border-2 border-white/10 group-hover:border-dl-500/40 transition">
-          <img src="https://www.demandlocal.com/wp-content/uploads/2025/03/Mike_Machado-1-scaled.jpg" alt="Mike Machado" class="w-full h-full object-cover" loading="lazy"/>
-        </div>
-        <h3 class="text-white font-bold text-lg">Mike Machado</h3>
-        <p class="text-sm text-dl-300">Chief Revenue Officer & Co-Founder</p>
+      <div class="team-card">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2025/03/Mike_Machado-1-scaled.jpg" alt="Mike Machado" loading="lazy">
+        <h4>Mike Machado</h4>
+        <p>CRO &amp; Co-Founder</p>
       </div>
-      <div class="text-center group">
-        <div class="w-36 h-36 mx-auto mb-4 rounded-2xl overflow-hidden border-2 border-white/10 group-hover:border-dl-500/40 transition">
-          <img src="https://www.demandlocal.com/wp-content/uploads/2025/03/Brian_Schrader-scaled.jpg" alt="Brian Schrader" class="w-full h-full object-cover" loading="lazy"/>
-        </div>
-        <h3 class="text-white font-bold text-lg">Brian Schrader</h3>
-        <p class="text-sm text-dl-300">Chief Product Officer</p>
+      <div class="team-card">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2025/03/Brian_Schrader-scaled.jpg" alt="Brian Schrader" loading="lazy">
+        <h4>Brian Schrader</h4>
+        <p>Chief Product Officer</p>
       </div>
-      <div class="text-center group">
-        <div class="w-36 h-36 mx-auto mb-4 rounded-2xl overflow-hidden border-2 border-white/10 group-hover:border-dl-500/40 transition">
-          <img src="https://www.demandlocal.com/wp-content/uploads/2025/03/Caitlin_Cowley-scaled.jpg" alt="Caitlin Cowley" class="w-full h-full object-cover" loading="lazy"/>
-        </div>
-        <h3 class="text-white font-bold text-lg">Caitlin Cowley</h3>
-        <p class="text-sm text-dl-300">SVP, Growth & Strategy</p>
+      <div class="team-card">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2025/03/Caitlin_Cowley-scaled.jpg" alt="Caitlin Cowley" loading="lazy">
+        <h4>Caitlin Cowley</h4>
+        <p>SVP, Growth &amp; Strategy</p>
       </div>
     </div>
-    <p class="text-center text-gray-400 mt-10 text-lg">Plus a team of <span class="text-white font-semibold">30+ specialists</span> in media, data, and automotive advertising.</p>
+    <p class="team-note">Plus a team of <strong>30+ specialists</strong> in media, data, and automotive advertising.</p>
   </div>
 </section>
 
-<div class="section-divider"></div>
-
-<!-- ========== RESOURCES ========== -->
-<section id="resources" class="py-24">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
-        Insights & <span class="gradient-text">Resources</span>
-      </h2>
-      <p class="text-lg text-gray-400 max-w-2xl mx-auto">Stay ahead with the latest in automotive digital advertising.</p>
-    </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="group platform-card rounded-2xl overflow-hidden transition-all duration-300 card-glow">
-        <div class="h-40 bg-gradient-to-br from-dl-500/30 to-dl-accent/20 flex items-center justify-center">
-          <svg class="w-12 h-12 text-dl-300 group-hover:scale-110 transition" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
-        </div>
-        <div class="p-6">
-          <div class="text-xs text-dl-accent font-semibold uppercase tracking-wider mb-2">Guide</div>
-          <h3 class="font-bold text-white mb-2">The Dealer's Guide to Co-Op Advertising Compliance</h3>
-          <p class="text-sm text-gray-500">Everything you need to know about maximizing OEM co-op reimbursements in 2026.</p>
-        </div>
-      </div>
-      <div class="group platform-card rounded-2xl overflow-hidden transition-all duration-300 card-glow">
-        <div class="h-40 bg-gradient-to-br from-purple-500/30 to-pink-500/20 flex items-center justify-center">
-          <svg class="w-12 h-12 text-purple-300 group-hover:scale-110 transition" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
-        </div>
-        <div class="p-6">
-          <div class="text-xs text-purple-400 font-semibold uppercase tracking-wider mb-2">Case Study</div>
-          <h3 class="font-bold text-white mb-2">How a 12-Rooftop Group Cut Wasted Spend by 40%</h3>
-          <p class="text-sm text-gray-500">Using LinkOne's inventory-fed campaigns to eliminate waste and increase conversions.</p>
+<!-- ===== CONTACT / CTA ===== -->
+<section class="contact-section" id="contact">
+  <div class="container-wide">
+    <div class="contact-grid">
+      <div class="contact-content">
+        <div class="section-badge">Get Started</div>
+        <h2 class="section-title">Your Next Great Campaign Starts Here</h2>
+        <p class="section-sub">Ready to see how Demand Local can transform your dealership's digital advertising? Let's talk.</p>
+        <div class="contact-info">
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📞</div>
+            <div><h4>Phone</h4><p>1-888-315-9759</p></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📍</div>
+            <div><h4>Address</h4><p>1300 1st Street, Suite 368<br>Napa, CA 94559</p></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">✉️</div>
+            <div><h4>Email</h4><p>info@demandlocal.com</p></div>
+          </div>
         </div>
       </div>
-      <div class="group platform-card rounded-2xl overflow-hidden transition-all duration-300 card-glow">
-        <div class="h-40 bg-gradient-to-br from-emerald-500/30 to-cyan-500/20 flex items-center justify-center">
-          <svg class="w-12 h-12 text-emerald-300 group-hover:scale-110 transition" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
-        </div>
-        <div class="p-6">
-          <div class="text-xs text-emerald-400 font-semibold uppercase tracking-wider mb-2">Insight</div>
-          <h3 class="font-bold text-white mb-2">CTV Advertising for Dealerships: What's Working in 2026</h3>
-          <p class="text-sm text-gray-500">Connected TV is the fastest-growing channel in automotive. Here's how to do it right.</p>
-        </div>
+      <div class="contact-form">
+        <h3 style="font-family:var(--font-display);font-size:20px;font-weight:700;margin-bottom:4px;">Request a Demo</h3>
+        <p style="font-size:14px;color:var(--text-muted);margin-bottom:24px;">Fill out the form and a member of our team will be in touch within 24 hours.</p>
+        <div class="form-group"><label>Full Name</label><input type="text" placeholder="John Smith"></div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="john@dealership.com"></div>
+        <div class="form-group"><label>Company / Dealership</label><input type="text" placeholder="Sunset Toyota"></div>
+        <div class="form-group"><label>Message (Optional)</label><textarea placeholder="Tell us about your advertising goals..."></textarea></div>
+        <button class="form-submit" type="button">Send Request →</button>
       </div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
-
-<!-- ========== CONTACT / CTA ========== -->
-<section id="contact" class="py-24 relative overflow-hidden">
-  <div class="absolute inset-0 bg-gradient-to-br from-dl-500/10 to-dl-accent/5"></div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid lg:grid-cols-2 gap-16 items-start">
-      <div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-6">
-          Ready to See What
-          <span class="gradient-text"> LinkOne Can Do?</span>
-        </h2>
-        <p class="text-lg text-gray-400 leading-relaxed mb-8">
-          Get a personalized demo of our platform and see how we can transform your dealership's digital advertising. No pressure, no contracts — just results.
-        </p>
-        <div class="space-y-4 mb-8">
-          <div class="flex items-center gap-3">
-            <svg class="w-5 h-5 text-dl-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-            <a href="mailto:hello@demandlocal.com" class="text-gray-300 hover:text-white transition">hello@demandlocal.com</a>
-          </div>
-          <div class="flex items-center gap-3">
-            <svg class="w-5 h-5 text-dl-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-            <a href="tel:1-888-315-9759" class="text-gray-300 hover:text-white transition">1-888-315-9759</a>
-          </div>
-          <div class="flex items-center gap-3">
-            <svg class="w-5 h-5 text-dl-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-            <span class="text-gray-300">1300 1st Street, Suite 368, Napa, CA 94559</span>
-          </div>
-        </div>
-        <!-- Social Links -->
-        <div class="flex items-center gap-4">
-          <a href="#" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition">
-            <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
-          </a>
-          <a href="#" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition">
-            <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"/></svg>
-          </a>
-          <a href="#" class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition">
-            <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container-wide">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="https://www.demandlocal.com/wp-content/uploads/2024/11/White-Full-Demand-Local-big.png" alt="Demand Local">
+        <p>The ad infrastructure behind America's top dealerships. 17+ years of precision digital advertising with full co-op compliance.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/demandlocal" target="_blank" aria-label="Facebook">f</a>
+          <a href="https://www.instagram.com/demandlocal" target="_blank" aria-label="Instagram">ig</a>
+          <a href="https://www.linkedin.com/company/demand-local" target="_blank" aria-label="LinkedIn">in</a>
         </div>
       </div>
-      <!-- Contact Form -->
-      <div class="bg-dl-800/60 rounded-2xl border border-white/10 p-8">
-        <h3 class="text-xl font-bold text-white mb-6">Request a Demo</h3>
-        <form class="space-y-5" onsubmit="event.preventDefault(); document.getElementById('form-success').classList.remove('hidden'); this.classList.add('hidden');">
-          <div>
-            <label class="block text-sm text-gray-400 mb-1.5">Full Name</label>
-            <input type="text" class="w-full bg-dl-900/60 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-dl-500/50 transition" placeholder="John Smith" />
-          </div>
-          <div>
-            <label class="block text-sm text-gray-400 mb-1.5">Work Email</label>
-            <input type="email" class="w-full bg-dl-900/60 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-dl-500/50 transition" placeholder="john@dealership.com" />
-          </div>
-          <div>
-            <label class="block text-sm text-gray-400 mb-1.5">Company</label>
-            <input type="text" class="w-full bg-dl-900/60 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-dl-500/50 transition" placeholder="ABC Motors" />
-          </div>
-          <div>
-            <label class="block text-sm text-gray-400 mb-1.5">Message (optional)</label>
-            <textarea rows="3" class="w-full bg-dl-900/60 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-dl-500/50 transition resize-none" placeholder="Tell us about your goals..."></textarea>
-          </div>
-          <button type="submit" class="w-full btn-accent text-white font-semibold py-3.5 rounded-lg text-base">
-            Request Your Demo
-          </button>
-          <p class="text-xs text-gray-600 text-center">No contracts. No pressure. Just a conversation about results.</p>
-        </form>
-        <div id="form-success" class="hidden text-center py-12">
-          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-emerald-500/20 flex items-center justify-center">
-            <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-          </div>
-          <h3 class="text-xl font-bold text-white mb-2">Thank You!</h3>
-          <p class="text-gray-400">We'll reach out within 24 hours to schedule your demo.</p>
-        </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="platform-linkone.html">LinkOne Data</a>
+        <a href="platform-geo.html">AI-First Discovery</a>
+        <a href="platform-inventory.html">Inventory Marketing</a>
+        <a href="platform-facebook.html">Facebook Dynamic Ads</a>
+        <a href="platform-google.html">Google Vehicle Ads</a>
+        <a href="platform-ctv.html">CTV &amp; OTT</a>
+        <a href="platform-dooh.html">DOOH</a>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <a href="industries.html#automotive-agencies">Automotive Agencies</a>
+        <a href="industries.html#dealers">Auto Groups &amp; Dealers</a>
+        <a href="industries.html#multicultural">Multicultural Marketing</a>
+        <a href="industries.html#finance">Finance</a>
+        <a href="industries.html#cpg">CPG</a>
+        <a href="industries.html#healthcare">Healthcare</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="services.html">Our Services</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="team.html">Meet the Team</a>
+        <a href="contact.html">Contact Us</a>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ========== FOOTER ========== -->
-<footer class="border-t border-white/5 bg-dl-900 py-16">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
-      <!-- Brand -->
-      <div class="lg:col-span-2">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-dl-500 to-dl-accent flex items-center justify-center">
-            <span class="text-white font-black text-lg">DL</span>
-          </div>
-          <div>
-            <span class="text-white font-bold text-lg tracking-tight">DEMAND</span>
-            <span class="text-dl-300 font-bold text-lg tracking-tight">LOCAL</span>
-          </div>
-        </div>
-        <p class="text-sm text-gray-500 max-w-xs">The digital advertising infrastructure built specifically for auto dealers and the agencies that serve them.</p>
-      </div>
-      <!-- Platform -->
-      <div>
-        <h4 class="text-sm font-semibold text-white mb-4">Platform</h4>
-        <div class="space-y-2.5">
-          <a href="#platform" class="block text-sm text-gray-500 hover:text-gray-300 transition">LinkOne Data</a>
-          <a href="#services" class="block text-sm text-gray-500 hover:text-gray-300 transition">Inventory Marketing</a>
-          <a href="#services" class="block text-sm text-gray-500 hover:text-gray-300 transition">Connected TV & OTT</a>
-          <a href="#services" class="block text-sm text-gray-500 hover:text-gray-300 transition">Social Advertising</a>
-          <a href="#coop" class="block text-sm text-gray-500 hover:text-gray-300 transition">Co-Op Compliance</a>
-        </div>
-      </div>
-      <!-- Industries -->
-      <div>
-        <h4 class="text-sm font-semibold text-white mb-4">Industries</h4>
-        <div class="space-y-2.5">
-          <a href="#industries" class="block text-sm text-gray-500 hover:text-gray-300 transition">Auto Dealers</a>
-          <a href="#industries" class="block text-sm text-gray-500 hover:text-gray-300 transition">Automotive Agencies</a>
-          <a href="#industries" class="block text-sm text-gray-500 hover:text-gray-300 transition">Multicultural Marketing</a>
-          <a href="#industries" class="block text-sm text-gray-500 hover:text-gray-300 transition">Finance</a>
-          <a href="#industries" class="block text-sm text-gray-500 hover:text-gray-300 transition">Healthcare</a>
-        </div>
-      </div>
-      <!-- Company -->
-      <div>
-        <h4 class="text-sm font-semibold text-white mb-4">Company</h4>
-        <div class="space-y-2.5">
-          <a href="#about" class="block text-sm text-gray-500 hover:text-gray-300 transition">About Us</a>
-          <a href="#contact" class="block text-sm text-gray-500 hover:text-gray-300 transition">Contact</a>
-          <a href="#resources" class="block text-sm text-gray-500 hover:text-gray-300 transition">Resources</a>
-          <a href="https://app.link1data.com/auth/login?next=/dashboard" class="block text-sm text-gray-500 hover:text-gray-300 transition">LinkOne Login</a>
-          <a href="#" class="block text-sm text-gray-500 hover:text-gray-300 transition">Privacy Policy</a>
-        </div>
-      </div>
-    </div>
-    <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-sm text-gray-600">&copy; 2026 Demand Local, Inc. All rights reserved.</p>
-      <p class="text-xs text-gray-700">1300 1st Street, Suite 368, Napa, CA 94559 &middot; 1-888-315-9759</p>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Demand Local, Inc. All rights reserved.</span>
+      <span>1300 1st Street, Suite 368, Napa, CA 94559 &middot; 1-888-315-9759</span>
     </div>
   </div>
 </footer>
 
-<!-- Scroll animation observer -->
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  // Fade-in animation
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-  // Navbar background on scroll
-  const nav = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('bg-dl-900/95', window.scrollY > 50);
-    nav.classList.toggle('shadow-lg', window.scrollY > 50);
-  });
-
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
-});
-</script>
-
-
-<script>
-// ========== Dashboard Tab Switching ==========
-function switchDashTab(tab) {
-  document.querySelectorAll('.dash-panel').forEach(p => p.classList.add('hidden'));
-  document.querySelectorAll('.dash-tab').forEach(t => {
-    t.classList.remove('bg-blue-600/80','text-white');
-    t.classList.add('text-gray-400');
-  });
-  const panel = document.getElementById('tab-' + tab);
-  if (panel) {
-    panel.classList.remove('hidden');
-    panel.style.opacity = '0';
-    panel.style.transform = 'translateY(8px)';
-    requestAnimationFrame(() => {
-      panel.style.transition = 'opacity 0.3s, transform 0.3s';
-      panel.style.opacity = '1';
-      panel.style.transform = 'translateY(0)';
-    });
-  }
-  const btn = document.querySelector('.dash-tab[data-tab="'+tab+'"]');
-  if (btn) { btn.classList.add('bg-blue-600/80','text-white'); btn.classList.remove('text-gray-400'); }
-}
-
-// ========== Animated Counters on Scroll ==========
-function animateCounter(el) {
-  const target = parseInt(el.getAttribute('data-target'));
-  const duration = 2000;
-  const start = performance.now();
-  function update(now) {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    const current = Math.floor(eased * target);
-    el.textContent = current.toLocaleString();
-    if (progress < 1) requestAnimationFrame(update);
-  }
-  requestAnimationFrame(update);
-}
-
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.querySelectorAll('.counter').forEach(c => animateCounter(c));
-      counterObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.3 });
-
-document.addEventListener('DOMContentLoaded', () => {
-  const dashPanel = document.getElementById('tab-overview');
-  if (dashPanel) counterObserver.observe(dashPanel.closest('.bg-dl-800\\/50') || dashPanel.parentElement);
+// ===== NAV SCROLL =====
+window.addEventListener('scroll', function() {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// ========== Co-Op Recovery Calculator ==========
-function updateSpendLabel(val) {
-  document.getElementById('spendLabel').textContent = '$' + parseInt(val).toLocaleString();
+// ===== MOBILE MENU =====
+function toggleMobile() {
+  var m = document.getElementById('mobileMenu');
+  var h = document.getElementById('hamburger');
+  m.classList.toggle('open');
+  h.classList.toggle('active');
+  document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
 }
 
-const oemRates = {
+// ===== SCROLL REVEAL =====
+var revealObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
+
+// ===== PARTNER LOGOS =====
+(function() {
+  var track = document.getElementById('logosTrack');
+  var base = 'https://www.demandlocal.com/wp-content/uploads/2025/02/';
+  var html = '';
+  for (var i = 1; i <= 22; i++) { html += '<img src="' + base + i + '.png" alt="Partner ' + i + '" loading="lazy">'; }
+  track.innerHTML = html + html; // duplicate for infinite scroll
+})();
+
+// ===== DIGITAL PRESENCE AUDIT =====
+function runAudit() {
+  var urlInput = document.getElementById('auditUrl').value.trim();
+  if (!urlInput) { alert('Please enter a website URL'); return; }
+  if (!urlInput.match(/^https?:\/\//)) { urlInput = 'https://' + urlInput; }
+
+  var btn = document.getElementById('auditBtn');
+  btn.disabled = true;
+  btn.textContent = 'Scanning...';
+
+  var stepsEl = document.getElementById('auditSteps');
+  var resultsEl = document.getElementById('auditResults');
+  stepsEl.classList.add('active');
+  resultsEl.classList.remove('active');
+
+  var steps = stepsEl.querySelectorAll('.audit-step');
+  var currentStep = 0;
+
+  function advanceStep() {
+    if (currentStep > 0) { steps[currentStep - 1].classList.remove('active'); steps[currentStep - 1].classList.add('done'); steps[currentStep - 1].querySelector('.step-icon').textContent = '✓'; }
+    if (currentStep < steps.length) { steps[currentStep].classList.add('active'); currentStep++; }
+  }
+  advanceStep();
+
+  var apiUrl = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=' + encodeURIComponent(urlInput) + '&category=performance&category=seo&category=accessibility&category=best-practices&strategy=mobile';
+
+  var stepInterval = setInterval(function() { if (currentStep < steps.length) advanceStep(); }, 3000);
+
+  fetch(apiUrl).then(function(r) { return r.json(); }).then(function(data) {
+    clearInterval(stepInterval);
+    // Complete remaining steps
+    while (currentStep <= steps.length) { advanceStep(); }
+
+    setTimeout(function() {
+      stepsEl.classList.remove('active');
+
+      var cats = data.lighthouseResult && data.lighthouseResult.categories;
+      if (!cats) { btn.disabled = false; btn.textContent = 'Scan My Website'; alert('Could not analyze this URL. Please check the URL and try again.'); return; }
+
+      var scores = {
+        performance: Math.round((cats.performance ? cats.performance.score : 0) * 100),
+        seo: Math.round((cats.seo ? cats.seo.score : 0) * 100),
+        accessibility: Math.round((cats.accessibility ? cats.accessibility.score : 0) * 100),
+        bestPractices: Math.round((cats['best-practices'] ? cats['best-practices'].score : 0) * 100)
+      };
+
+      var worst = Math.min(scores.performance, scores.seo, scores.accessibility, scores.bestPractices);
+      var worstName = scores.performance === worst ? 'mobile speed' : scores.seo === worst ? 'SEO' : scores.accessibility === worst ? 'accessibility' : 'best practices';
+
+      document.getElementById('auditHeadline').innerHTML = 'Your dealership website scores <span style="color:' + (worst < 50 ? 'var(--accent-red)' : worst < 90 ? 'var(--accent-yellow)' : 'var(--accent-teal)') + ';font-size:24px;">' + worst + '/100</span> on ' + worstName + '.' + (worst < 50 ? ' Shoppers are leaving before your page loads.' : worst < 90 ? ' There\'s room for improvement.' : ' Great job!');
+
+      var scoresHtml = '';
+      var scoreData = [
+        { label: 'Performance', val: scores.performance },
+        { label: 'SEO', val: scores.seo },
+        { label: 'Accessibility', val: scores.accessibility },
+        { label: 'Best Practices', val: scores.bestPractices }
+      ];
+      scoreData.forEach(function(s) {
+        var color = s.val < 50 ? 'red' : s.val < 90 ? 'yellow' : 'green';
+        var circumference = 2 * Math.PI * 34;
+        var offset = circumference - (s.val / 100) * circumference;
+        scoresHtml += '<div class="score-card"><div class="score-gauge"><svg viewBox="0 0 76 76"><circle class="bg" cx="38" cy="38" r="34"/><circle class="fill ' + color + '" cx="38" cy="38" r="34" stroke-dasharray="' + circumference + '" stroke-dashoffset="' + offset + '"/></svg><div class="score-value ' + color + '">' + s.val + '</div></div><div class="score-label">' + s.label + '</div></div>';
+      });
+      document.getElementById('auditScores').innerHTML = scoresHtml;
+
+      // Gated content
+      var audits = data.lighthouseResult.audits || {};
+      var issues = [];
+      var seoIssues = 0, a11yIssues = 0;
+      Object.keys(audits).forEach(function(k) {
+        if (audits[k].score !== null && audits[k].score < 1) {
+          if (k.indexOf('seo') > -1 || ['meta-description', 'document-title', 'hreflang', 'canonical', 'robots-txt'].indexOf(k) > -1) seoIssues++;
+          if (k.indexOf('accessibility') > -1 || ['color-contrast', 'image-alt', 'link-name', 'button-name'].indexOf(k) > -1) a11yIssues++;
+        }
+      });
+      var fcp = audits['first-contentful-paint'] ? audits['first-contentful-paint'].displayValue : 'N/A';
+      var lcp = audits['largest-contentful-paint'] ? audits['largest-contentful-paint'].displayValue : 'N/A';
+
+      document.getElementById('auditGatedBlur').innerHTML = '<p>' + (seoIssues || 5) + ' SEO issues detected</p><p>First Contentful Paint: ' + fcp + '</p><p>Largest Contentful Paint: ' + lcp + '</p><p>' + (a11yIssues || 3) + ' accessibility violations found</p><p>Mobile load optimization opportunities available</p>';
+
+      resultsEl.classList.add('active');
+      btn.disabled = false;
+      btn.textContent = 'Scan Another Website';
+    }, 500);
+  }).catch(function(err) {
+    clearInterval(stepInterval);
+    stepsEl.classList.remove('active');
+    btn.disabled = false;
+    btn.textContent = 'Scan My Website';
+    alert('Error scanning website. Please check the URL and try again.');
+  });
+}
+
+// ===== GEO SCANNER =====
+function runGeoScan() {
+  var name = document.getElementById('geoInput').value.trim();
+  if (!name) { alert('Please enter a dealership name'); return; }
+
+  var btn = document.getElementById('geoBtn');
+  btn.disabled = true;
+  btn.textContent = 'Scanning...';
+
+  var stepsEl = document.getElementById('geoSteps');
+  var resultsEl = document.getElementById('geoResults');
+  stepsEl.classList.add('active');
+  resultsEl.classList.remove('active');
+
+  var steps = stepsEl.querySelectorAll('.audit-step');
+  var step = 0;
+
+  function advance() {
+    if (step > 0) { steps[step - 1].classList.remove('active'); steps[step - 1].classList.add('done'); steps[step - 1].querySelector('.step-icon').textContent = '✓'; }
+    if (step < steps.length) { steps[step].classList.add('active'); step++; }
+  }
+  advance();
+  var si = setInterval(function() { if (step < steps.length) advance(); else { clearInterval(si); advance(); setTimeout(showGeoResults, 500); } }, 1200);
+
+  function showGeoResults() {
+    stepsEl.classList.remove('active');
+    steps.forEach(function(s) { s.classList.remove('active','done'); s.querySelector('.step-icon').textContent = ''; });
+
+    var score = Math.floor(Math.random() * 18) + 8;
+    var queries = Math.floor(Math.random() * 200) + 250;
+
+    document.getElementById('geoScore').textContent = score;
+    document.getElementById('geoQueries').textContent = '~' + queries;
+    document.getElementById('geoUserName').textContent = name;
+    document.getElementById('geoUserBar').style.width = score + '%';
+    document.getElementById('geoUserScore').textContent = score;
+
+    resultsEl.classList.add('active');
+    btn.disabled = false;
+    btn.textContent = 'Scan Again';
+  }
+}
+
+// ===== INDUSTRY TABS =====
+document.getElementById('industryTabs').addEventListener('click', function(e) {
+  var tab = e.target.closest('.industry-tab');
+  if (!tab) return;
+  document.querySelectorAll('.industry-tab').forEach(function(t) { t.classList.remove('active'); });
+  tab.classList.add('active');
+  var target = tab.dataset.tab;
+  document.querySelectorAll('.industry-panel').forEach(function(p) {
+    p.classList.remove('active');
+    if (p.dataset.panel === target) p.classList.add('active');
+  });
+});
+
+// ===== CO-OP CALCULATOR =====
+function updateCoopSpend() {
+  var val = document.getElementById('coopRange').value;
+  document.getElementById('coopSpend').textContent = '$' + parseInt(val).toLocaleString();
+}
+
+var oemRates = {
   toyota: { name: 'Toyota / TDA', rate: 0.50, match: 0.85 },
   ford: { name: 'Ford / FMC', rate: 0.45, match: 0.80 },
   gm: { name: 'GM / iMR', rate: 0.55, match: 0.75 },
@@ -1359,116 +1289,33 @@ const oemRates = {
 };
 
 function runCoopCalc() {
-  const spend = parseInt(document.getElementById('spendSlider').value);
-  const oem = document.getElementById('oemSelect').value;
-  const info = oemRates[oem];
-  const annualSpend = spend * 12;
-  const eligible = annualSpend * info.rate;
-  const avgRecovery = 0.35;
-  const unclaimed = eligible * (1 - avgRecovery);
-  const withDL = eligible * info.match;
-  const uplift = withDL - (eligible * avgRecovery);
+  var monthly = parseInt(document.getElementById('coopRange').value);
+  var oem = oemRates[document.getElementById('coopOem').value];
+  var annual = monthly * 12;
+  var eligible = annual * oem.rate;
+  var industryAvg = 0.35;
+  var industryRecovery = eligible * industryAvg;
+  var dlRecovery = eligible * oem.match;
+  var unclaimed = eligible - industryRecovery;
+  var additional = dlRecovery - industryRecovery;
 
-  const resultsHTML = `
-    <div class="space-y-4 w-full animate-fadeIn">
-      <div class="text-center mb-2">
-        <div class="text-xs text-gray-500 uppercase tracking-wider mb-1">Estimated Unclaimed Co-Op</div>
-        <div class="text-5xl font-bold text-emerald-400">$${Math.round(unclaimed).toLocaleString()}</div>
-        <div class="text-sm text-gray-400 mt-1">per year with ${info.name}</div>
-      </div>
-      <div class="space-y-3 pt-4 border-t border-white/5">
-        <div class="flex justify-between text-sm"><span class="text-gray-400">Annual Ad Spend</span><span class="text-white font-medium">$${annualSpend.toLocaleString()}</span></div>
-        <div class="flex justify-between text-sm"><span class="text-gray-400">Co-Op Eligible</span><span class="text-white font-medium">$${Math.round(eligible).toLocaleString()}</span></div>
-        <div class="flex justify-between text-sm"><span class="text-gray-400">Industry Avg Recovery</span><span class="text-amber-400 font-medium">35%</span></div>
-        <div class="flex justify-between text-sm"><span class="text-gray-400">With Demand Local</span><span class="text-emerald-400 font-medium">${Math.round(info.match * 100)}%</span></div>
-        <div class="flex justify-between text-sm pt-2 border-t border-white/5"><span class="text-gray-300 font-medium">Additional Recovery</span><span class="text-emerald-400 font-bold">+$${Math.round(uplift).toLocaleString()}/yr</span></div>
-      </div>
-    </div>`;
-  document.getElementById('calcResults').innerHTML = resultsHTML;
+  var html = '<div class="coop-result-row"><span class="label">Annual Ad Spend</span><span class="value">$' + annual.toLocaleString() + '</span></div>';
+  html += '<div class="coop-result-row"><span class="label">Co-Op Eligible (' + oem.name + ')</span><span class="value">$' + Math.round(eligible).toLocaleString() + '</span></div>';
+  html += '<div class="coop-result-row"><span class="label">Industry Avg Recovery (35%)</span><span class="value">$' + Math.round(industryRecovery).toLocaleString() + '</span></div>';
+  html += '<div class="coop-result-row"><span class="label">Demand Local Recovery (' + Math.round(oem.match * 100) + '%)</span><span class="value" style="color:var(--accent-teal);">$' + Math.round(dlRecovery).toLocaleString() + '</span></div>';
+  html += '<div class="coop-result-row"><span class="label"><strong>Unclaimed Co-Op / Year</strong></span><span class="value highlight">$' + Math.round(unclaimed).toLocaleString() + '</span></div>';
+  html += '<div class="coop-result-row"><span class="label"><strong>Additional Recovery with DL</strong></span><span class="value highlight">+$' + Math.round(additional).toLocaleString() + '</span></div>';
+
+  var r = document.getElementById('coopResults');
+  r.innerHTML = html;
+  r.classList.add('active');
 }
 
-// ========== GEO Scanner ==========
-function runGeoScan() {
-  const name = document.getElementById('geoInput').value.trim();
-  if (!name) { document.getElementById('geoInput').style.borderColor = '#ef4444'; setTimeout(() => document.getElementById('geoInput').style.borderColor = '', 2000); return; }
-
-  document.getElementById('geoProgress').classList.remove('hidden');
-  document.getElementById('geoResults').classList.add('hidden');
-  document.getElementById('geoScanBtn').disabled = true;
-  document.getElementById('geoScanBtn').textContent = 'Scanning...';
-  document.getElementById('geoScanBtn').style.opacity = '0.6';
-
-  const steps = document.querySelectorAll('.geo-step');
-  const bar = document.getElementById('geoProgressBar');
-  let currentStep = 0;
-
-  function activateStep() {
-    if (currentStep >= steps.length) {
-      setTimeout(showGeoResults, 600);
-      return;
-    }
-    const step = steps[currentStep];
-    const dot = step.querySelector('div > div');
-    const circle = step.querySelector('div');
-    const text = step.querySelector('span');
-    circle.style.borderColor = '#a78bfa';
-    dot.style.backgroundColor = '#a78bfa';
-    text.style.color = '#d4d4d8';
-    bar.style.width = ((currentStep + 1) / steps.length * 100) + '%';
-    currentStep++;
-    setTimeout(activateStep, 800 + Math.random() * 600);
-  }
-  activateStep();
-
-  function showGeoResults() {
-    document.getElementById('geoProgress').classList.add('hidden');
-    document.getElementById('geoResults').classList.remove('hidden');
-    document.getElementById('geoResults').style.opacity = '0';
-    document.getElementById('geoResults').style.transform = 'translateY(12px)';
-    requestAnimationFrame(() => {
-      document.getElementById('geoResults').style.transition = 'opacity 0.5s, transform 0.5s';
-      document.getElementById('geoResults').style.opacity = '1';
-      document.getElementById('geoResults').style.transform = 'translateY(0)';
-    });
-    document.getElementById('geoYourName').textContent = name;
-    const score = 8 + Math.floor(Math.random() * 18);
-    document.getElementById('geoScore').textContent = score;
-    document.getElementById('geoScanBtn').disabled = false;
-    document.getElementById('geoScanBtn').textContent = 'Scan Again';
-    document.getElementById('geoScanBtn').style.opacity = '1';
-    // Reset steps for re-scan
-    document.querySelectorAll('.geo-step').forEach(s => {
-      s.querySelector('div > div').style.backgroundColor = '#4b5563';
-      s.querySelector('div').style.borderColor = '#4b5563';
-      s.querySelector('span').style.color = '#6b7280';
-    });
-    document.getElementById('geoProgressBar').style.width = '0%';
-  }
-}
-
-// ========== Smooth scroll for nav links ==========
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
+// ===== SMOOTH SCROLL =====
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var target = document.querySelector(this.getAttribute('href'));
     if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-  });
-});
-
-// ========== Fade-in on scroll (below fold only) ==========
-document.addEventListener('DOMContentLoaded', function() {
-  var viewH = window.innerHeight;
-  document.querySelectorAll('section').forEach(function(sec) {
-    if (sec.getBoundingClientRect().top > viewH * 0.8) {
-      sec.style.opacity = '0';
-      sec.style.transform = 'translateY(24px)';
-      sec.style.transition = 'opacity 0.7s ease-out, transform 0.7s ease-out';
-      var obs = new IntersectionObserver(function(entries) {
-        entries.forEach(function(e) {
-          if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; obs.unobserve(e.target); }
-        });
-      }, { threshold: 0.08 });
-      obs.observe(sec);
-    }
   });
 });
 </script>
