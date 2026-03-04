@@ -1138,6 +1138,10 @@ function runAudit() {
   stepsEl.classList.add('active');
   resultsEl.classList.remove('active');
 
+  // Reset any previous step state so re-scans work cleanly
+  var allStepEls = stepsEl.querySelectorAll('.audit-step');
+  allStepEls.forEach(function(s) { s.classList.remove('active', 'done'); s.querySelector('.step-icon').textContent = ''; });
+
   var steps = stepsEl.querySelectorAll('.audit-step');
   var currentStep = 0;
 
@@ -1153,8 +1157,13 @@ function runAudit() {
 
   fetch(apiUrl).then(function(r) { return r.json(); }).then(function(data) {
     clearInterval(stepInterval);
-    // Complete remaining steps
-    while (currentStep <= steps.length) { advanceStep(); }
+    // Complete all remaining steps visually (safe loop — no infinite hang)
+    for (var i = 0; i < steps.length; i++) {
+      steps[i].classList.remove('active');
+      steps[i].classList.add('done');
+      steps[i].querySelector('.step-icon').textContent = '✓';
+    }
+    currentStep = steps.length;
 
     setTimeout(function() {
       stepsEl.classList.remove('active');
