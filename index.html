@@ -1555,11 +1555,14 @@ function runCoopCalc() {
 
   // Animate bars
   function animateBars(panel) {
-    panel.querySelectorAll('.hero-dash-bar').forEach(function(bar) {
+    panel.querySelectorAll('.hero-dash-bar').forEach(function(bar, i) {
+      bar.style.transition = 'none';
       bar.style.height = '0';
+      bar.offsetHeight; // force reflow
+      bar.style.transition = 'height 0.8s ease';
       setTimeout(function() {
         bar.style.height = bar.dataset.h;
-      }, 100);
+      }, 80 + i * 60);
     });
   }
 
@@ -1581,7 +1584,9 @@ function runCoopCalc() {
     }
   }
   window.addEventListener('scroll', checkDashVisible);
+  checkDashVisible();
   setTimeout(checkDashVisible, 300);
+  setTimeout(checkDashVisible, 800);
 })();
 
 // ===== SMOOTH SCROLL =====
